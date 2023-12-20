@@ -20,7 +20,7 @@ export default function Page() {
 
     const {mutate: handleSubmit} = useMutation({
         
-        mutationFn: async() => await axios.post("api/createPost", {data: {
+        mutationFn: async() => await axios.post("/api/createPost", {data: {
             ...postdata,
             userId: session.id}}),
         onSuccess: () => {
