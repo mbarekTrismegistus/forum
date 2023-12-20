@@ -27,7 +27,7 @@ export default function Newcomment(props) {
 
     const {mutate: handleSubmit} = useMutation({
         
-        mutationFn: async() => await axios.post("api/addComment", {data: {
+        mutationFn: async() => await axios.post("/api/addComment", {data: {
             ...data,
             userId: session.id,
             postId: Number(props.postId)}}),
