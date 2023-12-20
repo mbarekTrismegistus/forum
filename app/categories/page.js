@@ -4,7 +4,7 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Loading from '../components/loading'
-axios.defaults.baseURL = 'http://127.0.0.1:3000';
+axios.defaults.baseURL = process.env.baseURL;
 
 export default function Page() {
 
