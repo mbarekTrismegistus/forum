@@ -11,7 +11,7 @@ export default function Comments(props) {
   const {data, isError, isLoading} = useQuery({
     queryKey: ["comments"],
     queryFn: async () => {
-      const {data} = await axios.post("api/getComments", {id: Number(props.id)})
+      const {data} = await axios.post("/api/getComments", {id: Number(props.id)})
       return data.data
     }
   })
