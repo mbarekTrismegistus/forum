@@ -21,6 +21,7 @@ export default function Page({ params }) {
           return data.data
         }
     })
+    console.log(data)
     
     if(status === "loading"){
         return <Loading/>
