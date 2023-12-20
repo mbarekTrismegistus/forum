@@ -12,7 +12,7 @@ export default function Page() {
     const {data,isError,isLoading} = useQuery({
         queryKey: ["cats"],
         queryFn: async () => {
-            const {data} = await axios.get("api/getCats")
+            const {data} = await axios.get("/api/getCats")
             console.log(data.data)
             return data.data 
         }
