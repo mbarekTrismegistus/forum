@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id String @id
+  firstName String
+  lastName String
+  dateJoined DateTime @default(now())
+  password String
+  role String @default("user")
+  posts posts[]
+  comments comments[]
+  likes likes[]
+}
+
+
+model posts {
+  id Int @id @default(autoincrement())
+  title String @db.Text
+  content String @db.LongText
+  userId String 
+  categorieId String
+  user users @relation(fields: [userId], references: [id])
+  categorie categorie @relation(fields: [categorieId], references: [id])
+  dateCreated DateTime @default(now())
+  comments comments[]
+  like likes[]
+
+}
+
+model categorie{
+  id String @unique
+  dateCreated DateTime @default(now())
+  lastUpdated DateTime
+  posts posts[]
+  
+}
+
+model comments{
+  id Int @unique @default(autoincrement())
+  dateCommented DateTime @default(now())
+  content String @db.LongText
+  postId Int
+  userId String
+  user users @relation(fields: [userId], references: [id])
+  post posts @relation(fields: [postId], references: [id])
+  like likes[]
+}
+
+model likes{
+  id Int @unique @default(autoincrement())
+  dateLiked DateTime @default(now())
+  userId String
+  commentId Int
+  postId Int
+  user users @relation(fields: [userId], references: [id])
+  comment comments @relation(fields: [commentId], references: [id])
+  post posts @relation(fields: [postId], references: [id])
+}

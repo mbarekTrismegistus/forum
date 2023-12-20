@@ -1,0 +1,122 @@
+.loading{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  font-size: 4vw;
+}
+body{
+  background-color: #141f26!important;
+  color: white!important;
+  height: 100%!important;
+}
+hr{
+  width: 75%;
+}
+.post{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 25px;
+}
+nav{
+  background-color: transparent!important;
+  z-index: 2!important;
+}
+.sideNav{
+  background-color: #141f26;
+  height: 100%;
+  position: fixed;
+  margin-right: 80px;
+  z-index: 3;
+}
+
+.items{
+  background-color: #141f26!important;
+  overflow-x: hidden;
+  height: 100%;
+  width: 60px;
+  white-space: nowrap;
+}
+.items a{
+  text-decoration: none;
+  color: white;
+}
+.main{
+  margin-left: 80px!important;
+}
+.searchbar{
+  position: relative;
+  background-color: #2d404d!important;
+  border-top-left-radius: 35px!important;
+  border-bottom-left-radius: 35px!important;
+  border-top-right-radius: 0px!important;
+  border-bottom-right-radius: 0px!important;
+  border: none!important;
+  z-index: 0;
+}
+
+      
+.search .btn{
+  background-color: #2d404d!important;
+  border-top-left-radius: 0px!important;
+  border-bottom-left-radius: 0px!important;
+  border-top-right-radius: 35px!important;
+  border-bottom-right-radius: 35px!important;
+}
+
+.welcome{
+  background-color: #2d404d;
+  border-radius: 30px;
+  
+}
+.joinBtn{
+  background-color: #2d404d!important;
+  border: none!important;
+  position: relative;
+  border-radius: 25px!important;
+  width: 130px;
+  height: 50px;
+  border: 2px solid #8839ef!important;
+  color: white!important;
+  z-index: 1;
+  
+}
+
+
+.joinBtn::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #8839ef 0%, #d20f39 100% );
+  transform: translate3d(0px, 10px, 0) scale(0.95);
+  filter: blur(20px);
+  opacity: 1;
+  transition: opacity 0.3s;
+  border-radius: inherit;
+}
+
+
+.joinBtn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
+}
+
+.user{
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
