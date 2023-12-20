@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query';
-axios.defaults.baseURL = 'http://127.0.0.1:3000';
+axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
 import Loading from '@/app/components/loading';
 import Comments from './comments/comments';
