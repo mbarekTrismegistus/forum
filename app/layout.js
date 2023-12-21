@@ -4,6 +4,7 @@ import TanstackProvider from './providers/tanstackProvider'
 import "./globals.css"
 import NextAuthProvider from './providers/sessionProvider'
 import SideNavBar from './components/sideNavBar'
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
   title: 'Create Next App',
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
             <SideNavBar/>
             <div className='main'>
               {children}
+              <Analytics />
             </div>
         </TanstackProvider>
       </NextAuthProvider>
