@@ -19,7 +19,6 @@ model users {
   role String @default("user")
   posts posts[]
   comments comments[]
-  likes likes[]
 }
 
 
@@ -29,11 +28,10 @@ model posts {
   content String @db.LongText
   userId String 
   categorieId String
-  user users @relation(fields: [userId], references: [id])
-  categorie categorie @relation(fields: [categorieId], references: [id])
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categorie categorie @relation(fields: [categorieId], references: [id], onDelete: Cascade)
   dateCreated DateTime @default(now())
   comments comments[]
-  like likes[]
 
 }
 
@@ -51,18 +49,7 @@ model comments{
   content String @db.LongText
   postId Int
   userId String
-  user users @relation(fields: [userId], references: [id])
-  post posts @relation(fields: [postId], references: [id])
-  like likes[]
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
-model likes{
-  id Int @unique @default(autoincrement())
-  dateLiked DateTime @default(now())
-  userId String
-  commentId Int
-  postId Int
-  user users @relation(fields: [userId], references: [id])
-  comment comments @relation(fields: [commentId], references: [id])
-  post posts @relation(fields: [postId], references: [id])
-}

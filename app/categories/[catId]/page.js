@@ -6,7 +6,7 @@ import axios from 'axios'
 import Loading from '@/app/components/loading'
 axios.defaults.baseURL = process.env.baseURL;
 
-export default function Page({params}) {
+export default function SingleCat({params}) {
 
     
     const {data,isError,isLoading} = useQuery({

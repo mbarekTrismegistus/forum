@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react'
 import Loading from '../components/loading'
-axios.defaults.baseURL = 'https://discuss-wdev.vercel.app';
+axios.defaults.baseURL = process.env.baseURL;
 
 
 export default function Page() {

@@ -21,7 +21,7 @@ export default function Comments(props) {
   if(isLoading){
     return "loading ..."
   }
-  console.log(data)
+ 
 
 
 

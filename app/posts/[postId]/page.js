@@ -1,18 +1,21 @@
 "use client"
 
 import React from 'react'
-import Link from 'next/link'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
 import Loading from '@/app/components/loading';
 import Comments from './comments/comments';
+import { useRouter } from 'next/navigation';
 
 
-export default function Page({ params }) {
+export default function SinglePost({ params }) {
 
     const {data: session, status} = useSession()
+
+    let router = useRouter()
     
     const {data, isError, isLoading} = useQuery({
         queryKey: ["post"],
@@ -21,13 +24,30 @@ export default function Page({ params }) {
           return data.data
         }
     })
-    console.log(data)
     
+    const {mutate: handleDelete} = useMutation({
+        mutationFn: async(id) => {
+          await axios.post("/api/deletePost", {data: id})
+        },
+        onSuccess: () => {
+            router.push("/posts")
+        }
+        
+        
+      })
+
+    function handleUpdate(){
+        router.push(`updatePost/${params.postId}`)
+    }
+
+    
+
     if(status === "loading"){
         return <Loading/>
     }
 
     if(session){
+        
         if(isLoading) return <Loading/>
         if(isError) return <div>Error happened</div>
         return (
@@ -39,6 +59,15 @@ export default function Page({ params }) {
                             <p>
                                 {post.content}
                             </p>
+                                {status == "authenticated" ? 
+                                session.id == post.userId ?
+                                    <>
+                                        <button className='btn btn-danger me-3' onClick={() => {handleDelete({id: post.id})}}>Delete</button>
+                                        <button className='btn btn-primary' onClick={() => {handleUpdate(post.id)}}>Update</button>
+                                    </>
+                                : ""
+                                : ""
+                                }
                         </>
                     )
                 })}
