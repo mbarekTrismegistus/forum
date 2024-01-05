@@ -5,31 +5,31 @@ export default function Home() {
   return (
     <div className='container mt-5'>
       <div className='d-md-flex'>
-        <div className='col-md-8 welcome me-5 p-4 align-self-start'>
+        <div className='col-md-9 welcome me-5 p-4 align-self-start'>
           <h1>
             Welcome To Discuss Dev
           </h1>
           <p>Quos nulla doloribus quaerat. In minima odio quis tempora. Qui dignissimos sit ut sit. Dolore non et numquam nemo eos dolor. Id saepe quia laudantium repellat non rerum quia.</p>
           <button className='btn joinBtn my-3'>Join Us !</button>
         </div>
-        <div className='col-md-4 laMem'>
+        <div className='col-md laMem'>
           <div className='row mb-3'>
-            <h2>Latest Members</h2>
+            <h3>Latest Members</h3>
           </div>
           <div className='row ms-3'>
-            <h4>hatim ben aboud</h4>
+            <h5>hatim ben aboud</h5>
             <p>joined 3 hours ago</p>
           </div>
           <div className='row ms-3'>
-            <h4>hatim ben aboud</h4>
+            <h5>hatim ben aboud</h5>
             <p>joined 3 hours ago</p>
           </div>
           <div className='row ms-3'>
-            <h4>hatim ben aboud</h4>
+            <h5>hatim ben aboud</h5>
             <p>joined 3 hours ago</p>
           </div>
           <div className='row ms-3'>
-            <h4>hatim ben aboud</h4>
+            <h5>hatim ben aboud</h5>
             <p>joined 3 hours ago</p>
           </div>
         </div>

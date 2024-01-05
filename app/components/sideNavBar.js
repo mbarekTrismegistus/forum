@@ -37,7 +37,7 @@ export default function SideNavBar() {
     }}>
         <div className='items'>
            
-            <div className={`item p-3 py-4 ${pathname == "/"  ? 'border-end border-success border-3' : ""}`}>
+            <div className={`item p-3 py-4 ${pathname == "/"  ? 'border-list' : ""}`}>
                 <House size={28}/>
                 <a href='/' className='ms-4 mb-0'>Home</a>
             </div>
@@ -49,7 +49,7 @@ export default function SideNavBar() {
                 <People size={28}/>
                 <a className='ms-4 mb-0'>Members</a>
             </div>
-            <div className={`item p-3 py-4 ${pathname == "/categories"  ? 'border-end border-success border-3' : ""}`}>
+            <div className={`item p-3 py-4 ${pathname == "/categories"  ? 'border-list' : ""}`}>
                 <Chat size={28}/>
                 <a href='/categories' className='ms-4 mb-0'>Forums</a>
             </div>

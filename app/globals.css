@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white
+}
+
+
 .loading{
   width: 100%;
   height: 100%;
@@ -6,7 +26,7 @@
   font-size: 4vw;
 }
 body{
-  background-color: #141f26!important;
+  background-color: #0f051c!important;
   color: white!important;
   height: 100%!important;
 }
@@ -28,7 +48,7 @@ nav{
   z-index: 2!important;
 }
 .sideNav{
-  background-color: #141f26;
+  background-color: #0f051c;
   height: 100%;
   position: fixed;
   margin-right: 80px;
@@ -36,7 +56,7 @@ nav{
 }
 
 .items{
-  background-color: #141f26!important;
+  background-color: #0f051c!important;
   overflow-x: hidden;
   height: 100%;
   width: 60px;
@@ -57,8 +77,12 @@ nav{
   border-top-right-radius: 0px!important;
   border-bottom-right-radius: 0px!important;
   border: none!important;
-  z-index: 0;
+
 }
+.search{
+  position: relative;
+}
+
 
       
 .search .btn{
@@ -67,8 +91,20 @@ nav{
   border-bottom-left-radius: 0px!important;
   border-top-right-radius: 35px!important;
   border-bottom-right-radius: 35px!important;
+  z-index: 3;
 }
+.search::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(-45deg, #8839ef 0%, #d20f39 100%)!important;
+  margin: -2px;
+  border-radius: 35px;
 
+}
 .welcome{
   border-radius: 30px;
   background-image: 
@@ -181,4 +217,8 @@ h1{
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px!important;
   
+}
+
+.border-list{
+  border-right: 3px solid #d20f39;
 }
