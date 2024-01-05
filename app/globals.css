@@ -29,6 +29,8 @@ body{
   background-color: #0f051c!important;
   color: white!important;
   height: 100%!important;
+  margin: 0;
+  padding: 0;
 }
 hr{
   width: 75%;
@@ -106,19 +108,17 @@ nav{
 
 }
 .welcome{
-  border-radius: 30px;
-  background-image: 
-    radial-gradient(at top left, #29232883, transparent),
-    radial-gradient(at top right, #8839efa6, transparent),
-    radial-gradient(at bottom left, #00000000, transparent);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  height: 500px;
   
   
 }
-h1{
+.welcome h1{
   font-weight: bolder!important;
-  font-size: 4vw;
+  font-size: 6vw!important;
+  background: rgb(203,203,203);
+  background: linear-gradient(0deg, rgb(114, 114, 114) 20%, rgba(255,255,255,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .joinBtn{
