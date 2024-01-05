@@ -27,7 +27,7 @@ export default function Navbar() {
             </div>
             
            
-            <Link href={'/posts'} className='ms-auto me-3'>
+            <Link href={'/newPost'} className='ms-auto me-3'>
               <PlusCircle className='' size={28}/>
             </Link>
             <Bell className='me-3' size={28}/>
