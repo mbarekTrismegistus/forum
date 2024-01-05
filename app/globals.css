@@ -108,21 +108,28 @@ nav{
 
 }
 .welcome{
-  height: 500px;
+  height: auto;
   
   
 }
-.welcome h1{
+.welcome span{
   font-weight: bolder!important;
   font-size: 6vw!important;
   background: rgb(203,203,203);
-  background: linear-gradient(0deg, rgb(114, 114, 114) 20%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(120deg, rgb(255, 255, 255) 0%, rgb(116, 116, 116) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome .disDev{
+  background: rgb(203,203,203);
+  background: linear-gradient(120deg, #8839ef 0%, #d20f39 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .joinBtn{
-  background-color: #2d404d!important;
+  background-color: #0f051c!important;
   border: none!important;
   position: relative;
   border-radius: 25px!important;

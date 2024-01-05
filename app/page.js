@@ -4,17 +4,17 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <div className='container mt-5'>
-      <div className='d-md-flex'>
-        <div className='col-md-8 welcome me-5 p-4 pb-0 align-self-start'>
+      <div className='pb-5'>
+        <div className='col-md-8 welcome me-5 p-4 pb-5 align-self-start'>
           <h1 className='pb-3'>
-            Welcome To Discuss Dev
+            <span>Welcome To </span><span className='disDev'>Discuss Dev</span>
           </h1>
           <p className='pb-3'>Quos nulla doloribus quaerat. In minima odio quis tempora. Qui dignissimos sit ut sit. Dolore non et numquam nemo eos dolor. Id saepe quia laudantium repellat non rerum quia.</p>
           <button className='btn joinBtn my-3'>Join Us !</button>
         </div>
         
       </div>
-      <div className='home-cats mt-4'>
+      <div className='home-cats pt-5'>
         <h1 className='my-5'>Trending Categories</h1>
         <div className='row mb-5'>
           <div className='card text-center col-md mx-4 p-0 '>

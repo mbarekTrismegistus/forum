@@ -2,6 +2,9 @@
 import { useSession, signIn,signOut } from 'next-auth/react';
 import { Search } from 'react-bootstrap-icons';
 import { Bell } from 'react-bootstrap-icons';
+import Link from 'next/link';
+
+import { PlusCircle } from 'react-bootstrap-icons';
 
 
 import React from 'react'
@@ -22,7 +25,13 @@ export default function Navbar() {
               
 
             </div>
-            <Bell className='ms-auto me-3' size={28}/>
+            
+           
+            <Link href={'/posts'} className='ms-auto me-3'>
+              <PlusCircle className='' size={28}/>
+            </Link>
+            <Bell className='me-3' size={28}/>
+            
             
             
             {
