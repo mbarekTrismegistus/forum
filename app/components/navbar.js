@@ -38,7 +38,7 @@ export default function Navbar() {
               session ? 
                 <div className='d-flex align-items-center'> 
                     <p className='text-white m-0 me-3'>{session.id}</p> 
-                    <div className='text-white m-0 me-3 user'></div>
+                    <img className='text-white m-0 me-3 user' src={session.image}/>
                    
                 </div>
               : 

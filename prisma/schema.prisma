@@ -17,6 +17,7 @@ model users {
   dateJoined DateTime @default(now())
   password String
   role String @default("user")
+  image String @default("empty")
   posts posts[]
   comments comments[]
 }

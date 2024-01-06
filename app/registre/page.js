@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react'
+import { imgbbUploader } from "imgbb-uploader";
 import Loading from '../components/loading'
 axios.defaults.baseURL = process.env.baseURL;
 
@@ -25,18 +26,50 @@ export default function Page() {
             router.push("/")
         }
     })
+    
+
+    function getBase64(file, onLoadCallback) {
+        return new Promise(function(resolve, reject) {
+            var reader = new FileReader();
+            reader.onload = function() { resolve(reader.result); };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+    console.log(data)
 
     function handleChange(event){
         
-        setData(prevData => {
-            return {
-                ...prevData,
-                [event.target.name]: event.target.value
+        setData((prevData) => {
+            if(event.target.type === "file"){
+                    
+                var promise = getBase64(event.target.files[0]);
+                promise.then(function(result) {
+                    
+                 setData(() => {
+                    return{
+                        ...prevData,
+                        [event.target.name]: result
+                    }
+                 })
+                 
+                }
+            );
+                    
+            }
+            else{
+                return {
+                    ...prevData,
+                    [event.target.name]: event.target.value
+                }
             }
         })
-        console.log(data)
+        
         
     }
+  
+
+   
 
     if(status === "loading"){
         return <Loading/>
@@ -56,6 +89,7 @@ export default function Page() {
                     <input type='text' name='lastName' onChange={handleChange}/>
                     <label>Password</label>
                     <input type='password' name='password' onChange={handleChange}/>
+                    <input type='file' name='image' onChange={handleChange}/>
         
         
                     <button onClick={(e) => {
