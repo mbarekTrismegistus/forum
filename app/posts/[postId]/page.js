@@ -52,25 +52,25 @@ export default function SinglePost({ params }) {
         if(isError) return <div>Error happened</div>
         return (
             <div className='container'>
-                {data.map(post => {
-                    return (
+                
+                    
                         <>
-                            <h1>{post.title}</h1>
+                            <h1>{data.title}</h1>
                             <p>
-                                {post.content}
+                                {data.content}
                             </p>
                                 {status == "authenticated" ? 
-                                session.id == post.userId ?
+                                session.id == data.userId ?
                                     <>
-                                        <button className='btn btn-danger me-3' onClick={() => {handleDelete({id: post.id})}}>Delete</button>
-                                        <button className='btn btn-primary' onClick={() => {handleUpdate(post.id)}}>Update</button>
+                                        <button className='btn btn-danger me-3' onClick={() => {handleDelete({id: data.id})}}>Delete</button>
+                                        <button className='btn btn-primary' onClick={() => {handleUpdate(data.id)}}>Update</button>
                                     </>
                                 : ""
                                 : ""
                                 }
                         </>
-                    )
-                })}
+                    
+                
                 <hr/>
                 <Comments id={params.postId}/>
             </div>

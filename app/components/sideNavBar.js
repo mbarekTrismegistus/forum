@@ -8,7 +8,7 @@ import { BoxArrowRight } from 'react-bootstrap-icons';
 import { usePathname } from 'next/navigation'
 import anime from 'animejs';
 import { signOut } from 'next-auth/react';
-
+import Link from 'next/link';
 
 
 
@@ -39,7 +39,7 @@ export default function SideNavBar() {
            
             <div className={`item p-3 py-4 ${pathname == "/"  ? 'border-list' : ""}`}>
                 <House size={28}/>
-                <a href='/' className='ms-4 mb-0'>Home</a>
+                <Link href='/' className='ms-4 mb-0'>Home</Link>
             </div>
             <div className=' p-3 py-4'>
                 <Fire size={28}/>
@@ -51,7 +51,7 @@ export default function SideNavBar() {
             </div>
             <div className={`item p-3 py-4 ${pathname == "/categories"  ? 'border-list' : ""}`}>
                 <Chat size={28}/>
-                <a href='/categories' className='ms-4 mb-0'>Forums</a>
+                <Link href='/categories' className='ms-4 mb-0'>Forums</Link>
             </div>
             <hr className='mx-auto'/>
             <div className=' p-3 py-4'>

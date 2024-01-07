@@ -20,6 +20,8 @@ model users {
   image String @default("empty")
   posts posts[]
   comments comments[]
+  notifier notifications[] @relation(name: "notifier")
+  notified notifications[] @relation(name: "notified")
 }
 
 
@@ -33,6 +35,7 @@ model posts {
   categorie categorie @relation(fields: [categorieId], references: [id], onDelete: Cascade)
   dateCreated DateTime @default(now())
   comments comments[]
+  notifications notifications[]
 
 }
 
@@ -51,6 +54,22 @@ model comments{
   postId Int
   userId String
   user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+}
+
+
+
+model notifications{
+  id Int @unique @default(autoincrement())
+  content String @db.MediumText
+  notifierId String
+  notifiedId String
+  notifier users @relation(name: "notifier", fields: [notifierId], references: [id], onDelete: Cascade)
+  notified users @relation(name: "notified", fields: [notifiedId], references: [id], onDelete: Cascade)
+  date DateTime @default(now())
+  read Boolean @default(false)
+  postId Int
   post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 

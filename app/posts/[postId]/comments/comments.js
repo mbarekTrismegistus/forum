@@ -8,10 +8,12 @@ axios.defaults.baseURL = process.env.baseURL;
 
 export default function Comments(props) {
 
+
+
   const {data, isError, isLoading} = useQuery({
     queryKey: ["comments"],
     queryFn: async () => {
-      const {data} = await axios.post("/api/getComments", {id: Number(props.id)})
+      const {data} = await axios.post("/api/getAPost", {id: Number(props.id)})
       return data.data
     }
   })
@@ -27,7 +29,7 @@ export default function Comments(props) {
 
   return (
     <div>
-      {data.map((comment) => {
+      {data.comments.map((comment) => {
         return (
           <div key={comment.id}>
             <h5>
@@ -39,7 +41,7 @@ export default function Comments(props) {
           </div>
         )
       })}
-      <Newcomment postId={props.id}/>
+      <Newcomment post={data}/>
     </div>
   )
 }

@@ -23,15 +23,38 @@ export default function Newcomment(props) {
         
         
     }
+
+
+    
+    const {mutate: sendNotif} = useMutation({
+        
+        mutationFn: async() => {
+            if(!(session.id === props.post.userId)){
+                await axios.post("/api/addNotif", {data: {
+                    content: `${session.id} Commented on your post`,
+                    notifierId: session.id,
+                    postId: Number(props.post.id),
+                    notifiedId: props.post.userId
+                }})
+            }
+        },
+        
+    })
     
 
     const {mutate: handleSubmit} = useMutation({
         
-        mutationFn: async() => await axios.post("/api/addComment", {data: {
-            ...data,
-            userId: session.id,
-            postId: Number(props.postId)}}),
+        mutationFn: async() => {
+                
+                await axios.post("/api/addComment", {data: {
+                    ...data,
+                    userId: session.id,
+                    postId: Number(props.post.id)}}
+                )
+                
+        },
         onSuccess: () => {
+            
             queryClient.invalidateQueries(['comments'])
             setData({
                 ...data,
@@ -49,7 +72,11 @@ export default function Newcomment(props) {
     <div>
         <label>Content</label>
         <textarea onChange={handleChange} name='content' value={data.content}></textarea>
-        <button className='btn btn-dark' onClick={handleSubmit}>Comment</button>
+        <button className='btn btn-dark' onClick={() => {
+            handleSubmit();
+            sendNotif();
+            
+        }}>Comment</button>
     </div>
   )
 }

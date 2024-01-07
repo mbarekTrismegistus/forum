@@ -2,17 +2,18 @@ import prisma from "@/libs/prismaClient"
 import { NextResponse } from 'next/server'
 
 export async function POST(request) {
+    
     const body = await request.json()
-    let data = await prisma.posts.findUnique({
+    console.log(body.data)  
+    let data = await prisma.notifications.findMany({
         where: {
-            id: body.id
+            notifiedId: body.data,
         },
-        include:{
-            comments: {
-                orderBy: {
-                    dateCommented: "desc"
-                }
-            }
+        include: {
+            notifier: true
+        },
+        orderBy:{
+            date: "desc"
         }
         
     })

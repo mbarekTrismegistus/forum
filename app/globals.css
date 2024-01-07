@@ -45,8 +45,8 @@ nav{
   background-color: transparent!important;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   z-index: 2!important;
 }
 .sideNav{
@@ -154,7 +154,6 @@ nav{
   transform: translate3d(0px, 10px, 0) scale(0.95);
   filter: blur(20px);
   opacity: 1;
-  transition: opacity 0.3s;
   border-radius: inherit;
 }
 
@@ -174,8 +173,9 @@ nav{
 .user{
   background-color: white;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #d20f39;
 }
 .laMem{
   overflow-x: hidden;
@@ -219,7 +219,7 @@ nav{
 .card-body{
 
   color: white!important;
-  background-color: #141f26a8!important;
+  background-color: #0f051c!important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0)!important;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px!important;
@@ -228,4 +228,73 @@ nav{
 
 .border-list{
   border-right: 3px solid #d20f39;
+}
+.notifications{
+  position: relative;
+  cursor: pointer;
+  
+  
+}
+.notification-box{
+  position: absolute;
+  top: 100%;
+  transform: translate(-70%,4%);
+  width: 25vw;
+  height: 450px;
+  padding: 20px;
+  display: none;
+  background-color: #0f051c;
+  border: 1px #8839ef solid;
+  border-radius: 20px;
+  overflow-y: scroll;
+  z-index: 2;
+
+}
+.notification-box::-webkit-scrollbar{
+  width: 0px;
+}
+.notification-box a{
+  text-decoration: none;
+  color: white;
+}
+.notification-box img{
+  border-radius: 50%;
+}
+
+
+.notiNum{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -25%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #d20f39;
+  border-radius: 50%;
+}
+.nreadnot{
+  border: 2px solid #8839ef;
+}
+
+.nreadnot::after{
+  content: "";
+  width: 15px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #d20f39;
+  position: relative;
+  filter: drop-shadow(0px 0px 10px #d20f39);
+
+}
+
+.singleNotif{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 70px;
+  border-radius: 30px;
+  background-color: #1d0a36;
+
 }
