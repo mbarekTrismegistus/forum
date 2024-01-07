@@ -47,7 +47,7 @@ export default function Notification(props) {
                         <Bell size={28} className='me-3'/>
                         Notifications
                     </h3>
-                    {data.map((notifi) => {
+                    {data.length > 0 && data.map((notifi) => {
                         return(
                             <Link key={notifi.id} onClick={() => readNotif(notifi.id)} href={`/posts/${notifi.postId}`}>
                                 <div className={`${notifi.read ? "nread" : "nreadnot"} singleNotif px-3 my-2`}>
