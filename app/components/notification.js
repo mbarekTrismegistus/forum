@@ -49,7 +49,7 @@ export default function Notification(props) {
                     </h3>
                     {data.map((notifi) => {
                         return(
-                            <Link onClick={() => readNotif(notifi.id)} href={`/posts/${notifi.postId}`}>
+                            <Link key={notifi.id} onClick={() => readNotif(notifi.id)} href={`/posts/${notifi.postId}`}>
                                 <div className={`${notifi.read ? "nread" : "nreadnot"} singleNotif px-3 my-2`}>
                                     <img src={notifi.notifier.image} width={50} className='me-3'/>
                                     {notifi.content}
