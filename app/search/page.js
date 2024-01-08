@@ -28,29 +28,29 @@ export default function Page(params) {
 
   return (
     <div>
-        <div key={data.posts.id}>
+        <div>
             {data.posts.length !== 0 && <h1>Posts</h1>}
             {data.posts.map((result) => {
                 return(
-                    <p>{result.title}</p>
+                    <p key={data.posts.id}>{result.title}</p>
 
                 )
             })}
         </div>
-        <div key={data.users.id}>
+        <div>
             {data.users.length !== 0 && <h1>users</h1>}
             {data.users.map((result) => {
                 return(
-                    <p>{result.id}</p>
+                    <p key={data.users.id}>{result.id}</p>
 
                 )
             })}
         </div>
-        <div key={data.categories.id}>
+        <div>
             {data.categories.length !== 0 && <h1>categories</h1>}
             {data.categories.map((result) => {
                 return(
-                    <p>{result.id}</p>
+                    <p key={data.categories.id}>{result.id}</p>
 
                 )
             })}
