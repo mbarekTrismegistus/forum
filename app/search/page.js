@@ -28,7 +28,7 @@ export default function Page(params) {
 
   return (
     <div>
-        <div>
+        <div key={data.posts.id}>
             {data.posts.length !== 0 && <h1>Posts</h1>}
             {data.posts.map((result) => {
                 return(
@@ -37,7 +37,7 @@ export default function Page(params) {
                 )
             })}
         </div>
-        <div>
+        <div key={data.users.id}>
             {data.users.length !== 0 && <h1>users</h1>}
             {data.users.map((result) => {
                 return(
@@ -46,7 +46,7 @@ export default function Page(params) {
                 )
             })}
         </div>
-        <div>
+        <div key={data.categories.id}>
             {data.categories.length !== 0 && <h1>categories</h1>}
             {data.categories.map((result) => {
                 return(
