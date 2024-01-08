@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Notification from './notification';
 import { PlusCircle } from 'react-bootstrap-icons';
 import anime from 'animejs';
+import { usePathname, useRouter } from 'next/navigation';
+
 
 
 import React, { useState } from 'react'
@@ -14,6 +16,10 @@ export default function Navbar() {
 
   const [notiShown, setNotifi] = useState(false)
   const [notiNum, setNotiNum] = useState(0)
+  const [searchQuery, setSearch] = useState("")
+  const router = useRouter()
+  const pathname = usePathname()
+
 
   const { data: session, status } = useSession()
   
@@ -27,6 +33,17 @@ export default function Navbar() {
       setNotifi(true)
     }
   }
+
+
+  function search(){
+    if(pathname.startsWith('/search')){
+      window.location.href = `/search?search=${searchQuery}`
+    }
+    else{
+      router.push(`/search?search=${searchQuery}`)
+    }
+  }
+
   
   return (
     <nav className='navbar navbar-expand sticky-top navbar-dark py-3 shadow-bottom shadow'>
@@ -34,19 +51,12 @@ export default function Navbar() {
         <div className='collapse navbar-collapse container-fluid'>
             <a className='navbar-brand'>Discuss Dev</a>
             <div className='search d-flex mx-auto'>
-              <input className='form-control searchbar'/>
-              <button className='btn'>
+              <input className='form-control searchbar' onChange={(e) => setSearch(e.target.value)}/>
+              <button className='btn' onClick={search}>
                 <Search color='white'/>
               </button>
-              
-
             </div>
-            
-           
-            
-            
-            
-            
+
             {
               session ? 
                 <div className='d-flex align-items-center'> 

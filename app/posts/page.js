@@ -8,11 +8,8 @@ import Loading from '../components/loading';
 export default function Page() {
 
         return (
-            <div className='container'>
-               
-                <Link href={`newPost`}>
-                    <button className='btn btn-dark mt-3'>New Post</button>            
-                </Link>
+            <div className='container mt-4'>
+                <h1 className='mb-5'>Know All about Wordpress</h1>
                 <Posts/>
             </div>
         )

@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -22,6 +23,7 @@ model users {
   comments comments[]
   notifier notifications[] @relation(name: "notifier")
   notified notifications[] @relation(name: "notified")
+  @@fulltext([id, firstName, lastName])
 }
 
 
@@ -36,6 +38,7 @@ model posts {
   dateCreated DateTime @default(now())
   comments comments[]
   notifications notifications[]
+  @@fulltext([title, content])
 
 }
 
@@ -44,6 +47,7 @@ model categorie{
   dateCreated DateTime @default(now())
   lastUpdated DateTime
   posts posts[]
+  @@fulltext([id])
   
 }
 
