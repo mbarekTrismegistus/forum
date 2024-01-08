@@ -35,7 +35,7 @@ export default function Posts(props) {
       return (
         data.map(post => {
           return (
-            <div className='post my-4 mx-auto'>
+            <div className='post my-4 mx-auto' key={post.id}>
               <div className='post-info d-flex align-items-start'>
                 <Image src={post.user.image} width={60} height={60} className='me-3'/>
                 <div key={post.id} className='postHeader'>
