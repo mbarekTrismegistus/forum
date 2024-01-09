@@ -10,12 +10,12 @@ import { useQueryClient } from '@tanstack/react-query';
 
 export default function Page(params) {
 
-
+    console.log(params.searchParams.search)
     const {data, isLoading, isError} = useQuery({
         queryKey: ["search"],
         queryFn: async () => {
             const { data } = await axios.post("/api/search", {query: params.searchParams.search})
-            console.log(data.data)
+            
             return data.data
             
         }
