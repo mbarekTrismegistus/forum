@@ -7,10 +7,10 @@ export async function POST(request) {
     let posts = await prisma.posts.findMany({
         where: {
             title: {
-                search: body.query
+                contains: body.query
             },
             content: {
-                search: body.query
+                contains: body.query
             }
         }
         
@@ -18,7 +18,7 @@ export async function POST(request) {
     let categories = await prisma.categorie.findMany({
         where: {
             id: {
-                search: body.query
+                contains: body.query
             }
         }
         
