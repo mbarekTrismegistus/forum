@@ -4,11 +4,11 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
     
     const body = await request.json()
-    console.log(body.query)
+    
     let posts = await prisma.posts.findMany({
         where: {
             title: {
-                search: "yjffgcccgfcfcfgfxgfxf"
+                search: body.query
             }
         }
         
