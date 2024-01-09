@@ -15,7 +15,7 @@ export default function Page(params) {
         queryKey: ["search"],
         queryFn: async () => {
             const { data } = await axios.post("/api/search", {query: params.searchParams.search})
-            console.log("data.data")
+            console.log(data.data)
             return data.data
             
         }
