@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
     
     const body = await request.json()
+    console.log(body.query)
     let posts = await prisma.posts.findMany({
         where: {
             title: {
@@ -12,34 +13,34 @@ export async function POST(request) {
         }
         
     })
-    // let categories = await prisma.categorie.findMany({
-    //     where: {
-    //         id: {
-    //             search: body.query
-    //         }
-    //     }
+    let categories = await prisma.categorie.findMany({
+        where: {
+            id: {
+                search: body.query
+            }
+        }
         
-    // })
+    })
 
-    // let users = await prisma.users.findMany({
-    //     where: {
-    //         id: {
-    //             search: body.query
-    //         },
-    //         firstName: {
-    //             search: body.query
-    //         },
-    //         lastName: {
-    //             search: body.query
-    //         }
-    //     }
+    let users = await prisma.users.findMany({
+        where: {
+            id: {
+                search: body.query
+            },
+            firstName: {
+                search: body.query
+            },
+            lastName: {
+                search: body.query
+            }
+        }
         
-    // })
+    })
     
     return NextResponse.json({ data:{
-        // users: users,
-        posts: posts
-        // categories: categories
+        users: users,
+        posts: posts,
+        categories: categories,
     } })
     
 }
