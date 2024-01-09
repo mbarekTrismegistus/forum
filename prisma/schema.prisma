@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -23,14 +23,14 @@ model users {
   comments comments[]
   notifier notifications[] @relation(name: "notifier")
   notified notifications[] @relation(name: "notified")
-  @@fulltext([id, firstName, lastName])
+  
 }
 
 
 model posts {
   id Int @id @default(autoincrement())
   title String @db.Text
-  content String @db.LongText
+  content String @db.Text
   userId String 
   categorieId String
   user users @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -38,7 +38,7 @@ model posts {
   dateCreated DateTime @default(now())
   comments comments[]
   notifications notifications[]
-  @@fulltext([title, content])
+
 
 }
 
@@ -47,14 +47,14 @@ model categorie{
   dateCreated DateTime @default(now())
   lastUpdated DateTime
   posts posts[]
-  @@fulltext([id])
+
   
 }
 
 model comments{
   id Int @unique @default(autoincrement())
   dateCommented DateTime @default(now())
-  content String @db.LongText
+  content String @db.Text
   postId Int
   userId String
   user users @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -66,7 +66,7 @@ model comments{
 
 model notifications{
   id Int @unique @default(autoincrement())
-  content String @db.MediumText
+  content String @db.Text
   notifierId String
   notifiedId String
   notifier users @relation(name: "notifier", fields: [notifierId], references: [id], onDelete: Cascade)
