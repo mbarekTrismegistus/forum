@@ -7,42 +7,39 @@ export async function POST(request) {
     let posts = await prisma.posts.findMany({
         where: {
             title: {
-                search: body.query
-            },
-            content: {
-                search: body.query
+                search: "yjffgcccgfcfcfgfxgfxf"
             }
         }
         
     })
-    let categories = await prisma.categorie.findMany({
-        where: {
-            id: {
-                search: body.query
-            }
-        }
+    // let categories = await prisma.categorie.findMany({
+    //     where: {
+    //         id: {
+    //             search: body.query
+    //         }
+    //     }
         
-    })
+    // })
 
-    let users = await prisma.users.findMany({
-        where: {
-            id: {
-                search: body.query
-            },
-            firstName: {
-                search: body.query
-            },
-            lastName: {
-                search: body.query
-            }
-        }
+    // let users = await prisma.users.findMany({
+    //     where: {
+    //         id: {
+    //             search: body.query
+    //         },
+    //         firstName: {
+    //             search: body.query
+    //         },
+    //         lastName: {
+    //             search: body.query
+    //         }
+    //     }
         
-    })
+    // })
     
     return NextResponse.json({ data:{
-        users: users,
-        posts: posts,
-        categories: categories
+        // users: users,
+        posts: posts
+        // categories: categories
     } })
     
 }
