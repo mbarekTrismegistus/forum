@@ -25,7 +25,7 @@ export default function Page() {
             userId: session.id}}),
         onSuccess: () => {
             queryClient.invalidateQueries(['posts'])
-            router.push("/posts")
+            router.back()
         },
         
     })

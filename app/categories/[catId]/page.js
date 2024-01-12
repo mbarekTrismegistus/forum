@@ -4,46 +4,31 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Loading from '@/app/components/loading'
+import Link from 'next/link'
+import Posts from '@/app/posts/components/posts'
+import { useSession } from 'next-auth/react'
+
+
 axios.defaults.baseURL = process.env.baseURL;
 
 export default function SingleCat({params}) {
 
-    
-    const {data,isError,isLoading} = useQuery({
-        queryKey: ["cat"],
-        queryFn: async () => {
-            const {data} = await axios.post("/api/getAcat",  { params: params.catId })
-            console.log(data)
-            return data.data 
-        }
-    })
 
-    if(isLoading){
-        return <Loading/>
-    }
-    if(isError){
-        return "error"
-    }
+  const {data: session, status} = useSession()
+
+  if(status === "loading"){
+    return "loading ..."
+  }
 
   return (
     
-    <div className='container'>
-        
+    <div className='container mt-5'>
                 <div>
-                    <a href={`categories/${data.id}`}>
-                        {data.id}
-                    </a>
-                    {data.posts.map((post) => {
-                        return (
-                            <div key={data.id}>
-                                <a href={`/posts/${post.id}`}>{post.title}</a>
-
-                            </div>
-                        )
-                    })}
+                    <h1 className='mb-5'>
+                       Discover All about {params.catId}
+                    </h1>
+                    <Posts cat={params.catId} user={session?.id}/>
                 </div>
-            
-        
     </div>
   )
 }

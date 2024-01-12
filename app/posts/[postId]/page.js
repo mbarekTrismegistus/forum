@@ -46,7 +46,7 @@ export default function SinglePost({ params }) {
         return <Loading/>
     }
 
-    if(session){
+    
         
         if(isLoading) return <Loading/>
         if(isError) return <div>Error happened</div>
@@ -72,14 +72,10 @@ export default function SinglePost({ params }) {
                     
                 
                 <hr/>
-                <Comments id={params.postId}/>
+                <Comments id={params.postId} user={session?.id}/>
             </div>
         )
-    }
-    else{
-        return (
-            <p>sign in first</p>
-        )
-    }
+    
+    
     
 }

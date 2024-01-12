@@ -23,6 +23,7 @@ model users {
   comments comments[]
   notifier notifications[] @relation(name: "notifier")
   notified notifications[] @relation(name: "notified")
+  likes likes[]
   
 }
 
@@ -38,6 +39,7 @@ model posts {
   dateCreated DateTime @default(now())
   comments comments[]
   notifications notifications[]
+  likes likes []
 
 
 }
@@ -46,6 +48,8 @@ model categorie{
   id String @unique
   dateCreated DateTime @default(now())
   lastUpdated DateTime
+  image String @db.Text @default("no img")
+  content String @db.Text @default("")
   posts posts[]
 
   
@@ -59,6 +63,7 @@ model comments{
   userId String
   user users @relation(fields: [userId], references: [id], onDelete: Cascade)
   post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+  likes likes []
   
 }
 
@@ -77,3 +82,14 @@ model notifications{
   post posts @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
+
+model likes{
+  id Int @unique @default(autoincrement())
+  dateLiked DateTime @default(now())
+  userId String
+  commentId Int?
+  postId Int?
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post posts? @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment comments? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+}

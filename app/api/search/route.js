@@ -4,11 +4,13 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
     
     const body = await request.json()
-    
     let posts = await prisma.posts.findMany({
         where: {
             title: {
-                search: body.query
+                search: body.query.split(" ").join(" & ")
+            },
+            content: {
+                search: body.query.split(" ").join(" & ")
             }
         }
         
@@ -16,7 +18,7 @@ export async function POST(request) {
     let categories = await prisma.categorie.findMany({
         where: {
             id: {
-                search: body.query
+                search: body.query.split(" ").join(" & ")
             }
         }
         
@@ -25,13 +27,13 @@ export async function POST(request) {
     let users = await prisma.users.findMany({
         where: {
             id: {
-                search: body.query
+                search: body.query.split(" ").join(" & ")
             },
             firstName: {
-                search: body.query
+                search: body.query.split(" ").join(" & ")
             },
             lastName: {
-                search: body.query
+                search: body.query.split(" ").join(" & ")
             }
         }
         
@@ -40,7 +42,7 @@ export async function POST(request) {
     return NextResponse.json({ data:{
         users: users,
         posts: posts,
-        categories: categories,
+        categories: categories
     } })
     
 }

@@ -4,6 +4,7 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Loading from '../components/loading'
+import Categorie from './components/Categorie'
 axios.defaults.baseURL = process.env.baseURL;
 
 export default function Page() {
@@ -27,16 +28,15 @@ export default function Page() {
 
   return (
     
-    <div className='container'>
-        {data.map((cat) => {
-            return (
-                <div key={cat.id}>
-                    <a href={`categories/${cat.id}`}>
-                        <h1>{cat.id}</h1>
-                    </a>
-                </div>
-            )
-        })}
+    <div className='container mt-5'>
+        <h1 className='mb-5'>Browse Our Categories !</h1>
+        <div className='row'>
+            {data.map((cat) => {
+                return (
+                        <Categorie cat={cat} key={cat.id}/>
+                        )
+                    })}
+        </div>
     </div>
   )
 }

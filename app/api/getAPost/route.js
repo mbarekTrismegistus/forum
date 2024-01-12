@@ -9,6 +9,14 @@ export async function POST(request) {
         },
         include:{
             comments: {
+                include: {
+                    likes: true,
+                    _count: {
+                        select: {
+                            likes: true
+                        }
+                    }
+                },
                 orderBy: {
                     dateCommented: "desc"
                 }
