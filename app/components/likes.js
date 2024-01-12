@@ -70,7 +70,7 @@ export default function Likes(props) {
 
   return (
     <div>
-      <HeartFill size={24} color={props.color} onClick={handleClick}/>
+      {isPending ? <HeartFill size={24} color="black" onClick={toggleLike}/> : <HeartFill size={24} color={props.color} onClick={toggleLike}/>}
     </div>
   )
 }
