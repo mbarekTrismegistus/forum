@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import { useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
-import { Spinner } from 'react-bootstrap'
 import axios from 'axios'
 
 
@@ -56,15 +55,11 @@ export default function Likes(props) {
         }
     })
 
-    console.log(isPending)
-
   return (
     <div>
       {isPending ? 
-        <Spinner animation="border" role="status" size={24}>
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      : <HeartFill size={24} color={props.color} onClick={toggleLike}/>}
+        <HeartFill size={24} color={props.color === "white" ? "white" : "red" }/>
+      : <HeartFill size={24} color={props.color} onClick={toggleLike} cursor={"pointer"}/>}
     </div>
   )
 }
