@@ -50,26 +50,27 @@ export default function SinglePost({ params }) {
         if(isLoading) return <Loading/>
         if(isError) return <div>Error happened</div>
         return (
-            <div className='container'>
-
-                        <>
-                            <h1>{data.title}</h1>
-                            <p>
-                                {data.content}
-                            </p>
+            <div className='container my-5 col-10'>
+                        <div className='d-flex my-5'>
+                            <div>
+                                <h1>{data.title}</h1>
+                                <p>Posted by {data.userId} at {new Date(data.dateCreated).toDateString()}</p>
+                                <p className='mt-4 px-4'>
+                                    {data.content}
+                                </p>
+                            </div>
+                            <div className='ms-auto'>
                                 {status == "authenticated" ? 
                                 session.id == data.userId ?
-                                    <>
-                                        <button className='btn btn-danger me-3' onClick={() => {handleDelete({id: data.id})}}>Delete</button>
-                                        <button className='btn btn-primary' onClick={() => {handleUpdate(data.id)}}>Update</button>
-                                    </>
+                                    <div className='d-flex flex-column'>
+                                        <button className='btn btn-danger my-2' onClick={() => {handleDelete({id: data.id})}}>Delete</button>
+                                        <button className='btn btn-primary my-2' onClick={() => {handleUpdate(data.id)}}>Update</button>
+                                    </div>
                                 : ""
                                 : ""
                                 }
-                        </>
-                    
-                
-                <hr/>
+                            </div>
+                        </div>
                 <Comments id={params.postId} user={session?.id}/>
             </div>
         )

@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import { useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
+
 import axios from 'axios'
 
 
@@ -58,7 +59,7 @@ export default function Likes(props) {
     })
 
   return (
-    <div>
+    <div className='ms-auto'>
       {isPending ? 
         <HeartFill size={24} color={props.color === "red" ? "white" : "red"}/>
       : <HeartFill size={24} color={color} onClick={toggleLike} cursor={"pointer"}/>}

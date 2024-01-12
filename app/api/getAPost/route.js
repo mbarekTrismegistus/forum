@@ -13,9 +13,10 @@ export async function POST(request) {
                     likes: true,
                     _count: {
                         select: {
-                            likes: true
+                            likes: true,
                         }
-                    }
+                    },
+                    user: true
                 },
                 orderBy: {
                     dateCommented: "desc"

@@ -69,14 +69,15 @@ export default function Newcomment(props) {
 
 
   return (
-    <div>
-        <label>Content</label>
-        <textarea onChange={handleChange} name='content' value={data.content}></textarea>
-        <button className='btn btn-dark' onClick={() => {
-            handleSubmit();
-            sendNotif();
-            
-        }}>Comment</button>
+    <div className='newComment mb-5'>
+
+        <div className='d-flex'>
+            <textarea onChange={handleChange} placeholder='Enter your comment' className='form-control' name='content' value={data.content}></textarea>
+            <button className='btn btn-dark align-self-center ms-3' onClick={() => {
+                handleSubmit();
+                sendNotif();
+            }}>Comment</button>
+        </div>
     </div>
   )
 }

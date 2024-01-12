@@ -31,33 +31,46 @@ export default function Comments(props) {
 
 
   return (
-    <div>
+    <div className="comments">
+      
+      {session ? <Newcomment post={data}/> : ""}
+      <h1>Comments</h1>
       {data.comments.map((comment) => {
         return (
-          <div key={comment.id}>
-            <h5>
-              {comment.userId}
-            </h5>
-            <p>
-              {comment.content}
-            </p>
-            <Likes 
-                        color={comment.likes.length > 0 ? comment.likes.filter(e => e.userId === props.user).length > 0 ? "red" : "white" : "white"}
-                        click={session ? comment.likes.length > 0 && comment.likes.filter(e => e.userId === props.user).length > 0 ? "rmLike" : "addLike" : "signin"}
-                        id={comment.likes.filter(e => e.userId === props.user)[0]?.id}
-                        user={props.user}
-                        comment={comment.id}
-                        postId={comment.postId}
-                        owner={comment.userId}
-                        item={"comment"}
-                        
-                      />
+              <div key={comment.id} className="px-4 py-2 d-flex ">
+                  <div className="d-flex flex-column">
+                    <div className="d-flex align-items-center mb-2">
+                      <img src={comment.user.image} className="user me-2"/>
+                      <h5>
+                        {comment.userId}
+                      </h5>
+                    </div>
+                    <p className="px-5">
+                      {comment.content}
+                    </p>
+                  </div>
+                  <div className="ms-auto d-flex flex-column justify-content-center align-items-center">
+                    <Likes 
+                                color={comment.likes.length > 0 ? comment.likes.filter(e => e.userId === props.user).length > 0 ? "red" : "white" : "white"}
+                                click={session ? comment.likes.length > 0 && comment.likes.filter(e => e.userId === props.user).length > 0 ? "rmLike" : "addLike" : "signin"}
+                                id={comment.likes.filter(e => e.userId === props.user)[0]?.id}
+                                user={props.user}
+                                comment={comment.id}
+                                postId={comment.postId}
+                                owner={comment.userId}
+                                item={"comment"}
+                                
+                                
+                              />
+                    <p>{comment._count.likes}</p>
+                  </div>
+              <div>
 
-          {comment._count.likes}
+            </div>
           </div>
         )
       })}
-      {session ? <Newcomment post={data}/> : ""}
+      
       
     </div>
   )
