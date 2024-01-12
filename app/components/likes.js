@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { HeartFill } from 'react-bootstrap-icons'
 import { useMutation } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
@@ -13,6 +13,7 @@ export default function Likes(props) {
     const queryClient = useQueryClient()
 
     const {data: session, status} = useSession()
+    const [color, setColor] = useState(props.color)
 
     const {mutate: sendNotif} = useMutation({
         
@@ -51,6 +52,7 @@ export default function Likes(props) {
         },
         onSuccess: () => {
           queryClient.invalidateQueries(['posts'])
+          setColor(color === "red" ? "white" : "red")
           
         }
     })
@@ -59,7 +61,7 @@ export default function Likes(props) {
     <div>
       {isPending ? 
         <HeartFill size={24} color={props.color === "red" ? "white" : "red"}/>
-      : <HeartFill size={24} color={props.color} onClick={toggleLike} cursor={"pointer"}/>}
+      : <HeartFill size={24} color={color} onClick={toggleLike} cursor={"pointer"}/>}
     </div>
   )
 }
