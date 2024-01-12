@@ -21,6 +21,7 @@ export default function SinglePost({ params }) {
         queryKey: ["post"],
         queryFn: async () => {
           const { data } = await axios.post("/api/getAPost", { id: Number(params.postId) })
+          console.log(data.data)
           return data.data
         }
     })
@@ -46,14 +47,11 @@ export default function SinglePost({ params }) {
         return <Loading/>
     }
 
-    
-        
         if(isLoading) return <Loading/>
         if(isError) return <div>Error happened</div>
         return (
             <div className='container'>
-                
-                    
+
                         <>
                             <h1>{data.title}</h1>
                             <p>

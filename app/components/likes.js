@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import { useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
+import { Spinner } from 'react-bootstrap'
 import axios from 'axios'
 
 
@@ -30,47 +31,40 @@ export default function Likes(props) {
       
   })
 
-    function handleClick(){
-      if(props.click === "addLike"){
-            addLike()
-            sendNotif()
-      }
-      else if(props.click === "rmLike"){
-        console.log("remove")
-        rmLike()
-      }
-      else{
-        signIn()
-      }
-    }
-
-    const {mutate: addLike} = useMutation({
+    const {mutate: toggleLike, isPending} = useMutation({
         mutationFn: async () => {
+          if(props.click === "addLike"){
             await axios.post("/api/addLike", {data: {
               userId: props.user,
               postId: props.post,
               commentId: props.comment
             }})
+            sendNotif()
+          }
+          else if(props.click === "rmLike"){
+            await axios.post("/api/rmLike", {data: {
+              id: props.id
+            }})
+          }
+          else{
+            signIn()
+          }
         },
         onSuccess: () => {
           queryClient.invalidateQueries(['posts'])
+          
         }
     })
 
-    const {mutate: rmLike} = useMutation({
-      mutationFn: async () => {
-          await axios.post("/api/rmLike", {data: {
-            id: props.id
-          }})
-      },
-      onSuccess: () => {
-        queryClient.invalidateQueries(['posts'])
-      }
-  })
+    console.log(isPending)
 
   return (
     <div>
-      {isPending ? <HeartFill size={24} color="black"/> : <HeartFill size={24} color={props.color} onClick={toggleLike}/>}
+      {isPending ? 
+        <Spinner animation="border" role="status" size={24}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      : <HeartFill size={24} color={props.color} onClick={toggleLike}/>}
     </div>
   )
 }
