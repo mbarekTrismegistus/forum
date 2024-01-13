@@ -30,7 +30,7 @@ export default function Page() {
     
     <div className='container mt-5'>
         <h1 className='mb-5'>Browse Our Categories !</h1>
-        <div className='row'>
+        <div className='row g-5'>
             {data.map((cat) => {
                 return (
                         <Categorie cat={cat} key={cat.id}/>
