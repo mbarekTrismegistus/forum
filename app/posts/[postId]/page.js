@@ -49,6 +49,7 @@ export default function SinglePost({ params }) {
         return <Loading/>
     }
 
+
         if(isLoading) return <Loading/>
         if(isError) return <div>Error happened</div>
         return (
@@ -66,7 +67,7 @@ export default function SinglePost({ params }) {
                                     </div>
                                     <div className='ms-auto'>
                                         {status == "authenticated" ? 
-                                        session.id == data.userId || data.userId.role === "admin" ?
+                                        session.id == data.userId || session.role === "admin" ?
                                             <div className='d-flex mt-3'>
                                                 <TrashFill className='primaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}}></TrashFill>
                                                 <PencilSquare className='' color='blue' size={24} onClick={() => {handleUpdate(data.id)}}></PencilSquare>

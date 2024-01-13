@@ -47,7 +47,7 @@ model posts {
 model categorie{
   id String @unique
   dateCreated DateTime @default(now())
-  lastUpdated DateTime
+  lastUpdated DateTime @default(now())
   image String @db.Text @default("no img")
   content String @db.Text @default("")
   posts posts[]

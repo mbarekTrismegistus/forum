@@ -27,7 +27,9 @@ CREATE TABLE "posts" (
 CREATE TABLE "categorie" (
     "id" TEXT NOT NULL,
     "dateCreated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "lastUpdated" TIMESTAMP(3) NOT NULL
+    "lastUpdated" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "image" TEXT NOT NULL DEFAULT 'no img',
+    "content" TEXT NOT NULL DEFAULT ''
 );
 
 -- CreateTable
@@ -50,6 +52,15 @@ CREATE TABLE "notifications" (
     "postId" INTEGER NOT NULL
 );
 
+-- CreateTable
+CREATE TABLE "likes" (
+    "id" SERIAL NOT NULL,
+    "dateLiked" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "userId" TEXT NOT NULL,
+    "commentId" INTEGER,
+    "postId" INTEGER
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "categorie_id_key" ON "categorie"("id");
 
@@ -58,6 +69,9 @@ CREATE UNIQUE INDEX "comments_id_key" ON "comments"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "notifications_id_key" ON "notifications"("id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "likes_id_key" ON "likes"("id");
 
 -- AddForeignKey
 ALTER TABLE "posts" ADD CONSTRAINT "posts_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -79,3 +93,12 @@ ALTER TABLE "notifications" ADD CONSTRAINT "notifications_notifiedId_fkey" FOREI
 
 -- AddForeignKey
 ALTER TABLE "notifications" ADD CONSTRAINT "notifications_postId_fkey" FOREIGN KEY ("postId") REFERENCES "posts"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "likes" ADD CONSTRAINT "likes_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "likes" ADD CONSTRAINT "likes_postId_fkey" FOREIGN KEY ("postId") REFERENCES "posts"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "likes" ADD CONSTRAINT "likes_commentId_fkey" FOREIGN KEY ("commentId") REFERENCES "comments"("id") ON DELETE CASCADE ON UPDATE CASCADE;
