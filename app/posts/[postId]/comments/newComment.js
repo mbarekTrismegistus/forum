@@ -4,25 +4,15 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation';
 axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
+import MDEditor from '@uiw/react-md-editor';
 
 
 export default function Newcomment(props) {
 
     const [data, setData] = useState({})
+    const [commnt, setComment] = useState()
     const { data: session, status } = useSession()
     const queryClient = useQueryClient()
-
-    function handleChange(e){
-        
-        setData(prevData => {
-            return {
-                ...prevData,
-                [e.target.name]: e.target.value
-            }
-        })
-        
-        
-    }
 
 
     
@@ -47,7 +37,7 @@ export default function Newcomment(props) {
         mutationFn: async() => {
                 
                 await axios.post("/api/addComment", {data: {
-                    ...data,
+                    content: commnt,
                     userId: session.id,
                     postId: Number(props.post.id)}}
                 )
@@ -69,11 +59,14 @@ export default function Newcomment(props) {
 
 
   return (
-    <div className='newComment mb-5'>
-
-        <div className='d-flex'>
-            <textarea onChange={handleChange} placeholder='Enter your comment' className='form-control' name='content' value={data.content}></textarea>
-            <button className='btn btn-dark align-self-center ms-3' onClick={() => {
+    <div className='mb-5 pt-5'>
+        <h1 className='mb-5'>Add A new Comment !</h1>
+        <div className='' data-color-mode="dark">
+            <MDEditor
+                value={commnt}
+                onChange={setComment}
+            />
+            <button className='btn btn-dark align-self-start my-3' onClick={() => {
                 handleSubmit();
                 sendNotif();
             }}>Comment</button>

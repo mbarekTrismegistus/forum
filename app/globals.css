@@ -16,7 +16,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background: white
 }
-
+.primaryColor{
+  color: #d20f39;
+}
 
 .loading{
   width: 100%;
@@ -27,7 +29,7 @@
 }
 body{
   background-color: #0f051c!important;
-  color: white!important;
+  color: #acb0be!important;
   height: 100%!important;
   margin: 0;
   padding: 0;
@@ -41,6 +43,10 @@ hr{
   position: relative;
   z-index: 1;
 
+}
+a{
+  text-decoration: none!important;
+  color: white!important;
 }
 .post-info{
   background-color: #0f051c;
@@ -353,7 +359,8 @@ nav{
 }
 
 .comments{
-  border-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
   padding: 30px;
   position: relative;
   background-color: #0f051c;
@@ -380,12 +387,13 @@ nav{
   border: none!important;
   height: 150px;
   position: relative;
-  border: 2px solid #8839ef!important;
   padding: 15px;
   color: white;
+  border-radius: 30px;
 }
 .newComment textarea:focus{
-  box-shadow: 0px 0px 15px #8839ef85;
+  border: none!important;
+  box-shadow: none!important;
   color: white;
 }
 
@@ -393,8 +401,81 @@ nav{
   color: #8b8b8b!important;
 }
 .newComment button{
-  background-color: #0f051c!important;
-  border: 2px solid #8839ef!important;
+  background-color: #8839ef!important;
   border-radius: 30px!important;
+
+}
+.field{
+  box-shadow: 0px 0px 30px black;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+
+.newPost{
+  background-color: #0f051c;
+  position: relative;
+}
+.newPost::before{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #8839ef93 0%, #d20f3981 100% );
+  transform: translate3d(0px, 20px, 0) scale(0.90);
+  filter: blur(90px);
+}
+
+.singlePost{
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background-color: #0f051c;
+  position: relative;
+  padding: 40px;
+  color: white;
+  width: 100%!important;
+  
+}
+
+.singlePostContent{
+  width: 100%!important;
+  background-color: #0c0318;
+  padding: 15px;
+
+  border-radius: 20px;
+
+}
+.singlePost::before{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #8839ef93 0%, #d20f3981 100% );
+  transform: translate3d(0px, 20px, 0) scale(0.90);
+  filter: blur(90px);
+}
+
+.w-md-editor{
+  background-color: #0c0318!important;
+  border: none!important;
+}
+.w-md-editor-show-live{
+  border: none!important;
+
+}
+.w-md-editor-preview *{
+  background-color: #0c0318;
+
+}
+
+
+.w-md-editor-toolbar{
+  background-color: #0c0318!important;
 
 }

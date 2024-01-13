@@ -6,6 +6,7 @@ import axios from 'axios'
 import Loading from '@/app/components/loading'
 import Link from 'next/link'
 import Posts from '@/app/posts/components/posts'
+import { PlusCircle } from 'react-bootstrap-icons'
 import { useSession } from 'next-auth/react'
 
 
@@ -24,9 +25,14 @@ export default function SingleCat({params}) {
     
     <div className='container mt-5'>
                 <div>
+                  <div className='d-flex align-items-center'>
                     <h1 className='mb-5'>
                        Discover All about {params.catId}
                     </h1>
+                    <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
+                      <PlusCircle className='' size={28}/>
+                    </Link>
+                  </div>
                     <Posts cat={params.catId} user={session?.id}/>
                 </div>
     </div>

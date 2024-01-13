@@ -9,42 +9,36 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function Page({params}) {
-    const session = useSession()
 
-    let [postdata, setData] = useState()
-
-    const {data, isError, isLoading} = useQuery({
+    const {data, isError, isFetching} = useQuery({
         queryKey: ["post"],
         queryFn: async () => {
           const { data } = await axios.post("/api/getAPost", { id: Number(params.updatePost) })
-          setData(...data.data)
+          setData(data.data)
           return data.data
         }
     })
 
-
-    console.log(postdata)
+    let [postdata, setData] = useState(data?.data)
     
-    
-    
+    const router = useRouter()
 
-    
-
-
-   
-    
-
-    // const {mutate: handleSubmit} = useMutation({
+    const {mutate: handleSubmit} = useMutation({
         
-    //     mutationFn: async() => await axios.post("api/updatePost", {data: {
-    //         ...postdata,
-    //         userId: session.id}}),
-    //     onSuccess: () => {
-    //         queryClient.invalidateQueries(['posts'])
-    //         router.push("/posts")
-    //     },
+        mutationFn: async() => {
+            console.log("hell")
+            await axios.post("/api/updatePost", {data: {
+                id: Number(params.updatePost),
+                title: postdata.title,
+                content: postdata.content,
+                categorieId: postdata.categorieId
+            }})
+        },
+        onSuccess: () => {
+            router.back()
+        },
         
-    // })
+    })
 
 
     function handleChange(event){
@@ -57,7 +51,7 @@ export default function Page({params}) {
         })
         
     }
-    if(isLoading){
+    if(isFetching){
         return "...loading"
     }
     else if(isError){
@@ -78,7 +72,7 @@ export default function Page({params}) {
                   <button onClick={(e) => {
                       e.preventDefault()
                       handleSubmit()
-                  }} className='btn btn-dark'>New Post</button>            
+                  }} className='btn btn-dark'>Update Post</button>            
                   
               </form>
           </div>

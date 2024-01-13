@@ -21,7 +21,8 @@ export async function POST(request) {
                 orderBy: {
                     dateCommented: "desc"
                 }
-            }
+            },
+            user: true
         }
         
     })

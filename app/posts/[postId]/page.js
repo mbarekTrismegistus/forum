@@ -8,6 +8,8 @@ axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
 import Loading from '@/app/components/loading';
 import Comments from './comments/comments';
+import { TrashFill } from 'react-bootstrap-icons';
+import { PencilSquare } from 'react-bootstrap-icons';
 import { useRouter } from 'next/navigation';
 
 
@@ -51,26 +53,35 @@ export default function SinglePost({ params }) {
         if(isError) return <div>Error happened</div>
         return (
             <div className='container my-5 col-10'>
-                        <div className='d-flex my-5'>
-                            <div>
-                                <h1>{data.title}</h1>
-                                <p>Posted by {data.userId} at {new Date(data.dateCreated).toDateString()}</p>
-                                <p className='mt-4 px-4'>
-                                    {data.content}
-                                </p>
-                            </div>
-                            <div className='ms-auto'>
-                                {status == "authenticated" ? 
-                                session.id == data.userId ?
-                                    <div className='d-flex flex-column'>
-                                        <button className='btn btn-danger my-2' onClick={() => {handleDelete({id: data.id})}}>Delete</button>
-                                        <button className='btn btn-primary my-2' onClick={() => {handleUpdate(data.id)}}>Update</button>
+                        <div className='mt-5 pb-5 singlePost d-flex'>
+                            <img src={data.user.image} className='user me-3 mt-3'/>
+                            <div className='w-100'>
+                                <div className='d-flex'>
+                                    <div className='d-flex'>
+                                        <div>
+                                            <h1>{data.title}</h1>
+                                            <p className='primaryColor'>Posted by {data.userId} at {new Date(data.dateCreated).toDateString()}</p>
+                                            
+                                        </div>
                                     </div>
-                                : ""
-                                : ""
-                                }
+                                    <div className='ms-auto'>
+                                        {status == "authenticated" ? 
+                                        session.id == data.userId || data.userId.role === "admin" ?
+                                            <div className='d-flex mt-3'>
+                                                <TrashFill className='primaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}}></TrashFill>
+                                                <PencilSquare className='' color='blue' size={24} onClick={() => {handleUpdate(data.id)}}></PencilSquare>
+                                            </div>
+                                        : ""
+                                        : ""
+                                        }
+                                    </div>
+                                </div>
+                                <div className='singlePostContent mt-4 mx-auto'>
+                                        {data.content}
+                                </div>
                             </div>
                         </div>
+
                 <Comments id={params.postId} user={session?.id}/>
             </div>
         )

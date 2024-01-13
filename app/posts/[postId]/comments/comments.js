@@ -5,6 +5,7 @@ import axios from "axios"
 import Newcomment from "./newComment";
 import Likes from "@/app/components/likes";
 import { useSession } from "next-auth/react";
+import Markdown from "react-markdown";
 axios.defaults.baseURL = process.env.baseURL;
 
 
@@ -31,7 +32,7 @@ export default function Comments(props) {
 
 
   return (
-    <div className="comments">
+    <div className="comments pt-5">
       
       {session ? <Newcomment post={data}/> : ""}
       <h1>Comments</h1>
@@ -46,7 +47,9 @@ export default function Comments(props) {
                       </h5>
                     </div>
                     <p className="px-5">
-                      {comment.content}
+                      <Markdown>
+                        {comment.content}
+                      </Markdown>
                     </p>
                   </div>
                   <div className="ms-auto d-flex flex-column justify-content-center align-items-center">
