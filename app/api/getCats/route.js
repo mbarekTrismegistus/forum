@@ -1,7 +1,7 @@
 import prisma from "@/libs/prismaClient"
 import { NextResponse } from 'next/server'
 
-export async function GET(request) {
+export async function POST(request) {
     
     
     let data = await prisma.categorie.findMany({
