@@ -35,7 +35,7 @@ export default function Comments(props) {
     <div className="comments pt-5">
       
       {session ? <Newcomment post={data}/> : ""}
-      <h1>Comments</h1>
+      <h4><strong>Comments</strong></h4>
       {data.comments.map((comment) => {
         return (
               <div key={comment.id} className="px-4 py-2 d-flex ">

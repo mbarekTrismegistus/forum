@@ -60,7 +60,7 @@ export default function Newcomment(props) {
 
   return (
     <div className='mb-5 pt-5'>
-        <h1 className='mb-5'>Add A new Comment !</h1>
+        <h4 className='mb-5'><strong>Add A new Comment</strong></h4>
         <div className='' data-color-mode="dark">
             <MDEditor
                 value={commnt}

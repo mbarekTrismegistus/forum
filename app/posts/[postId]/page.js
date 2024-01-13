@@ -59,7 +59,7 @@ export default function SinglePost({ params }) {
                                 <div className='d-flex'>
                                     <div className='d-flex'>
                                         <div>
-                                            <h1>{data.title}</h1>
+                                            <h1><strong>{data.title}</strong></h1>
                                             <p className='primaryColor'>Posted by {data.userId} at {new Date(data.dateCreated).toDateString()}</p>
                                             
                                         </div>
