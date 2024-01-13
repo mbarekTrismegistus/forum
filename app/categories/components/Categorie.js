@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Categorie(props) {
   return (
   
-            <div className='card text-center col-md mx-4 p-0 ' key={props.key}>
+            <div className='card text-center col-md-3 mx-auto p-0 ' key={props.key}>
                 <div className='card-img-top pt-3'>
                 <img className='mx-auto d-block' src={props.cat.image}/>
                 </div>
