@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 
 export default withAuth(function middleware(req){
-        secret: process.env.SECRET
+        secret: process.env.NEXTAUTH_SECRET
         if(req.nextUrl.pathname === "/admin" && req.nextauth.token.role === "user"){
             
             return NextResponse.redirect(req.nextUrl.origin)
