@@ -32,7 +32,7 @@ export default function Newcomment(props) {
     })
     
 
-    const {mutate: handleSubmit} = useMutation({
+    const {mutate: handleSubmit, isPending} = useMutation({
         
         mutationFn: async() => {
                 
@@ -69,7 +69,7 @@ export default function Newcomment(props) {
             <button className='btn btn-dark align-self-start my-3' onClick={() => {
                 handleSubmit();
                 sendNotif();
-            }}>Comment</button>
+            }} disabled={isPending}>Comment</button>
         </div>
     </div>
   )
