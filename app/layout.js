@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import Navbar from './components/navbar'
 import TanstackProvider from './providers/tanstackProvider'
-import "./globals.css"
+import "./styles/globals.css"
 import NextAuthProvider from './providers/sessionProvider'
 import SideNavBar from './components/sideNavBar'
-import { Providers } from './providers'
+
 
 
 export const metadata = {
@@ -19,13 +19,12 @@ export default function RootLayout({ children }) {
       <body>
       <NextAuthProvider>
         <TanstackProvider>
-          <Providers>
+          
             <Navbar/>
               <SideNavBar/>
               <div className='main'>
-                {children}
+                  {children}
               </div>
-          </Providers>
         </TanstackProvider>
       </NextAuthProvider>
       </body>

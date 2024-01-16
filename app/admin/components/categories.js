@@ -43,14 +43,20 @@ export default function Page() {
   return (
     
     <div className='container-fluid admin'>
-        <div className=''>
+          <div className='activeCat'>
+            <h3><strong>Most Active Categorie</strong></h3>
+            <p>Wordpress</p>
+            <p>1000 post</p>
+          </div>
+        <div className='mt-4'>
+          <h4 className=''><strong>All Categories</strong></h4>
             {data.map((cat) => {
                 return (
-                        <div key={cat.id} className='d-flex'>
-                          <p>{cat.id}</p>
-                          <TrashFill className='ms-auto' onClick={() => deleteCat(cat.id)}/>
-                          <Link href={`/admin/${cat.id}`}>
-                            <PencilSquare/>
+                        <div key={cat.id} className='d-flex categorieS my-2 p-3 align-items-center'>
+                          <h5 className='m-0'>{cat.id}</h5>
+                          <TrashFill size={20} className='ms-auto primaryColor' onClick={() => deleteCat(cat.id)}/>
+                          <Link href={`/admin/${cat.id}`} className='ms-2 align-items-center d-flex'>
+                            <PencilSquare size={20} className='secondaryColor'/>
                           </Link>
                           
                           

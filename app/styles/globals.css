@@ -1,3 +1,5 @@
+
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -495,5 +497,40 @@ nav{
 }
 
 .admin{
-  margin-right: 20%;
+  margin-right: 21%;
+}
+
+.categorieS{
+  padding: 10px;
+  background-color: rgb(40, 28, 56);
+  border-radius: 10px;
+  border: 1px solid rgb(52, 42, 65);
+}
+
+.activeCat{
+  width: 100%;
+  padding: 30px;
+  color: white;
+  border-radius: 30px;
+  background: rgb(136,57,239);
+  background: linear-gradient(130deg, rgba(136, 57, 239, 0.253) 0%, rgba(210, 15, 57, 0.301) 100%);
+
+}
+
+.nav-item .active{
+  background-color: #8839ef69!important;
+  border: 1px solid #8839ef!important;
+  border-radius: 30px!important;
+  color: white!important;
+}
+.nav-tabs{
+  border: none!important;
+}
+
+.aDashTit{
+  font-size: 5vw;
+  background: rgb(203,203,203);
+  background: linear-gradient(120deg, #8839ef 0%, #d20f39 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

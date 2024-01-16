@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 
+
 export default function Home() {
   return (
     <div className='container mt-5'>
@@ -22,7 +23,7 @@ export default function Home() {
               <img className='mx-auto d-block' src='https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2023/10/WordPress-alt-1.jpg'/>
             </div>
             <div className='card-body'>
-              <h3>Categorie 1</h3>
+              <h3 className='bg-slate-100'>Categorie 1</h3>
               <p>
                 Expedita id laboriosam sapiente et ut et.Expedita id laboriosam sapiente et ut et.
               </p>
