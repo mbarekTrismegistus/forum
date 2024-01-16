@@ -15,13 +15,31 @@ export async function POST(request) {
         }
     })
 
-    let users = await prisma.users.count()
+    let users = await prisma.users.count({
+        where: {
+            dateJoined: {
+                gte: data.period
+            }
+        }
+    })
 
 
-    let likes = await prisma.likes.count()
+    let likes = await prisma.likes.count({
+        where: {
+            dateLiked: {
+                gte: data.period
+            }
+        }
+    })
 
 
-    let comments = await prisma.comments.count()
+    let comments = await prisma.comments.count({
+        where: {
+            dateCommented: {
+                gte: data.period
+            }
+        }
+    })
     
     return NextResponse.json({ data:{
         users: users,
