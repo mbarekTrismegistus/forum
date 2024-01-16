@@ -1,23 +1,29 @@
 "use client"
 
 import React, { useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
+import SideStats from './components/sideStats'
+import Categories from './components/categories'
+import {Tabs, Tab} from "@nextui-org/react";
+
+
 
 export default function Page() {
-
-  const [data, setData] = useState("")
-
-  const {mutate: handleSubmit} = useMutation({
-    mutationFn: async () => {
-      await axios.post("/api/addCat", {id: data})
-    }
-  })
-
-  return (
-    <div>Admin, welcome
-      <input type='text' className='form-control main w-50 mx-auto' onChange={(e) => setData(e.target.value)}/>
-      <button className='btn btn-primary' onClick={handleSubmit}>Add Categorie</button>
+  return(
+    <div className='admin main'>
+      <Tabs aria-label="Options">
+        <Tab key="Categories" title="Categories">
+          <Categories/>
+        </Tab>
+        <Tab key="Users" title="Users">
+          "all users here"
+        </Tab>
+        <Tab key="Posts" title="Posts">
+          "all posts here"
+        </Tab>
+      </Tabs>
+      
+      <SideStats/>
     </div>
   )
+  
 }

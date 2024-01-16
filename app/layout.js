@@ -4,6 +4,7 @@ import TanstackProvider from './providers/tanstackProvider'
 import "./globals.css"
 import NextAuthProvider from './providers/sessionProvider'
 import SideNavBar from './components/sideNavBar'
+import { Providers } from './providers'
 
 
 export const metadata = {
@@ -18,11 +19,13 @@ export default function RootLayout({ children }) {
       <body>
       <NextAuthProvider>
         <TanstackProvider>
-          <Navbar/>
-            <SideNavBar/>
-            <div className='main'>
-              {children}
-            </div>
+          <Providers>
+            <Navbar/>
+              <SideNavBar/>
+              <div className='main'>
+                {children}
+              </div>
+          </Providers>
         </TanstackProvider>
       </NextAuthProvider>
       </body>

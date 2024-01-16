@@ -6,6 +6,7 @@ import Newcomment from "./newComment";
 import Likes from "@/app/components/likes";
 import { useSession } from "next-auth/react";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 axios.defaults.baseURL = process.env.baseURL;
 
 
@@ -47,7 +48,7 @@ export default function Comments(props) {
                       </h5>
                     </div>
                     <p className="px-5">
-                      <Markdown>
+                      <Markdown remarkPlugins={remarkGfm}>
                         {comment.content}
                       </Markdown>
                     </p>

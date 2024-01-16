@@ -36,7 +36,7 @@ export default function Page() {
             reader.readAsDataURL(file);
         });
     }
-    console.log(data)
+
 
     function handleChange(event){
         

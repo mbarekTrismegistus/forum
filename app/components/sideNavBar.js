@@ -17,7 +17,7 @@ import Link from 'next/link';
 
 export default function SideNavBar() {
 
-    const pathname = usePathname()
+const pathname = usePathname()
 
   return (
     <div className='sideNav shadow shadow-end' onMouseEnter={() => {

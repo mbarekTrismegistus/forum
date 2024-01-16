@@ -479,3 +479,21 @@ nav{
   background-color: #0c0318!important;
 
 }
+
+
+.sideStates{
+  position: fixed;
+  top: 100px;
+  margin: 0;
+  padding: 0;
+  width: 20%!important;
+  height: 100%;
+  background-color: #0f051c;
+  right: 0%;
+  overflow: auto;
+
+}
+
+.admin{
+  margin-right: 20%;
+}

@@ -8,9 +8,18 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
+        let categorie = Data.data.currentId.replace(/%20/, " ")
 
-        await prisma.categorie.create({
-            data: Data.data
+
+        await prisma.categorie.update({
+            where: {
+                id: categorie
+            },
+            data: {
+                id: Data.data.id,
+                content: Data.data.content,
+                image: Data.data.image
+            }
         })
         
     }

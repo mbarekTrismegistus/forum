@@ -48,7 +48,6 @@ export default function Page(params) {
         <form>
             <label className='form-label'>Enter Title</label>
             <input type='text' onChange={handleChange} name='title' className='form-control'/>
-            <label className='form-label'>Enter thread</label>
             
             <textarea defaultValue="Enter Content" onChange={handleChange} name='content'></textarea>
             

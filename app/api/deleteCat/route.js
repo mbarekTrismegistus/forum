@@ -9,8 +9,10 @@ export async function POST(request) {
         
         let Data = await request.json()
 
-        await prisma.categorie.create({
-            data: Data.data
+        await prisma.categorie.delete({
+            where:{
+                id: Data.id
+            }
         })
         
     }

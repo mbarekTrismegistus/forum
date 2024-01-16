@@ -6,7 +6,6 @@ import { imgbbUploader } from "imgbb-uploader";
 
 export async function POST(request) {
     
-    let image
     const session = await getServerSession(request)
     
     if(session){
@@ -28,8 +27,6 @@ export async function POST(request) {
     
     
         let imgdata = await imgbbUploader(options)
-        
-        console.log(imgdata)
         
         await prisma.users.create({
             data: {
