@@ -48,6 +48,7 @@ export default function Page() {
             <p>Wordpress</p>
             <p>1000 post</p>
           </div>
+          
         <div className='mt-4'>
           <h4 className=''><strong>All Categories</strong></h4>
             {data.map((cat) => {

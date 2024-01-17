@@ -14,6 +14,7 @@ export default function Page() {
   return(
     <div className='admin main p-2 mt-4'>
       <h1 className='mb-4 aDashTit'><strong>Forum Dashboard</strong></h1>
+      <SideStats/>
         <Tabs
           defaultActiveKey="categories"
           id="uncontrolled-tab-example"
@@ -30,7 +31,7 @@ export default function Page() {
             Tab content for posts
           </Tab>
         </Tabs>
-      <SideStats/>
+      
     </div>
   )
   

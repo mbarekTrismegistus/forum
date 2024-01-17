@@ -483,21 +483,9 @@ nav{
 }
 
 
-.sideStates{
-  position: fixed;
-  top: 100px;
-  margin: 0;
-  padding: 0;
-  width: 20%!important;
-  height: 100%;
-  background-color: #0f051c;
-  right: 0%;
-  overflow: auto;
-
-}
 
 .admin{
-  margin-right: 21%;
+  margin-right: 5%;
 }
 
 .categorieS{
@@ -513,7 +501,8 @@ nav{
   color: white;
   border-radius: 30px;
   background: rgb(136,57,239);
-  background: linear-gradient(130deg, rgba(136, 57, 239, 0.253) 0%, rgba(210, 15, 57, 0.301) 100%);
+  background: linear-gradient(210deg, rgba(136, 57, 239, 0.911) 50%, rgba(210, 15, 57, 0.938) 100%);
+
 
 }
 
@@ -533,4 +522,14 @@ nav{
   background: linear-gradient(120deg, #8839ef 0%, #d20f39 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.Stats select{
+  border-radius: 30px!important;
+  background-color: #0f051c!important;
+  color: white;
+}
+.stat{
+  background-color: #8839ef;
+  padding: 20px;
+  border-radius: 20px;
 }
