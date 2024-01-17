@@ -13,7 +13,7 @@ import Tabs from 'react-bootstrap/Tabs';
 export default function Page() {
   return(
     <div className='admin main p-2 mt-4'>
-      <h1 className='mb-4 aDashTit'><strong>Forum Dashboard</strong></h1>
+      <h1 className='mb-4 aDashTit'><strong>Dashboard</strong></h1>
       <SideStats/>
         <Tabs
           defaultActiveKey="categories"

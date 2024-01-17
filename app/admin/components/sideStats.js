@@ -7,6 +7,9 @@ import { ChatDotsFill } from 'react-bootstrap-icons'
 import { PeopleFill } from 'react-bootstrap-icons'
 import { Hearts } from 'react-bootstrap-icons'
 import { FunnelFill } from 'react-bootstrap-icons'
+import { ping } from 'ldrs'
+
+ping.register()
 
 export default function stats() {
 
@@ -44,7 +47,7 @@ export default function stats() {
     }
 
     return (
-        <div className='container-fluid Stats mt-5 pe-3'>
+        <div className='container-fluid Stats my-5 pe-3'>
             <div className='d-flex align-items-center'>
                 <FunnelFill size={26} className='ms-auto'/>
                 <select onChange={handleChange} defaultValue="All time" className='form-select w-25 ms-2'>
@@ -55,45 +58,113 @@ export default function stats() {
                 </select>
             </div>
             <div className='row my-4 text-white'>
-                <div className='col stat mx-2'>
-                    <h5><strong>
-                    <FilePost size={26} color='white'/> Totale Posts                      
-                    </strong></h5>
-                    <p>
-                    {isLoading ? "loading" : data?.posts}                        
-                    </p>
+                <div className='col stat mx-2 d-flex'>
+                    <FilePost size={26} className='me-3 primaryColor'/>
+                    <div>
+                        <h5>
+                            <strong>
+                                Totale Posts                      
+                            </strong>
+                        </h5>
+                        <h1>
+                        <strong>
+                            {isLoading ? 
+                            <l-ping
+                                size='45'
+                                speed='2'
+                                color='white'
+                            ></l-ping>
+                            : data?.posts} 
+                        </strong>                      
+                        </h1>
+                    </div>
+                    
                 </div>
-                <div className='col stat mx-2'>
-                    <h5><strong>
-                    <TagFill size={26}/> Totale Categories                       
-                    </strong></h5>
-                    <p>
-                    {isLoading ? "loading" : data?.categories}                        
-                    </p>
+                <div className='col stat mx-2 d-flex'>
+                    <TagFill size={26} className='me-3 primaryColor'/>
+                    <div>
+                        <h5>
+                            <strong>
+                                Totale Categories                      
+                            </strong>
+                        </h5>
+                        <h1>
+                            <strong>
+                                {isLoading ? 
+                                    <l-ping
+                                        size='45'
+                                        speed='2'
+                                        color='white'
+                                    ></l-ping>
+                                : data?.categories}  
+                            </strong>
+                                              
+                        </h1>
+                    </div>
+                    
                 </div>
-                <div className='col stat mx-2'> 
-                    <h5><strong>
-                    <ChatDotsFill size={26}/> Totale Comments                       
-                    </strong></h5>
-                    <p>
-                    {isLoading ? "loading" : data?.comments}                        
-                    </p>
+                <div className='col stat mx-2 d-flex'>
+                    <ChatDotsFill size={26} className='me-3 primaryColor'/>
+                    <div>
+                        <h5>
+                            <strong>
+                                Totale Comments                      
+                            </strong>
+                        </h5>
+                        <h1>
+                            <strong>
+                                {isLoading ? <l-ping
+                                size='45'
+                                speed='2'
+                                color='white'
+                            ></l-ping> : data?.comments}  
+                            </strong>
+                                             
+                        </h1>
+                    </div>
+                    
                 </div>
-                <div className='col stat mx-2'>
-                    <h5><strong>
-                    <PeopleFill size={26}/> Totale users                      
-                    </strong></h5>
-                    <p>
-                    {isLoading ? "loading" : data?.users}                        
-                    </p>
+                <div className='col stat mx-2 d-flex'>
+                    <PeopleFill size={26} className='me-3 primaryColor'/>
+                    <div>
+                        <h5>
+                            <strong>
+                                Totale Users                      
+                            </strong>
+                        </h5>
+                        <h1>
+                            <strong>
+                                {isLoading ? <l-ping
+                                size='45'
+                                speed='2'
+                                color='white'
+                            ></l-ping> : data?.users}
+                            </strong>
+                                                
+                        </h1>
+                    </div>
+                    
                 </div>
-                <div className='col stat mx-2'>
-                    <h5><strong>
-                    <Hearts size={26}/> Totale Likes            
-                    </strong></h5>
-                    <p>
-                    {isLoading ? "loading" : data?.likes}                        
-                    </p>
+                <div className='col stat mx-2 d-flex'>
+                    <Hearts size={26} className='me-3 primaryColor'/>
+                    <div>
+                        <h5>
+                            <strong>
+                                Totale Likes                      
+                            </strong>
+                        </h5>
+                        <h1>
+                            <strong>
+                                {isLoading ? <l-ping
+                                size='45'
+                                speed='2'
+                                color='white'
+                            ></l-ping> : data?.likes} 
+                            </strong>
+                                               
+                        </h1>
+                    </div>
+                    
                 </div>
             </div>
             
