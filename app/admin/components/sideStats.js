@@ -1,5 +1,3 @@
-"use client"
-
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
@@ -9,11 +7,15 @@ import { ChatDotsFill } from 'react-bootstrap-icons'
 import { PeopleFill } from 'react-bootstrap-icons'
 import { Hearts } from 'react-bootstrap-icons'
 import { FunnelFill } from 'react-bootstrap-icons'
-import { ping } from 'ldrs'
 
-ping.register()
+
 
 export default function stats() {
+
+    React.useEffect(() => {
+        ping = require("ldrs/dist/elements/ping.js");
+        ping.register()
+      }, []);
 
     const [period,setPeriod] = useState(undefined)
 
