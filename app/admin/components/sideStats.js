@@ -12,11 +12,6 @@ import { FunnelFill } from 'react-bootstrap-icons'
 
 export default function stats() {
 
-    React.useEffect(() => {
-        ping = require("ldrs/dist/elements/ping.js");
-        ping.register()
-      }, []);
-
     const [period,setPeriod] = useState(undefined)
 
     const {data, isLoading, isError, isPending} = useQuery({
