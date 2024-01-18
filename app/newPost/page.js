@@ -23,7 +23,7 @@ export default function Page(params) {
         mutationFn: async() => await axios.post("api/createPost", {data: {
             ...postdata,
             user: session.id,
-            categorieId: params.searchParams.cat}}),
+            categorie: params.searchParams.cat}}),
         onSuccess: () => {
             queryClient.invalidateQueries(['posts'])
             router.back()
