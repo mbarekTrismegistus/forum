@@ -10,7 +10,12 @@ export async function POST(request) {
         let Data = await request.json()
         
         await prisma.posts.create({
-            data: Data.data
+            data: {
+                title: Data.data.title,
+                content: Data.data.content,
+                userId: Data.data.userId,
+                categorieId: Data.data.categorieId
+            }
         })
         
     }
