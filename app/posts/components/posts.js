@@ -3,12 +3,13 @@
 import axios from 'axios'
 import React from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import Loading from '@/app/components/loading';
+
 import { ChatLeftText, HeartFill } from 'react-bootstrap-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import Likes from '@/app/components/likes';
 import { useSession } from 'next-auth/react';
+
 
 axios.defaults.baseURL = process.env.baseURL;
 
@@ -18,36 +19,49 @@ export default function Posts(props) {
     const {data: session, status} = useSession()
 
     const {data, isError, isLoading} = useQuery({
-      queryKey: ["posts"],
+      queryKey: ["posts", props.page],
       queryFn: async () => {
         const { data } = await axios.post("/api/getPosts", {data: {
           cat: props.cat,
-          user: props.user
+          user: props.user,
+          skip: props.page === undefined ? 5 : (Number(props.page) * 0.5 * 10)
         }})
 
         return data.data
       }
     })
 
-      if(isLoading) return <Loading/>
+      if(isLoading){
+        return(
+          <div className='post mt-5 d-flex flex-column align-items-center'>
+            
+            <l-trefoil
+              size="40"
+              stroke="4"
+              stroke-length="0.15"
+              bg-opacity="0.1"
+              speed="1.4"
+              color="white" 
+            ></l-trefoil>
+            
+          </div>
+        )
+      }
       if(isError) return <div>Error happened</div>
   
       
         return (
           data.map(post => {
             return (
-              <Link href={`/posts/${post.id}`}>
-                <div className='post my-4 mx-auto' key={post.id}>
+             
+                <div className='post my-2 mx-auto' key={post.id}>
                   <div className='post-info d-md-flex align-items-start'>
                     <Image src={post.user.image} width={60} height={60} className='me-3'/>
                     <div key={post.id} className='postHeader'>
-                      
+                      <Link href={`/posts/${post.id}`}>
                         <h3>{post.title}</h3>
-                      
-                      <p>{post.content.length > 100 ? post.content.replace(/^(.{100}[^\s]*).*/, "$1") + "..." : post.content}</p>
-                      
-              
-                    
+                        <p>{post.content.length > 100 ? post.content.replace(/^(.{100}[^\s]*).*/, "$1") + "..." : post.content}</p>
+                      </Link>
                     </div>
                     <div className='ms-auto me-4 d-flex align-self-center'>
                       <div className='my-4 d-flex flex-column align-items-center me-5'>
@@ -72,7 +86,7 @@ export default function Posts(props) {
                   </div>
                   
                 </div>
-               </Link>
+               
             )
           })
         )

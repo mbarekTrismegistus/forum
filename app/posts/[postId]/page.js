@@ -6,7 +6,6 @@ import { useQuery } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
-import Loading from '@/app/components/loading';
 import Comments from './comments/comments';
 import { TrashFill } from 'react-bootstrap-icons';
 import { PencilSquare } from 'react-bootstrap-icons';
@@ -46,11 +45,11 @@ export default function SinglePost({ params }) {
     
 
     if(status === "loading"){
-        return <Loading/>
+        return "loading"
     }
 
 
-        if(isLoading) return <Loading/>
+        if(isLoading) return "loading"
         if(isError) return <div>Error happened</div>
         return (
             <div className='container my-5 col-10'>

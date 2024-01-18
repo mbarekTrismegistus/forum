@@ -5,7 +5,13 @@ export async function POST(request) {
 
     let data = await request.json()
 
-    let posts = await prisma.posts.count()
+    let posts = await prisma.posts.count({
+        where: {
+            dateCreated: {
+                gte: data.period
+            }
+        }
+    })
 
     let categories = await prisma.categorie.count({
         where: {

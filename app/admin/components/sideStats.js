@@ -47,18 +47,12 @@ export default function stats() {
 
     return (
         <div className='container-fluid Stats my-5 pe-3'>
-            <div className='d-flex align-items-center'>
-                <FunnelFill size={26} className='ms-auto'/>
-                <select onChange={handleChange} defaultValue="All time" className='form-select w-25 ms-2'>
-                    <option value={"day"}>Last day</option>
-                    <option value={"week"}>Last week</option>
-                    <option value={"month"}>Last month</option>
-                    <option value={undefined}>All time</option>
-                </select>
-            </div>
+            
             <div className='row my-4 text-white'>
                 <div className='col stat mx-2 d-flex'>
-                    <FilePost size={26} className='me-3 primaryColor'/>
+                    <div className='icon'>
+                        <FilePost size={40} className='me-3 primaryColor' color='#d20f39'/>
+                    </div>
                     <div>
                         <h5>
                             <strong>
@@ -80,7 +74,9 @@ export default function stats() {
                     
                 </div>
                 <div className='col stat mx-2 d-flex'>
-                    <TagFill size={26} className='me-3 primaryColor'/>
+                    <div className='icon'>
+                        <TagFill size={40} className='me-3 primaryColor' color='#d20f39'/>
+                    </div>
                     <div>
                         <h5>
                             <strong>
@@ -103,7 +99,9 @@ export default function stats() {
                     
                 </div>
                 <div className='col stat mx-2 d-flex'>
-                    <ChatDotsFill size={26} className='me-3 primaryColor'/>
+                    <div className='icon'>
+                        <ChatDotsFill size={40} className='me-3 primaryColor' color='#d20f39'/>
+                    </div>
                     <div>
                         <h5>
                             <strong>
@@ -124,7 +122,9 @@ export default function stats() {
                     
                 </div>
                 <div className='col stat mx-2 d-flex'>
-                    <PeopleFill size={26} className='me-3 primaryColor'/>
+                    <div className='icon'>
+                        <PeopleFill size={40} className='me-3 primaryColor' color='#d20f39'/>
+                    </div>
                     <div>
                         <h5>
                             <strong>
@@ -145,7 +145,9 @@ export default function stats() {
                     
                 </div>
                 <div className='col stat mx-2 d-flex'>
-                    <Hearts size={26} className='me-3 primaryColor'/>
+                    <div className='icon'>
+                        <Hearts size={40} className='me-3 primaryColor' color='#d20f39'/>
+                    </div>
                     <div>
                         <h5>
                             <strong>
@@ -165,6 +167,15 @@ export default function stats() {
                     </div>
                     
                 </div>
+            </div>
+            <div className='d-flex align-items-center'>
+                <FunnelFill size={30} className='ms-auto'/>
+                <select onChange={handleChange} defaultValue="All time" className='form-select w-25 ms-2'>
+                    <option value={"day"}>Last day</option>
+                    <option value={"week"}>Last week</option>
+                    <option value={"month"}>Last month</option>
+                    <option value={undefined}>All time</option>
+                </select>
             </div>
             
             

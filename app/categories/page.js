@@ -3,7 +3,6 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import Loading from '../components/loading'
 import Categorie from './components/Categorie'
 axios.defaults.baseURL = process.env.baseURL;
 
@@ -20,7 +19,7 @@ export default function Page() {
     })
 
     if(isLoading){
-        return <Loading/>
+        return "loading"
     }
     if(isError){
         return "error"

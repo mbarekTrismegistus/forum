@@ -4,8 +4,10 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
     
     const body = await request.json()
-    let categorie = body.data.cat.replace(/%20/, " ")
+    let categorie = body.data.cat?.replace(/%20/, " ")
     let data = await prisma.posts.findMany({
+        skip: body.data.skip - 5,
+        take: 5,
         where:{
             categorieId: categorie
         },

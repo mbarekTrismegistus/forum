@@ -40,7 +40,7 @@ hr{
   width: 75%;
 }
 .post{
-  width: 90%;
+  width: 100%!important;
   border-radius: 25px;
   position: relative;
   z-index: 1;
@@ -488,11 +488,18 @@ nav{
   margin-right: 5%;
 }
 
-.categorieS{
-  padding: 10px;
+.adminList{
+
   background-color: rgb(40, 28, 56);
   border-radius: 10px;
   border: 1px solid rgb(52, 42, 65);
+}
+.adminList img{
+  height: 100%;
+  width: 65px;
+  object-fit:fill;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .activeCat{
@@ -529,7 +536,21 @@ nav{
   color: white;
 }
 .stat{
-  background-color: #8839ef5b;
+  background-color: #8839ef2a;
   padding: 25px;
   border-radius: 20px;
+}
+
+
+
+.MuiPagination-ul button{
+  color: white!important;
+  border: 1px solid rgba(255, 255, 255, 0.411);
+}
+
+.icon svg{
+  background-color: #d20f3949;
+  padding: 5px;
+  border-radius: 50%;
+  
 }

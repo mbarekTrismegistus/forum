@@ -8,7 +8,7 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        console.log(Data.data.id)
+
         await prisma.posts.delete({
             where:{
                 id: Data.data.id

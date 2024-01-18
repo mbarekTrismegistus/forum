@@ -3,9 +3,11 @@
 import React, { useState } from 'react'
 import SideStats from './components/sideStats'
 import Categories from './components/categories'
+import { Suspense } from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-
+import Users from './components/users';
+import Posts from './components/posts';
 
 
 
@@ -22,13 +24,19 @@ export default function Page() {
           fill
         >
           <Tab eventKey="categories" title="Categories" className='mx-auto'>
-            <Categories/>
+
+              <Categories/>
+
           </Tab>
           <Tab eventKey="users" title="Users">
-            Tab content for users
+
+              <Users/>
+
           </Tab>
           <Tab eventKey="posts" title="Posts">
-            Tab content for posts
+
+              <Posts/>
+
           </Tab>
         </Tabs>
       
