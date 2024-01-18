@@ -30,7 +30,7 @@ export default function Page(params) {
         },
         
     })
-    
+    console.log(params.searchParams.cat)
     function handleChange(event){
         
         setData(prevData => {
