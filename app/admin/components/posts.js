@@ -9,7 +9,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import Skeleton from '@mui/material/Skeleton';
 axios.defaults.baseURL = process.env.baseURL;
 
-export default function Posts() {
+export default function Posts(props) {
 
     const queryClient = useQueryClient()
 
@@ -17,7 +17,7 @@ export default function Posts() {
     const {data, isError, isLoading} = useQuery({
         queryKey: ["posts"],
         queryFn: async () => {
-            const {data} = await axios.post("/api/getAllPosts")
+            const {data} = await axios.post("/api/getAllPosts", {id: props.id})
             return data.data 
         }
     })

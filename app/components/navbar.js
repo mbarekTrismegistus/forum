@@ -7,6 +7,7 @@ import Notification from './notification';
 import { PlusCircle } from 'react-bootstrap-icons';
 import anime from 'animejs';
 import { usePathname, useRouter } from 'next/navigation';
+import { Skeleton } from '@mui/material';
 
 
 
@@ -17,11 +18,24 @@ export default function Navbar() {
   const [notiShown, setNotifi] = useState(false)
   const [notiNum, setNotiNum] = useState(0)
   const [searchQuery, setSearch] = useState("")
+  const [theme, setTheme] = useState(true)
   const router = useRouter()
   const pathname = usePathname()
 
 
   const { data: session, status } = useSession()
+
+  function changeTheme(e){
+    setTheme(!(e.target.checked))
+    if(e.target.checked){
+      document.documentElement.style.setProperty('--base-color', '#dce0e8');
+      document.documentElement.style.setProperty('--font-color', '#0f051c');
+    }
+    else{
+      document.documentElement.style.setProperty('--base-color', '#0f051c');
+      document.documentElement.style.setProperty('--font-color', '#dce0e8');
+    }
+  }
   
   function showNotifi(){
     if(notiShown){
@@ -56,24 +70,23 @@ export default function Navbar() {
                 <Search color='white'/>
               </button>
             </div>
+            <input type="checkbox" className="theme-checkbox me-3" onChange={changeTheme}/>
 
             {
               session ? 
                 <div className='d-flex align-items-center'> 
-                    <Link href={'/newPost'} className='ms-auto me-3'>
-                      <PlusCircle className='' size={28}/>
-                    </Link>
                     <div className='me-3 notifications'>
                       <div className='notiNum'>{notiNum}</div>
                       <Bell size={28} onClick={showNotifi}/>
                       <Notification setNotiNum={setNotiNum}/>
                     </div>
-                    
-                    <img className='text-white m-0 me-3 user' src={session.image}/>
+                    <Link href={`/profile?id=${session.id}`}>
+                      <img className='text-white m-0 me-3 user' src={session.image}/>
+                    </Link>
                    
                 </div>
               : 
-                status === "loading" ? <p className='text-white m-0 me-3 user'></p> 
+                status === "loading" ? <Skeleton className='m-0 me-3' variant='circular' width={50} height={50} sx={{bgcolor: '#281c38'}}/>
               : 
                 <div>
                   <button className='btn btn-outline-light me-3' onClick={() => signIn({callbackUrl: "/posts"})}>Login</button>
@@ -81,6 +94,7 @@ export default function Navbar() {
                     <button className='btn btn-outline-light'>Registre</button>
                   </a>
                 </div>
+                
             }
             
         </div>

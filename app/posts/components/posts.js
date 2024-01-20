@@ -26,7 +26,6 @@ export default function Posts(props) {
           user: props.user,
           skip: props.page === undefined ? 5 : (Number(props.page) * 0.5 * 10)
         }})
-
         return data.data
       }
     })

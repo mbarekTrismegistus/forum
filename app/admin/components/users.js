@@ -24,14 +24,14 @@ export default function Users() {
         }
     })
 
-    // const {mutate: deleteCat} = useMutation({
-    //   mutationFn: async (id) => {
-    //     await axios.post("/api/deleteCat" ,{id: id})
-    //   },
-    //   onSuccess: () => {
-    //     queryClient.invalidateQueries(['cats'])
-    //   }
-    // })
+    const {mutate: deleteCat} = useMutation({
+      mutationFn: async (id) => {
+        await axios.post("/api/deleteUser" ,{id: id})
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries(['users'])
+      }
+    })
 
     if(isLoading){
       return(

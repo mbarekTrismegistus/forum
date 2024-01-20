@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
           
             <Navbar/>
               <SideNavBar/>
-              <div className='main'>
+              <div>
                   {children}
               </div>
         </TanstackProvider>

@@ -16,6 +16,14 @@ axios.defaults.baseURL = process.env.baseURL;
 
 export default function SingleCat({params, searchParams}) {
 
+  const {data, isError, isLoading} = useQuery({
+    queryKey: ['countpost'],
+    queryFn: async () => {
+      const {data} = await axios.post("/api/postCount" ,{ id:  params.catId})
+      return (Math.ceil(data.data / 5))
+    }
+  })
+
   const router = useRouter()
 
   const [page, setPage] = React.useState(1);
@@ -34,16 +42,19 @@ export default function SingleCat({params, searchParams}) {
 
   return (
     
-    <div className='container'>
+    <div className='container mt-5'>
                 <div>
                   <div className='d-flex align-items-center'>
                     <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
-                      <PlusCircle className='' size={28}/>
+                      <button className="button d-flex">
+                        <PlusCircle size={25} className='me-2 m-0'></PlusCircle>
+                        New Post
+                      </button>
                     </Link>
                   </div>
                   <div className='d-flex flex-column'>
-                    <Stack spacing={2} className=' align-self-center'>
-                      <Pagination size='large' count={10} page={page} onChange={handleChange} variant="outlined" color="secondary" />
+                    <Stack spacing={2} className='mb-5 align-self-center'>
+                      <Pagination size='large' count={data} page={page} onChange={handleChange} variant="outlined" color="secondary" />
                     </Stack>
                     <Posts cat={params.catId} user={session?.id} page={searchParams.page}/>
                   </div>

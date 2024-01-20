@@ -8,13 +8,10 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        
-        await prisma.posts.create({
-            data: {
-                title: Data.data.title,
-                content: Data.data.content,
-                userId: Data.data.userId,
-                categorieId: Data.data.categorieId
+
+        await prisma.users.delete({
+            where:{
+                id: Data.id
             }
         })
         
