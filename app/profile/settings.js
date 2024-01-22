@@ -36,16 +36,19 @@ export default function Settings(props) {
             }})
             return res.data.image
         },
-        onSuccess: (data) => {
+        onSuccess: async (data) => {
 
-            update({
+            let res = await update({
                 ...session,
                 id: info.id || props.user.id,
                 firstName: info.firstName || props.user.firstName,
                 lastName: info.lastName || props.user.lastName,
                 image: data || props.user.image
             })
-            window.location.href = `/profile?id=${info.id || props.user.id}`
+            if(res){
+                window.location.href = `/profile?id=${info.id || props.user.id}`
+            }
+
         }
     })
 
