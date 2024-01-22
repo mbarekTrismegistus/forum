@@ -4,38 +4,55 @@ import { Search } from 'react-bootstrap-icons';
 import { Bell } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import Notification from './notification';
-import { PlusCircle } from 'react-bootstrap-icons';
-import anime from 'animejs';
 import { usePathname, useRouter } from 'next/navigation';
 import { Skeleton } from '@mui/material';
 
 
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Navbar() {
 
   const [notiShown, setNotifi] = useState(false)
   const [notiNum, setNotiNum] = useState(0)
   const [searchQuery, setSearch] = useState("")
-  const [theme, setTheme] = useState(true)
+  const [theme, setTheme] = useState('dark')
   const router = useRouter()
   const pathname = usePathname()
 
 
   const { data: session, status } = useSession()
 
-  function changeTheme(e){
-    setTheme(!(e.target.checked))
-    if(e.target.checked){
-      document.documentElement.style.setProperty('--base-color', '#dce0e8');
-      document.documentElement.style.setProperty('--font-color', '#0f051c');
+
+  function changeTheme(){
+      if(localStorage.getItem('theme') === "dark"){
+        localStorage.setItem('theme', 'light')
+        setTheme(localStorage.getItem('theme'))
+      }
+      else{
+        localStorage.setItem('theme', 'dark')
+        setTheme(localStorage.getItem('theme'))
     }
-    else{
-      document.documentElement.style.setProperty('--base-color', '#0f051c');
-      document.documentElement.style.setProperty('--font-color', '#dce0e8');
     }
-  }
+
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        if(localStorage.getItem('theme') === "dark"){
+          setTheme(localStorage.getItem('theme'))
+          document.documentElement.style.setProperty('--base-color', '#dce0e8');
+          document.documentElement.style.setProperty('--font-color', '#0f051c');
+        }
+        else{
+          setTheme(localStorage.getItem('theme'))
+          document.documentElement.style.setProperty('--base-color', '#0f051c');
+          document.documentElement.style.setProperty('--font-color', '#dce0e8');
+        }
+      }
+    })
+
+
+    
+  
   
   function showNotifi(){
     if(notiShown){
@@ -70,7 +87,7 @@ export default function Navbar() {
                 <Search color='white'/>
               </button>
             </div>
-            <input type="checkbox" className="theme-checkbox me-3" onChange={changeTheme}/>
+            <input type="checkbox" className="theme-checkbox me-3" onClick={changeTheme}/>
 
             {
               session ? 

@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
+    
     <div className='container mt-5'>
       <div className='pb-5'>
         <div className='col-md-8 welcome me-5 p-4 pb-5 align-self-start'>

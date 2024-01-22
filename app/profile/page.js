@@ -9,6 +9,7 @@ import { FileEarmarkPostFill } from 'react-bootstrap-icons';
 import { useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@mui/material';
 import Posts from '../admin/components/posts';
+import Settings from './settings';
 import axios from 'axios';
 
 export default function Profile({ searchParams }) {
@@ -18,7 +19,6 @@ export default function Profile({ searchParams }) {
         queryKey: ['user'],
         queryFn: async () => {
             const { data } = await axios.post("/api/getUser", {id: searchParams.id})
-            console.log(data.data)
             return data.data
         }
         
@@ -30,7 +30,7 @@ export default function Profile({ searchParams }) {
     <div className='main me-5'>
         <div className='profileHead p-5 pt-3'>
             <div className='d-flex info'>
-                {isLoading ? <Skeleton variant='circular' animation="wave" width={150} height={150} sx={{bgcolor: "#281c38"}}/> : <img src={data.image} width={150} height={150}/>}
+                {isLoading ? <Skeleton variant='circular' animation="wave" width={150} height={150} sx={{bgcolor: "#281c38"}}/> : <img src={data?.image} width={150} height={150}/>}
                 <div className='ms-3 align-self-center'>
                     <h1><strong className=''>{isLoading ? "..." : data.id}</strong></h1>
                     <p>Member since .....</p>
@@ -95,7 +95,7 @@ export default function Profile({ searchParams }) {
                     </div>
                 </Tab>
                 <Tab eventKey="setting" title="setting">
-                    Tab content for settings
+                    <Settings user={isLoading ? "" : data}/>
                 </Tab>
                 
             </Tabs>

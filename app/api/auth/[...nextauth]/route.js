@@ -3,7 +3,7 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compareSync } from "bcryptjs";
 
-let userAccount = null
+
 
 export const authOptions = {
     
@@ -32,7 +32,7 @@ export const authOptions = {
                 })
           
                 if (userAccount) {
-                  console.log(userAccount)
+
                   let pass = await prisma.users.findUnique({
                     select:{
                       password: true
@@ -61,30 +61,33 @@ export const authOptions = {
         
     ],
     callbacks: {
-      async jwt({session,token,user}) {
-        
+      async jwt({session,token,user,trigger}) {
+        if(trigger === "update"){
+          token = session
+        }
         if(user){
-          // console.log(user)
           return {
             ...token,
             id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             role: user.role,
-            dateJoined: user.dateJoined
+            dateJoined: user.dateJoined,
+            image: user.image
           }
         }
         return token;
       },
       async session({ session, token, user }) {
-        
+
         return {
           ...session.user,
           id: token.id,
           firstName: token.firstName,
           lastName: token.lastName,
           role: token.role,
-          dateJoined: token.dateJoined
+          dateJoined: token.dateJoined,
+          image: token.image
 
         }
       },
