@@ -13,8 +13,12 @@ export async function POST(request) {
             data: {
                 title: Data.data.title,
                 content: Data.data.content,
-                userId: Data.data.userId,
-                categorieId: Data.data.categorieId
+                user: {
+                    connect: { id: 'hermes' },
+                },
+                categorie: {
+                    connect: { id: 'word'}
+                }
             }
         })
         
