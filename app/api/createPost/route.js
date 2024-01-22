@@ -17,7 +17,7 @@ export async function POST(request) {
                     connect: { id: 'hermes' },
                 },
                 categorie: {
-                    connect: { id: 'word'}
+                    connect: { id: 'frontend'}
                 }
             }
         })
