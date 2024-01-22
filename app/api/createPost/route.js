@@ -14,10 +14,10 @@ export async function POST(request) {
                 title: Data.data.title,
                 content: Data.data.content,
                 user: {
-                    connect: { id: 'hermes' },
+                    connect: { id: Data.data.userId },
                 },
                 categorie: {
-                    connect: { id: 'frontend'}
+                    connect: { id: Data.data.categorieId}
                 }
             }
         })
