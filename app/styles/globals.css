@@ -680,6 +680,11 @@ nav{
 
 .postCards .card-body{
   border-radius: 30px!important;
+  overflow: hidden;
+}
+.postCards h2{
+  overflow: hidden;
+  height: 50px;
 }
 
 .userCards{
