@@ -7,13 +7,13 @@ export async function POST(request) {
     let categorie = body.data.cat?.replace(/%20/, " ")
     let postsCount = await prisma.posts.count()
     let data = await prisma.posts.findMany({
-        skip: body.data.skip - 5,
+        skip: body.data.skip - 5 || undefined,
         take: 5,
         where:{
             categorieId: categorie
         },
         orderBy:{
-            id: "desc"
+            dateCreated: "desc"
         },
         include: {
             user: true,

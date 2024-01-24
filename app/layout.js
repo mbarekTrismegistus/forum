@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      
+     
       <body>
       <NextAuthProvider>
         <TanstackProvider>
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
       </NextAuthProvider>
       <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ping.js"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/trefoil.js"></script>
-
+      
       </body>
     </html>
   )

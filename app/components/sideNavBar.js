@@ -35,29 +35,26 @@ const pathname = usePathname()
     
         })
     }}>
-        <div className='items'>
+        <div className='items d-flex flex-column'>
            
-            <div className={`item p-3 py-4 ${pathname == "/"  ? 'border-list' : ""}`}>
-                <House size={28}/>
-                <Link href='/' className='ms-4 mb-0'>Home</Link>
-            </div>
-            <div className=' p-3 py-4'>
-                <Fire size={28}/>
-                <a className='ms-4 mb-0'>What&#39;s New</a>
-            </div>
-            <div className=' p-3 py-4'>
-                <People size={28}/>
-                <a className='ms-4 mb-0'>Members</a>
-            </div>
-            <div className={`item p-3 py-4 ${pathname == "/categories"  ? 'border-list' : ""}`}>
-                <Chat size={28}/>
-                <Link href='/categories' className='ms-4 mb-0'>Forums</Link>
-            </div>
+                <Link href="/" className='p-3 my-2'>
+                        <House size={28} className='me-4'/>
+                        Home
+                </Link>
+                <Link href="/whatsnew" className='p-3 my-2'>
+                        <Fire size={28} className='me-4'/>
+                        What&#39;s New
+                </Link>
+                <Link href="/categories" className='p-3 my-2'>
+                        <Chat size={28} className='me-4'/>
+                        Forums
+                </Link>
             <hr className='mx-auto'/>
             <div className=' p-3 py-4'>
-                <BoxArrowRight size={28} onClick={() => signOut({callbackUrl: "/"})}/>
-                <a className='ms-4 mb-0'>Logout</a>
+                <BoxArrowRight className='me-4' size={28} onClick={() => signOut({callbackUrl: "/"})}/>
+                Logout
             </div>
+
         </div>
            
             

@@ -1,17 +1,35 @@
 "use client"
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import ChangePass from './changePass'
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+
 
 
 
 export default function Settings(props) {
 
     const [info, setInfo] = useState({})
+    const [notVal, setVal] = useState({
+        firstName: false,
+        lastName: false,
+        id: false
+    })
+    const [showAlert, setShowAlert] = useState(false)
+    const [open, setOpen] = useState(false)
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
     
+        setOpen(false);
+    };
 
     const {data: session, update } = useSession()
 
@@ -25,19 +43,22 @@ export default function Settings(props) {
     }
 
 
-    
-
     const {mutate: handleSubmit, isPending} = useMutation({
         mutationFn: async () => {
-
-            let res = await axios.post("/api/updateUser", {data: {
-                info: info,
-                id: props.user.id
-            }})
-            return res.data.image
+            if(info.firstName !== "" && info.lastName !== "" && info.id !== ""){
+                setShowAlert(false)
+                let res = await axios.post("/api/updateUser", {data: {
+                    info: info,
+                    id: props.user.id
+                }})
+                setOpen(true)
+                return res.data.image
+            }
+            else{
+                setShowAlert(true)
+            }
         },
         onSuccess: async (data) => {
-
             let res = await update({
                 ...session,
                 id: info.id || props.user.id,
@@ -45,7 +66,7 @@ export default function Settings(props) {
                 lastName: info.lastName || props.user.lastName,
                 image: data || props.user.image
             })
-            if(res){
+            if(res && !showAlert){
                 window.location.href = `/profile?id=${info.id || props.user.id}`
             }
 
@@ -54,6 +75,22 @@ export default function Settings(props) {
 
 
     function handleInfo(e){
+        if(e.target.value !== "" || undefined){
+            setVal((prev) => {
+                return{
+                    ...prev,
+                    [e.target.name]: false
+                }
+            })
+        }
+        else{
+            setVal((prev) => {
+                return{
+                    ...prev,
+                    [e.target.name]: true 
+                }
+            })
+        }
         setInfo((prevData) => {
             
             if(e.target.type === "file"){
@@ -110,19 +147,19 @@ export default function Settings(props) {
                 <div className="row my-4">
                     <div className="col">
                         <label htmlFor="firstName">First name</label><br/>
-                        <input type="text" onChange={handleInfo} name="firstName" className="form-control w-100" defaultValue={props.user.firstName}/>
+                        <input type="text" onChange={handleInfo} name="firstName" className={`w-100 form-control ${notVal.firstName ? "border-danger" : ""}`} defaultValue={props.user.firstName} onMouseLeave={handleInfo}/>
                     </div>
                 </div>
                 <div className="row my-4">
                     <div className="col">
                         <label htmlFor="lastName">Last name</label><br/>
-                        <input type="text" onChange={handleInfo} name="lastName" className="form-control w-100" defaultValue={props.user.lastName}/>
+                        <input type="text" onChange={handleInfo} name="lastName" className={`w-100 form-control ${notVal.lastName ? "border-danger" : ""}`} defaultValue={props.user.lastName} onMouseLeave={handleInfo}/>
                     </div>
                 </div>
                 <div className="row my-4">
                     <div className="col">
                         <label htmlFor="id">Username</label><br/>
-                        <input type="text" onChange={handleInfo} name="id" className="form-control w-100" defaultValue={props.user.id}/>
+                        <input type="text" onChange={handleInfo} name="id" className={`w-100 form-control ${notVal.id ? "border-danger" : ""}`} defaultValue={props.user.id} onMouseLeave={handleInfo}/>
                     </div>
                 </div>
             
@@ -133,36 +170,17 @@ export default function Settings(props) {
                 </div>
             </div>
         </div>
+        <Alert severity="error" className={`d-${showAlert ? "block" : "none"} d-flex`}>All fields are required</Alert>
         </div>
         <hr className='mx-auto w-100'/>
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4 my-4">
-                    <h4>Change password</h4>
-                    <small>Update your password associated with your account.</small>
-                </div>
-                <div className="col-md">
-                    <form>
-                        <div className="form-group my-4">
-                            <label htmlFor="exampleInputPassword1">Current Password</label>
-                            <input type="password" className="form-control"/>
-                        </div>
-                        <div className="form-group my-4">
-                            <label htmlFor="exampleInputPassword1">New Password</label>
-                            <input type="password" className="form-control"/>
-                        </div>
-                        <div className="form-group my-4">
-                            <label htmlFor="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" className="form-control"/>
-                        </div>
-                        <button className="btn btn-outline-light">Save</button>
-                    </form>
-                </div>
-                <hr className="my-5"/>
-                
-            </div>
+        <Snackbar
+                    open={open}
+                    onClose={handleClose}
+                    autoHideDuration={3000}
+                    message="Profile updated successfully"
+                />
         
-        </div>
+        <ChangePass pass={props.user.password} user={props.user.id}/>
      
         <div className="container">
             <div className="row">

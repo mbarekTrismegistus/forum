@@ -11,9 +11,11 @@ import { Skeleton } from '@mui/material';
 import Posts from '../admin/components/posts';
 import Settings from './settings';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 
 export default function Profile({ searchParams }) {
 
+    const {data: session} = useSession()
 
     const {data, isError, isLoading} = useQuery({
         queryKey: ['user'],
@@ -94,9 +96,13 @@ export default function Profile({ searchParams }) {
                     
                     </div>
                 </Tab>
+                {session?.id === data?.id ? 
                 <Tab eventKey="setting" title="setting">
                     <Settings user={isLoading ? "" : data}/>
                 </Tab>
+                :
+                ""
+                }
                 
             </Tabs>
             

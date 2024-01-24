@@ -53,7 +53,19 @@ export default function Users() {
           
         <div className='mt-4'>
           <h4 className=''><strong>All Users</strong></h4>
-            {data.map((user) => {
+
+            {isLoading ? 
+              <div>
+                <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+                <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+                <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+                <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+                <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+              </div>
+            
+            :
+              
+            data.map((user) => {
                 return (
                         
                         <div key={user.id} className='d-flex adminList my-2 align-items-center'>

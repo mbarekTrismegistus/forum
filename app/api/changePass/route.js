@@ -1,24 +1,24 @@
 import prisma from "@/libs/prismaClient"
 import { getServerSession } from "next-auth/next"
+import { hash } from "bcryptjs";
+
 
 export async function POST(request) {
     
     const session = await getServerSession(request)
-    
+
+
     if(session){
         
         let Data = await request.json()
-        
-        await prisma.posts.create({
+        console.log(Data)
+        let hashedpass = await hash(Data.data.password,10)
+        await prisma.users.update({
+            where: {
+                id: Data.data.id
+            },
             data: {
-                title: Data.data.title,
-                content: Data.data.content,
-                user: {
-                    connect: { id: Data.data.userId },
-                },
-                categorie: {
-                    connect: { id: Data.data.categorieId}
-                }
+                password: hashedpass
             }
         })
         

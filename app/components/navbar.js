@@ -41,11 +41,15 @@ export default function Navbar() {
           setTheme(localStorage.getItem('theme'))
           document.documentElement.style.setProperty('--base-color', '#dce0e8');
           document.documentElement.style.setProperty('--font-color', '#0f051c');
+          document.documentElement.style.setProperty('--skeleton-dark', '#b1b7c2');
+          document.documentElement.style.setProperty('--skeleton-light', '#160829');
         }
         else{
           setTheme(localStorage.getItem('theme'))
           document.documentElement.style.setProperty('--base-color', '#0f051c');
           document.documentElement.style.setProperty('--font-color', '#dce0e8');
+          document.documentElement.style.setProperty('--skeleton-dark', '#160829');
+          document.documentElement.style.setProperty('--skeleton-light', '#b1b7c2');
         }
       }
     })

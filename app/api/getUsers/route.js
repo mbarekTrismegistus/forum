@@ -5,6 +5,7 @@ export async function POST(request) {
     
 
     let data = await prisma.users.findMany({
+        take: 5,
         orderBy: [
             {
                 dateJoined: "desc"

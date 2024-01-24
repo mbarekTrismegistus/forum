@@ -1,6 +1,8 @@
 :root{
   --font-color: #dce0e8;
   --base-color: #0f051c;
+  --skeleton-dark: #160829;
+  --skeleton-light: #b1b7c2;
   --primary-color: 136, 57, 239;
   --secondary-color: 210, 15, 57;
 }
@@ -25,6 +27,12 @@
 }
 
 input{
+  color: var(--font-color)!important;
+  background-color: var(--base-color)!important;
+  border: 1px solid rgb(var(--primary-color))!important;
+
+}
+input::placeholder{
   color: var(--font-color)!important;
 }
 input:focus{
@@ -237,6 +245,7 @@ nav{
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  object-fit: contain;
 }
 .laMem{
   overflow-x: hidden;
@@ -665,4 +674,66 @@ nav{
   background-color: var(--base-color)!important;
   border: 1px solid rgb(var(--primary-color));
   border-radius: 30px;
+}
+
+
+
+.postCards .card-body{
+  border-radius: 30px!important;
+}
+
+.userCards{
+  position: relative;
+  border: 1px solid rgb(var(--primary-color));
+  border-radius: 25px;
+}
+.userCards img{
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+
+.postCards img{
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+
+.font5{
+  font-size: 4.5vw!important;
+  font-weight: bolder!important;
+  background: rgb(var(--font-color));
+  background: linear-gradient(120deg, var(--font-color) 0%, rgb(116, 116, 116) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.registre{
+  position: relative;
+  background-color: var(--base-color);
+  
+}
+.registre .right-box{
+  
+  color: var(--font-color)!important;
+}
+.registre::before{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, rgba(var(--primary-color), 0.55) 0%, rgba(var(--secondary-color), 0.55) 100% );
+  transform: translate3d(0px, 20px, 0) scale(0.90);
+  filter: blur(90px);
+}
+.registre button{
+  background-color: rgba(var(--primary-color))!important;
 }

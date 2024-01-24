@@ -2,8 +2,7 @@
 
 import axios from 'axios'
 import React from 'react'
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-
+import { useQuery, useQueryClient } from '@tanstack/react-query'; 
 import { ChatLeftText, HeartFill } from 'react-bootstrap-icons';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,8 +51,7 @@ export default function Posts(props) {
         return (
           data.map(post => {
             return (
-             
-                <div className='post my-2 mx-auto' key={post.id}>
+                <div className='post my-2 mx-auto' key={post.id} >
                   <div className='post-info d-md-flex align-items-start'>
                     <Image src={post.user.image} width={60} height={60} className='me-3'/>
                     <div key={post.id} className='postHeader'>

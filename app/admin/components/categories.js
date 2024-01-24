@@ -49,11 +49,11 @@ export default function Page() {
           {isLoading ? 
             
             <div>
-              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: '#281c38' }} />
-              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: '#281c38' }} />
-              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: '#281c38' }} />
-              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: '#281c38' }} />
-              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: '#281c38' }} />
+              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
+              <Skeleton variant="text" sx={{ fontSize: '50px', bgcolor: "var(--skeleton-dark)" }} />
             </div>
 
           :
