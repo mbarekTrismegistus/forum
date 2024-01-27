@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
     
     const body = await request.json()
-    console.log(body.query)
+
     let posts = await prisma.posts.findMany({
         where: {
             title: {
@@ -13,7 +13,16 @@ export async function POST(request) {
             content: {
                 search: body.query.split(" ").join(" & ")
             }
-        }
+        },
+        include: {
+            user: true,
+            _count: {
+                select: {
+                    likes: true,
+                    comments: true
+                }
+            }
+        },
         
     })
     let categories = await prisma.categorie.findMany({

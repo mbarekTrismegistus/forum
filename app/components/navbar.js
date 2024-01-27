@@ -71,17 +71,13 @@ export default function Navbar() {
 
 
   function search(){
-    if(pathname.startsWith('/search')){
-      window.location.href = `/search?search=${searchQuery}`
-    }
-    else{
-      router.push(`/search?search=${searchQuery}`)
-    }
+    router.push(`/search?search=${searchQuery}`)
+    
   }
 
   
   return (
-    <nav className='navbar navbar-expand sticky-top navbar-dark py-3 shadow-bottom shadow'>
+    <nav className='navbar navbar-expand sticky-top navbar-dark py-3 shadow-bottom shadow w-100'>
         
         <div className='collapse navbar-collapse container-fluid'>
             <a className='navbar-brand'>Discuss Dev</a>
@@ -101,6 +97,13 @@ export default function Navbar() {
                       <Bell size={28} onClick={showNotifi}/>
                       <Notification setNotiNum={setNotiNum}/>
                     </div>
+                      {session.role === "admin" ? 
+                        <Link href={`/admin`}>
+                          admin
+                        </Link>
+                      :
+                      ""
+                      }
                     <Link href={`/profile?id=${session.id}`}>
                       <img className='text-white m-0 me-3 user' src={session.image}/>
                     </Link>

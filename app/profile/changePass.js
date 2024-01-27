@@ -96,9 +96,9 @@ export default function ChangePass(props) {
                             <label>Confirm Password</label>
                             <input type="password" name='rePass' onChange={handlePass} className={`form-control ${notVal.rePass ? "border-danger" : ""}`}/>
                         </div>
-                        <button className="btn btn-outline-light" onClick={changePass} disabled={passPending}>Save</button>
+                        <button className="btn btn-primary" onClick={changePass} disabled={passPending}>Save</button>
                 </div>
-                <Alert severity="error" className={`d-${showAlert ? "block" : "none"} d-flex`}>Pass entered is false.</Alert>
+                <Alert severity="error" className={`d-${showAlert ? "block" : "none"} d-flex alertDanger`}>Pass entered is false.</Alert>
                 <hr className="my-5"/>
                 
                 <Snackbar
@@ -106,6 +106,7 @@ export default function ChangePass(props) {
                     onClose={handleClose}
                     autoHideDuration={3000}
                     message="Password changed successfully"
+                    className='snackbar'
                 />
             </div>
         

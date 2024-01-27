@@ -28,7 +28,7 @@ export default function Page() {
   return (
     
     <div className='container mt-5'>
-        <h1 className='mb-5'>Browse Our Categories !</h1>
+        <h1 className='mb-5 font5'>Browse Our Categories !</h1>
         <div className='row g-5'>
             {data.map((cat) => {
                 return (

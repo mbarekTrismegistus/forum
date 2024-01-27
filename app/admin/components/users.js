@@ -71,12 +71,8 @@ export default function Users() {
                         <div key={user.id} className='d-flex adminList my-2 align-items-center'>
                           <img src={user.image}/>
                           <h5 className='m-0 p-3'>{user.id}</h5>
-                          <TrashFill size={20} className='ms-auto primaryColor' onClick={() => deleteCat(user.id)}/>
-                          <Link href={`/admin/${user.id}`} className='ms-2 align-items-center d-flex'>
-                            <PencilSquare size={20} className='secondaryColor'/>
-                          </Link>
-                          
-                          
+                          <TrashFill size={20} className='ms-auto me-3 primaryColor' onClick={() => deleteCat(user.id)}/>
+
                         </div>
                         )
                     })}

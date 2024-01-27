@@ -7,31 +7,34 @@ import { useMutation } from '@tanstack/react-query';
 axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import MDEditor from '@uiw/react-md-editor';
+import Loading from '@/app/components/loading';
 
 export default function Page({params}) {
 
-    const {data, isError, isFetching} = useQuery({
+
+
+    const {data, isError, isLoading} = useQuery({
         queryKey: ["post"],
         queryFn: async () => {
           const { data } = await axios.post("/api/getAPost", { id: Number(params.updatePost) })
-          setData(data.data)
           return data.data
         }
     })
 
-    let [postdata, setData] = useState(data?.data)
+
+    let [postdata, setData] = useState(data?.content)
+    let [title, setTitle] = useState(data?.title)
     
     const router = useRouter()
 
-    const {mutate: handleSubmit} = useMutation({
+    const {mutate: handleSubmit, isPending} = useMutation({
         
         mutationFn: async() => {
-            console.log("hell")
             await axios.post("/api/updatePost", {data: {
                 id: Number(params.updatePost),
-                title: postdata.title,
-                content: postdata.content,
-                categorieId: postdata.categorieId
+                title: title,
+                content: postdata
             }})
         },
         onSuccess: () => {
@@ -41,42 +44,31 @@ export default function Page({params}) {
     })
 
 
-    function handleChange(event){
-        
-        setData(prevData => {
-            return {
-                ...prevData,
-                [event.target.name]: event.target.value
-            }
-        })
-        
+    if(isLoading){
+        return <Loading/>
     }
-    if(isFetching){
-        return "...loading"
-    }
-    else if(isError){
+    if(isError){
         return "error :("
     }
-    else{
-
         return (
-          <div>
-              <form>
-                  <label className='form-label'>Enter Title</label>
-                  <input type='text' onChange={handleChange} name='title' className='form-control' value={postdata.title}/>
-                  <label className='form-label'>Enter thread</label>
-                  <input type='text' onChange={handleChange} name='categorieId' className='form-control' value={postdata.categorieId}/>
-                  
-                  <textarea onChange={handleChange} name='content' value={postdata.content}></textarea>
-                  
-                  <button onClick={(e) => {
-                      e.preventDefault()
-                      handleSubmit()
-                  }} className='btn btn-dark'>Update Post</button>            
-                  
-              </form>
-          </div>
+            <div className='container main me-4 mt-5 newPost'>
+                <form>
+                    <label className='form-label mt-4'><h4><strong>Title</strong></h4></label>
+                    <input type='text' onChange={(e) => setTitle(e.target.value)} className='form-control mb-4' defaultValue={title}/>
+                    <label className='form-label'><h4><strong>Content</strong></h4></label>
+                    <MDEditor
+                        value={postdata}
+                        onChange={setData}
+                    />
+                    
+                    <button onClick={(e) => {
+                        e.preventDefault()
+                        handleSubmit()
+                    }} className='btn btn-dark' disabled={isPending}>Update Post</button>            
+                    
+                </form>
+            </div>
         )
     }
 
-}
+

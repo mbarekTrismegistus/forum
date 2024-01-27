@@ -9,6 +9,8 @@ import { useMutation } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import { Skeleton } from '@mui/material'
 import Link from 'next/link'
+import { ConfirmDialog } from 'primereact/confirmdialog'; 
+import { confirmDialog } from 'primereact/confirmdialog';
 axios.defaults.baseURL = process.env.baseURL;
 
 export default function Page() {
@@ -33,6 +35,26 @@ export default function Page() {
       }
     })
 
+    const accept = (id) => {
+      deleteCat(id)
+    };
+
+    const reject = () => {
+      return
+    };
+
+    const confirm = (id, event) => {
+      console.log(id)
+      confirmDialog({
+          target: event.currentTarget,
+          message: 'Are you sure you want to proceed?',
+          icon: 'pi pi-exclamation-triangle',
+          defaultFocus: 'accept',
+          accept: () => accept(id),
+          reject
+      });
+  };
+
     if(isError){
       return(
         "error"
@@ -44,7 +66,12 @@ export default function Page() {
     
     <div className='container-fluid'>
         <div className='mt-4'>
-          <h4 className=''><strong>All Categories</strong></h4>
+          <div className='d-flex'> 
+            <h4 className=''><strong>All Categories</strong></h4>
+
+              <button className='btn btn-primary ms-auto'>Add Categorie</button>
+
+          </div>
 
           {isLoading ? 
             
@@ -64,8 +91,8 @@ export default function Page() {
                     <div key={cat.id} className='d-flex adminList my-2 align-items-center'>
                       <img src={cat.image}/>
                       <h5 className='m-0 p-4'>{cat.id}</h5>
-                      <TrashFill size={20} className='ms-auto primaryColor' onClick={() => deleteCat(cat.id)}/>
-                      <Link href={`/admin/${cat.id}`} className='ms-2 align-items-center d-flex'>
+                      <TrashFill size={20} className='ms-auto primaryColor' onClick={(event) => confirm(cat.id,event)}/>
+                      <Link href={`/admin/${cat.id}`} className='ms-2 me-3 align-items-center d-flex'>
                         <PencilSquare size={20} className='secondaryColor'/>
                       </Link>
                       

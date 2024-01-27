@@ -19,12 +19,11 @@ export default function RootLayout({ children }) {
       <body>
       <NextAuthProvider>
         <TanstackProvider>
-          
+
             <Navbar/>
-              <SideNavBar/>
-              <div>
-                  {children}
-              </div>
+            <SideNavBar/>
+            {children}
+
         </TanstackProvider>
       </NextAuthProvider>
       <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ping.js"></script>

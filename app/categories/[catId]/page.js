@@ -24,6 +24,7 @@ export default function SingleCat({params, searchParams}) {
     }
   })
 
+
   const router = useRouter()
 
   const [page, setPage] = React.useState(1);
@@ -42,23 +43,23 @@ export default function SingleCat({params, searchParams}) {
 
   return (
     
-    <div className='container main mt-5'>
+          <div className='container-fluid mt-5 pe-4'>
                 <div>
                   <div className='d-flex align-items-center'>
                     <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
-                      <button className="button d-flex">
+                      <button className="btn btn-primary mb-3 d-flex">
                         <PlusCircle size={25} className='me-2 m-0'></PlusCircle>
                         New Post
                       </button>
                     </Link>
                   </div>
-                  <div className='d-flex flex-column'>
-                    <Stack spacing={2} className='mb-5 align-self-center'>
+                  <div className='d-flex main flex-column'>
+                    <Posts cat={params.catId} user={session?.id} page={searchParams.page}/>
+                    <Stack spacing={2} className='my-5 align-self-center'>
                       <Pagination size='large' count={data} page={page} onChange={handleChange} variant="outlined" color="secondary" />
                     </Stack>
-                    <Posts cat={params.catId} user={session?.id} page={searchParams.page}/>
                   </div>
                 </div>
-    </div>
+          </div>
   )
 }

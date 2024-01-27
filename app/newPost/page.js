@@ -6,24 +6,31 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation';
 axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation'
+import MDEditor from '@uiw/react-md-editor';
 
 
 export default function Page(params) {
 
     const {data: session, status} = useSession()
 
-    let [postdata, setData] = useState({})
+    let [postdata, setData] = useState()
+    let [title, setTitle] = useState()
     const queryClient = useQueryClient()
+    const searchParams = useSearchParams()
     let router = useRouter()
 
-    console.log(params.searchParams.cat)
+    let cat = searchParams.get('cat')
+    console.log(cat)
+
 
     const {mutate: handleSubmit} = useMutation({
         
         mutationFn: async() => await axios.post("api/createPost", {data: {
-            ...postdata,
+            title: title,
+            content: postdata,
             userId: session.id,
-            categorieId: params.searchParams.cat}}),
+            categorieId: cat}}),
         onSuccess: () => {
             queryClient.invalidateQueries(['posts'])
             router.back()
@@ -31,25 +38,19 @@ export default function Page(params) {
         
     })
     
-    function handleChange(event){
-        
-        setData(prevData => {
-            return {
-                ...prevData,
-                [event.target.name]: event.target.value
-            }
-        })
-        
-    }
+    
     
 
   return (
     <div className='container main me-4 mt-5 newPost'>
         <form>
             <label className='form-label'>Enter Title</label>
-            <input type='text' onChange={handleChange} name='title' className='form-control'/>
+            <input type='text' onChange={(e) => setTitle(e.target.value)} className='form-control'/>
             
-            <textarea defaultValue="Enter Content" onChange={handleChange} name='content'></textarea>
+            <MDEditor
+                value={postdata}
+                onChange={setData}
+            />
             
             <button onClick={(e) => {
                 e.preventDefault()

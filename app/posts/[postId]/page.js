@@ -10,7 +10,9 @@ import Comments from './comments/comments';
 import { TrashFill } from 'react-bootstrap-icons';
 import { PencilSquare } from 'react-bootstrap-icons';
 import { useRouter } from 'next/navigation';
-
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import Loading from '@/app/components/loading';
 
 export default function SinglePost({ params }) {
 
@@ -22,7 +24,6 @@ export default function SinglePost({ params }) {
         queryKey: ["post"],
         queryFn: async () => {
           const { data } = await axios.post("/api/getAPost", { id: Number(params.postId) })
-          console.log(data.data)
           return data.data
         }
     })
@@ -45,11 +46,11 @@ export default function SinglePost({ params }) {
     
 
     if(status === "loading"){
-        return "loading"
+        return <Loading/>
     }
 
 
-        if(isLoading) return "loading"
+        if(isLoading) return <Loading/>
         if(isError) return <div>Error happened</div>
         return (
             <div className='container my-5 col-10'>
@@ -68,8 +69,8 @@ export default function SinglePost({ params }) {
                                         {status == "authenticated" ? 
                                         session.id == data.userId || session.role === "admin" ?
                                             <div className='d-flex mt-3'>
-                                                <TrashFill className='primaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}}></TrashFill>
-                                                <PencilSquare className='' color='blue' size={24} onClick={() => {handleUpdate(data.id)}}></PencilSquare>
+                                                <TrashFill className='secondaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}}></TrashFill>
+                                                <PencilSquare className='primaryColor' size={24} onClick={() => {handleUpdate(data.id)}}></PencilSquare>
                                             </div>
                                         : ""
                                         : ""
@@ -77,7 +78,9 @@ export default function SinglePost({ params }) {
                                     </div>
                                 </div>
                                 <div className='singlePostContent mt-4 mx-auto'>
+                                    <Markdown remarkPlugins={remarkGfm}>
                                         {data.content}
+                                    </Markdown>
                                 </div>
                             </div>
                         </div>

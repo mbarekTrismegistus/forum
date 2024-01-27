@@ -2,14 +2,20 @@ import React from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 
 export default function AddCat() {
     const [data, setData] = useState("")
 
-    const {mutate: handleSubmit} = useMutation({
+    const router = useRouter()
+
+    const {mutate: handleSubmit, isPending} = useMutation({
       mutationFn: async () => {
         await axios.post("/api/addCat", {data: data})
+      },
+      onSuccess: () => {
+        router.back()
       }
     })
   
@@ -55,15 +61,18 @@ export default function AddCat() {
   
   
     return (
-      <div>
-        <div>
+
+        <div className='main container'>
           <h1>Add categorie</h1>
-          <input type='text' className='form-control main w-50 mx-auto' name='id' onChange={handleChange}/>
-          <input type='file' name='image' onChange={handleChange}/>
-          <button className='btn btn-primary' onClick={handleSubmit}>Add Categorie</button>
+          <label className='form-label'>Categorie title</label>
+          <input type='text' className='form-control mx-auto' name='id' onChange={handleChange}/>
+          <label className='form-label'>Categorie content</label>
+          <input type='text' className='form-control' name='content' onChange={handleChange}/>
+          <label className='form-label'>Categorie image</label>
+          <input type='file' className='form-control' name='image' onChange={handleChange}/>
+          <button className='btn btn-primary my-3' disabled={isPending} onClick={handleSubmit}>Add Categorie</button>
         </div>
 
-      </div>
     )
   
   

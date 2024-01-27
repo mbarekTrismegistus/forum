@@ -52,12 +52,12 @@ export default function Posts(props) {
           data.map(post => {
             return (
                 <div className='post my-2 mx-auto' key={post.id} >
-                  <div className='post-info d-md-flex align-items-start'>
+                  <div className='post-info d-md-flex align-items-center px-3 py-2'>
                     <Image src={post.user.image} width={60} height={60} className='me-3'/>
                     <div key={post.id} className='postHeader'>
                       <Link href={`/posts/${post.id}`}>
                         <h3>{post.title}</h3>
-                        <p>{post.content.length > 100 ? post.content.replace(/^(.{100}[^\s]*).*/, "$1") + "..." : post.content}</p>
+                        
                       </Link>
                     </div>
                     <div className='ms-auto me-4 d-flex align-self-center'>

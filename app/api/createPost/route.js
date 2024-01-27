@@ -8,7 +8,7 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        
+
         await prisma.posts.create({
             data: {
                 title: Data.data.title,

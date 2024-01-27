@@ -140,7 +140,7 @@ export default function Settings(props) {
                         <div>
                             <input type='file' className='form-control' name='image' onChange={handleInfo}/>
                             Change avatar
-                            <p>JPG, GIF or PNG. 1MB max.</p>
+
                         </div>
                     </div>
                 </div>
@@ -165,12 +165,12 @@ export default function Settings(props) {
             
                 <div className="row my-4">
                     <div className="col">
-                        <button type="button" disabled={isPending} onClick={handleSubmit} className="btn btn-outline-light">Save</button>    
+                        <button type="button" disabled={isPending} onClick={handleSubmit} className="btn btn-primary">Save</button>    
                     </div>
                 </div>
             </div>
         </div>
-        <Alert severity="error" className={`d-${showAlert ? "block" : "none"} d-flex`}>All fields are required</Alert>
+        <Alert severity="error" className={`d-${showAlert ? "block" : "none"} d-flex alertDanger`}>All fields are required</Alert>
         </div>
         <hr className='mx-auto w-100'/>
         <Snackbar
@@ -178,6 +178,7 @@ export default function Settings(props) {
                     onClose={handleClose}
                     autoHideDuration={3000}
                     message="Profile updated successfully"
+                    className='snackbar'
                 />
         
         <ChangePass pass={props.user.password} user={props.user.id}/>
@@ -188,7 +189,7 @@ export default function Settings(props) {
                     <h4>Delete account</h4>
                     <small>No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.</small>
                 </div>
-                <div className="col-md d-flex justify-content-center align-items-center">
+                <div className="col-md-8 d-flex justify-content-center align-items-center">
                     <button className="btn btn-danger">Yes, delete my account</button>    
                 </div>
             </div>
