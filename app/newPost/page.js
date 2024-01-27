@@ -24,7 +24,7 @@ export default function Page(params) {
     console.log(cat)
 
 
-    const {mutate: handleSubmit} = useMutation({
+    const {mutate: handleSubmit, isPending} = useMutation({
         
         mutationFn: async() => await axios.post("api/createPost", {data: {
             title: title,
@@ -44,8 +44,8 @@ export default function Page(params) {
   return (
     <div className='container main me-4 mt-5 newPost'>
         <form>
-            <label className='form-label'>Enter Title</label>
-            <input type='text' onChange={(e) => setTitle(e.target.value)} className='form-control'/>
+            <label className='form-label mt-4'><h4><strong>Enter Title</strong></h4></label>
+            <input type='text' onChange={(e) => setTitle(e.target.value)} className='form-control mb-3'/>
             
             <MDEditor
                 value={postdata}
@@ -55,7 +55,7 @@ export default function Page(params) {
             <button onClick={(e) => {
                 e.preventDefault()
                 handleSubmit()
-            }} className='btn btn-dark'>New Post</button>            
+            }} className='btn btn-dark my-3' disabled={isPending}>New Post</button>            
             
         </form>
     </div>

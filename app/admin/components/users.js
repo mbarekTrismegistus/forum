@@ -9,6 +9,9 @@ import { PencilSquare } from 'react-bootstrap-icons'
 import { useMutation } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import Link from 'next/link'
+import Skeleton from '@mui/material/Skeleton';
+import { ConfirmDialog } from 'primereact/confirmdialog'; 
+import { confirmDialog } from 'primereact/confirmdialog';
 axios.defaults.baseURL = process.env.baseURL;
 
 export default function Users() {
@@ -24,7 +27,7 @@ export default function Users() {
         }
     })
 
-    const {mutate: deleteCat} = useMutation({
+    const {mutate: deleteUser} = useMutation({
       mutationFn: async (id) => {
         await axios.post("/api/deleteUser" ,{id: id})
       },
@@ -32,6 +35,27 @@ export default function Users() {
         queryClient.invalidateQueries(['users'])
       }
     })
+
+
+    const accept = (id) => {
+      deleteUser(id)
+    };
+
+    const reject = () => {
+      return
+    };
+
+    const confirm = (id, event) => {
+      console.log(id)
+      confirmDialog({
+          target: event.currentTarget,
+          message: 'Are you sure you want to proceed?',
+          icon: 'pi pi-exclamation-triangle',
+          defaultFocus: 'accept',
+          accept: () => accept(id),
+          reject
+      });
+    };
 
     if(isLoading){
       return(
@@ -71,7 +95,7 @@ export default function Users() {
                         <div key={user.id} className='d-flex adminList my-2 align-items-center'>
                           <img src={user.image}/>
                           <h5 className='m-0 p-3'>{user.id}</h5>
-                          <TrashFill size={20} className='ms-auto me-3 primaryColor' onClick={() => deleteCat(user.id)}/>
+                          <TrashFill size={20} className='ms-auto me-3 primaryColor' onClick={(event) => confirm(user.id,event)}/>
 
                         </div>
                         )
