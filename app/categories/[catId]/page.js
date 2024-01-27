@@ -42,7 +42,7 @@ export default function SingleCat({params, searchParams}) {
 
   return (
     
-    <div className='container mt-5'>
+    <div className='container main mt-5'>
                 <div>
                   <div className='d-flex align-items-center'>
                     <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
