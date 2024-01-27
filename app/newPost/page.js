@@ -16,7 +16,7 @@ export default function Page(params) {
     const queryClient = useQueryClient()
     let router = useRouter()
 
-
+    console.log(params.searchParams.cat)
 
     const {mutate: handleSubmit} = useMutation({
         
