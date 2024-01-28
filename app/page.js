@@ -5,20 +5,21 @@ import Image from 'next/image'
 export default function Home() {
   return (
     
-    <div className='container mt-5'>
-      <div className='pb-5'>
-        <div className='col-md-8 welcome me-5 p-4 pb-5 align-self-start'>
+    <div className='main d-flex flex-column mt-5'>
+      <div className='col-9 pb-5 align-self-center text-center'>
+        <div className='welcome me-5 p-4 pb-5 align-self-start'>
           <h1 className='pb-3'>
             <span>Welcome To </span><span className='disDev'>Discuss Dev</span>
           </h1>
           <p className='pb-3'>Quos nulla doloribus quaerat. In minima odio quis tempora. Qui dignissimos sit ut sit. Dolore non et numquam nemo eos dolor. Id saepe quia laudantium repellat non rerum quia.</p>
-          <button className='btn joinBtn my-3'>Join Us !</button>
+          <button className='btn joinBtn my-3 px-4 mx-3'>Discover !</button>
+          <button className='btn joinBtn my-3 px-4 mx-3'>See What's new !</button>
         </div>
         
       </div>
       <div className='home-cats pt-5'>
-        <h1 className='my-5'>Trending Categories</h1>
-        <div className='row mb-5'>
+        <h1 className='my-5 font5'>Trending Categories</h1>
+        <div className='row mb-5 g-0'>
           <div className='card text-center col-md mx-4 p-0 '>
             <div className='card-img-top pt-3'>
               <img className='mx-auto d-block' src='https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2023/10/WordPress-alt-1.jpg'/>

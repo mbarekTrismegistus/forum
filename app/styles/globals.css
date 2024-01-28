@@ -63,6 +63,7 @@ body{
   background-color: var(--base-color) !important;
   color: var(--font-color)!important;
   height: 100%!important;
+  word-break: break-all;
   margin: 0;
   padding: 0;
 }
@@ -213,7 +214,6 @@ nav{
   border: none!important;
   position: relative;
   border-radius: 25px!important;
-  width: 130px;
   height: 50px;
   border: 2px solid rgb(var(--primary-color))!important;
   color: var(--font-color)!important;

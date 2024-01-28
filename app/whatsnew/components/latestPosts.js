@@ -8,6 +8,7 @@ import { ChatLeftTextFill, HeartFill } from 'react-bootstrap-icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { Skeleton } from '@mui/material'
+import Image from 'next/image'
 
 
 
@@ -73,7 +74,7 @@ export default function LatestPosts() {
                 <div className='card col-md-5 col-lg mx-auto '>
                   <Link href={`/posts/${post.id}`}>
                   <div className='card-body d-flex flex-column align-items-center p-4'>
-                    <img width={60} height={60} src={post.user?.image}/>
+                    <Image width={60} height={60} src={post.user?.image}/>
                     <h2 className='my-3'><strong>{post.title}</strong></h2>
                     <p className='text-center'>{convertMiliseconds(date.diff(post.dateCreated))}</p>
                     <div className='d-flex mt-3'>
