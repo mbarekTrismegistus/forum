@@ -8,9 +8,10 @@ export async function POST(request) {
     let postsCount = await prisma.posts.count()
     let data = await prisma.posts.findMany({
         skip: body.data.skip - 5 || undefined,
-        take: 5,
+        take: body.data.take,
         where:{
-            categorieId: categorie
+            categorieId: categorie,
+            userId: body.data.user
         },
         orderBy:{
             dateCreated: "desc"

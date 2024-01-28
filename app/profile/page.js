@@ -12,15 +12,17 @@ import Posts from '../posts/components/posts';
 import Settings from './settings';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 
-export default function Profile({ searchParams }) {
+export default function Profile() {
 
     const {data: session} = useSession()
+    const searchParams = useSearchParams()
 
     const {data, isError, isLoading} = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const { data } = await axios.post("/api/getUser", {id: searchParams.id})
+            const { data } = await axios.post("/api/getUser", {id: searchParams.get('id')})
             return data.data
         }
         
@@ -92,7 +94,7 @@ export default function Profile({ searchParams }) {
 
                             </div>
                         </div>
-                        <Posts id={searchParams.id}/>
+                        <Posts user={searchParams.get('id')}/>
                     
                     </div>
                 </Tab>

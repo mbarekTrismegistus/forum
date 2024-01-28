@@ -9,6 +9,7 @@ export async function POST(request) {
             id: body.id
         },
         include:{
+            posts: true,
             _count: {
                 select: { posts: true },
               },

@@ -23,7 +23,8 @@ export default function Posts(props) {
         const { data } = await axios.post("/api/getPosts", {data: {
           cat: props.cat,
           user: props.user,
-          skip: props.page === undefined ? 5 : (Number(props.page) * 0.5 * 10)
+          skip: props.page === undefined ? 5 : (Number(props.page) * 0.5 * 10),
+          take: props.take
         }})
         return data.data
       }
