@@ -54,11 +54,11 @@ export default function SingleCat({params, searchParams}) {
                         </button>
                       </Link>
                     :
-                      <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
-                        <button className="btn btn-primary mb-3 d-flex">
+                      
+                        <button className="btn btn-primary mb-3 ms-auto d-flex" onClick={() => signIn({callbackUrl: "/"})}>
                           Login to post
                         </button>
-                      </Link>
+                      
                     }
                   </div>
                   <div className='d-flex main flex-column'>

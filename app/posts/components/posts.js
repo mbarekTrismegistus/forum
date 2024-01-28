@@ -10,6 +10,7 @@ import Likes from '@/app/components/likes';
 import { useSession } from 'next-auth/react';
 
 
+
 axios.defaults.baseURL = process.env.baseURL;
 
 
@@ -63,17 +64,21 @@ export default function Posts(props) {
                     </div>
                     <div className='ms-auto me-4 d-flex align-self-center'>
                       <div className='my-4 d-flex flex-column align-items-center me-5'>
-                      <Likes 
-                          color={post.likes.length > 0 ? post.likes.filter(e => e.userId === props.user).length > 0 ? "red" : "white" : "white"}
-                          click={session ? post.likes.length > 0 && post.likes.filter(e => e.userId === props.user).length > 0 ? "rmLike" : "addLike" : "signin"}
-                          id={post.likes.filter(e => e.userId === props.user)[0]?.id}
-                          user={props.user}
-                          postId={post.id}
-                          post={post.id}
-                          owner={post.userId}
-                          item={"post"}
-                          
-                        />
+                        {session ? 
+                          <Likes 
+                            color={post.likes.length > 0 ? post.likes.filter(e => e.userId === props.user).length > 0 ? "red" : "white" : "white"}
+                            click={session ? post.likes.length > 0 && post.likes.filter(e => e.userId === props.user).length > 0 ? "rmLike" : "addLike" : "signin"}
+                            id={post.likes.filter(e => e.userId === props.user)[0]?.id}
+                            user={props.user}
+                            postId={post.id}
+                            post={post.id}
+                            owner={post.userId}
+                            item={"post"}
+                            
+                          />
+                        :
+                          <HeartFill size={28}/>
+                        }
                         {post._count.likes}
                       </div>
                       <div className='my-4 d-flex flex-column align-items-center'>
