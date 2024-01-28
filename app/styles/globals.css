@@ -64,7 +64,6 @@ body{
   color: var(--font-color)!important;
   height: 100%!important;
   word-break: break-word;
-  word-wrap: break-word;
   margin: 0;
   padding: 0;
 }

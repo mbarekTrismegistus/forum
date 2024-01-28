@@ -62,7 +62,7 @@ export default function SingleCat({params, searchParams}) {
                     }
                   </div>
                   <div className='d-flex main flex-column'>
-                    <Posts cat={params.catId} user={session?.id} page={searchParams.page} take={5}/>
+                    <Posts cat={params.catId} page={searchParams.page} take={5}/>
                     <Stack spacing={2} className='my-5 align-self-center'>
                       <Pagination size='large' count={data} page={page} onChange={handleChange} variant="outlined" color="secondary" />
                     </Stack>

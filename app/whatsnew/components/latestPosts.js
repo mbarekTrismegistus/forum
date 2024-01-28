@@ -19,7 +19,9 @@ export default function LatestPosts() {
   const {data, isError, isLoading} = useQuery({
     queryKey: ['posts'],
     queryFn: async () => {
-      let {data} = await axios.post("/api/getPosts", {data: {}})
+      let {data} = await axios.post("/api/getPosts", {data: {
+        take: 5
+      }})
       return data.data
     }
   })
