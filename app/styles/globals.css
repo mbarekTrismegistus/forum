@@ -40,6 +40,7 @@ input:focus{
   box-shadow: none!important;
   border: 1px solid rgb(var(--primary-color))!important;
 }
+
 .primaryColor{
   color: rgb(var(--primary-color));
 }
@@ -62,7 +63,6 @@ body{
   background-color: var(--base-color) !important;
   color: var(--font-color)!important;
   height: 100%!important;
-  word-break: break-word;
   margin: 0;
   padding: 0;
 }
@@ -171,6 +171,9 @@ nav{
   border-top-right-radius: 35px!important;
   border-bottom-right-radius: 35px!important;
   z-index: 3;
+}
+.search svg{
+  fill: var(--font-color)!important;
 }
 .search::before{
   content: "";
@@ -311,6 +314,7 @@ nav{
 .notifications{
   position: relative;
   cursor: pointer;
+
   
   
 }
@@ -318,7 +322,7 @@ nav{
   position: absolute;
   top: 100%;
   transform: translate(-70%,4%);
-  width: 25vw;
+  width: 300px;
   height: 450px;
   padding: 20px;
   display: none;
@@ -637,7 +641,7 @@ nav{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 50px;
+  min-width: 50px;
   height: 26px;
   background: -webkit-gradient(linear, left top, right top, color-stop(50%, var(--font-color)), color-stop(50%, var(--base-color))) no-repeat;
   background: -o-linear-gradient(left, var(--font-color) 50%, var(--base-color) 50%) no-repeat;

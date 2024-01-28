@@ -88,8 +88,10 @@ export default function Page(params) {
                             {data.users.map((result) => {
                                 return(
                                     <div className='d-flex align-items-center mt-3'>
-                                        <img src={result.image} className='user me-3'/>
-                                        <h3 key={result.id}><strong>{result.id}</strong></h3>
+                                        <Link href={`/profile?id=${result.id}`}>
+                                            <img src={result.image} className='user me-3'/>
+                                            <h3 key={result.id}><strong>{result.id}</strong></h3>
+                                        </Link>
                                     </div>
 
                                 )

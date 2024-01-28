@@ -83,7 +83,7 @@ export default function Navbar() {
             <a className='navbar-brand'>Discuss Dev</a>
             <div className='search d-flex mx-auto'>
               <input className='form-control searchbar' onChange={(e) => setSearch(e.target.value)}/>
-              <button className='btn' onClick={search}>
+              <button className='btn d-flex align-items-center' onClick={search}>
                 <Search color='white'/>
               </button>
             </div>

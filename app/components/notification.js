@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from "axios"
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useMutation } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
 import { Bell, ChatLeftText } from 'react-bootstrap-icons'
@@ -51,7 +52,7 @@ export default function Notification(props) {
                         return(
                             <Link key={notifi.id} onClick={() => readNotif(notifi.id)} href={`/posts/${notifi.postId}`}>
                                 <div className={`${notifi.read ? "nread" : "nreadnot"} singleNotif px-3 my-2`}>
-                                    <img src={notifi.notifier.image} width={50} className='me-3'/>
+                                    <Image src={notifi.notifier.image} width={50} height={50} className='me-3 flex-shrink-0'/>
                                     {notifi.content}
                                 </div>
                             </Link>

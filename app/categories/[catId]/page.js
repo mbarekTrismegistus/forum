@@ -46,12 +46,20 @@ export default function SingleCat({params, searchParams}) {
           <div className='container-fluid mt-5 pe-4'>
                 <div>
                   <div className='d-flex align-items-center'>
-                    <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
-                      <button className="btn btn-primary mb-3 d-flex">
-                        <PlusCircle size={25} className='me-2 m-0'></PlusCircle>
-                        New Post
-                      </button>
-                    </Link>
+                    {session ? 
+                      <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
+                        <button className="btn btn-primary mb-3 d-flex">
+                          <PlusCircle size={25} className='me-2 m-0'></PlusCircle>
+                          New Post
+                        </button>
+                      </Link>
+                    :
+                      <Link href={`/newPost?cat=${params.catId}`} className='ms-auto'>
+                        <button className="btn btn-primary mb-3 d-flex">
+                          Login to post
+                        </button>
+                      </Link>
+                    }
                   </div>
                   <div className='d-flex main flex-column'>
                     <Posts cat={params.catId} user={session?.id} page={searchParams.page}/>
