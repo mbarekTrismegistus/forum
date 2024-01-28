@@ -13,12 +13,12 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #000000
+  background: #00000000
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--primary-color))
+  background: rgba(var(--primary-color), 0.40)
 }
 
 /* Handle on hover */
@@ -699,8 +699,8 @@ nav{
   overflow: hidden;
 }
 .postCards h2{
-  overflow: hidden;
-  height: 50px;
+  overflow-y: scroll;
+  height: 70px;
 }
 
 .userCards{
@@ -714,6 +714,7 @@ nav{
   height: 75px;
   object-fit: contain;
 }
+
 
 
 .postCards img{

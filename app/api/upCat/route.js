@@ -1,5 +1,6 @@
 import prisma from "@/libs/prismaClient"
 import { getServerSession } from "next-auth/next"
+import { imgbbUploader } from "imgbb-uploader";
 
 export async function POST(request) {
     
@@ -8,7 +9,17 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        let categorie = Data.data.currentId.replace(/%20/, " ")
+        
+        let categorie = Data.data.id.replace(/%20/, " ")
+        let base64img = Data.data.image.substr(Data.data.image.indexOf(',') + 1);
+
+        const options = {
+            apiKey: "b89e645579bd4ed0af6eea6394c431cd", 
+            base64string: base64img,
+        };
+    
+    
+        let imgdata = await imgbbUploader(options)
 
 
         await prisma.categorie.update({
@@ -16,9 +27,9 @@ export async function POST(request) {
                 id: categorie
             },
             data: {
-                id: Data.data.id,
+                title: Data.data.title,
                 content: Data.data.content,
-                image: Data.data.image
+                image: imgdata.url
             }
         })
         

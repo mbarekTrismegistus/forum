@@ -8,7 +8,7 @@ import { ClockHistory } from 'react-bootstrap-icons';
 import { FileEarmarkPostFill } from 'react-bootstrap-icons';
 import { useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@mui/material';
-import Posts from '../admin/components/posts';
+import Posts from '../posts/components/posts';
 import Settings from './settings';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
@@ -35,7 +35,7 @@ export default function Profile({ searchParams }) {
                 {isLoading ? <Skeleton variant='circular' animation="wave" width={150} height={150} sx={{bgcolor: "#281c38"}}/> : <img src={data?.image} width={150} height={150}/>}
                 <div className='ms-3 align-self-center'>
                     <h1><strong className=''>{isLoading ? "..." : data.id}</strong></h1>
-                    <p>Member since .....</p>
+                    <p>Member since {isLoading ? "..." : new Date(data.dateJoined).toDateString()}</p>
                 </div>
             </div>
             <Tabs
@@ -47,7 +47,7 @@ export default function Profile({ searchParams }) {
                 <Tab eventKey="about" title="about">
                     <div className='profileBody p-5 ps-0'>
                         <h1 className='mb-5'><strong>About</strong></h1>
-                        <div className='row'>
+                        <div className='row mb-5'>
                             <div className='ms-4 col-md'>
                                 <div className='d-flex'>
                                     <div className='icon'>
@@ -56,7 +56,7 @@ export default function Profile({ searchParams }) {
                                     
                                     <div>
                                         <h3><strong>{isLoading ? "..." : data.id}</strong></h3>
-                                        <p>M'barek Ettaleby</p>
+                                        <p>{isLoading ? "..." : data.firstName + " " + data.lastName}</p>
                                     </div>
 
                                 </div>
@@ -68,7 +68,7 @@ export default function Profile({ searchParams }) {
                                     </div>
                                     <div>
                                         <h3><strong>Member Since</strong></h3>
-                                        <p>random date</p>
+                                        <p>{isLoading ? "..." : new Date(data.dateJoined).toDateString()}</p>
                                     </div>
 
                                 </div>
