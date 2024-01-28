@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 import anime from 'animejs';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 
 
@@ -18,6 +19,7 @@ import Link from 'next/link';
 export default function SideNavBar() {
 
 const pathname = usePathname()
+    const {data: session} = useSession()
 
   return (
     <div className='sideNav shadow shadow-end' onMouseEnter={() => {
@@ -49,11 +51,18 @@ const pathname = usePathname()
                         <Chat size={28} className='me-4'/>
                         Forums
                 </Link>
-            <hr className='mx-auto'/>
-            <div className=' p-3 py-4'>
-                <BoxArrowRight className='me-4' size={28} onClick={() => signOut({callbackUrl: "/"})}/>
-                Logout
-            </div>
+                {
+                    session ?
+                    <div>
+                        <hr className='mx-auto'/>
+                        <div className=' p-3 py-4' >
+                            <BoxArrowRight className='me-4' size={28} onClick={() => signOut({callbackUrl: "/"})}/>
+                            Logout
+                        </div>
+                    </div>
+                    :
+                    ""
+                }
 
         </div>
            

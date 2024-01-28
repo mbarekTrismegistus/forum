@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 
 
 axios.defaults.baseURL = process.env.baseURL;
