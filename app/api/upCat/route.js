@@ -9,17 +9,24 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        
-        let categorie = Data.data.id.replaceAll('%20', " ")
-        let base64img = Data.data?.image.substr(Data.data.image.indexOf(',') + 1);
+        let imgdata
 
-        const options = {
-            apiKey: "b89e645579bd4ed0af6eea6394c431cd", 
-            base64string: base64img,
-        };
+        let categorie = Data.data.id.replaceAll('%20', " ")
+
+        if(Data.data.image){
+            let base64img = Data.data.image.substr(Data.data.image.indexOf(',') + 1);
     
-    
-        let imgdata = await imgbbUploader(options)
+            const options = {
+                apiKey: "b89e645579bd4ed0af6eea6394c431cd", 
+                base64string: base64img,
+            };
+        
+        
+            imgdata = await imgbbUploader(options)
+        }
+        else{
+            imgdata = undefined
+        }
 
 
         await prisma.categorie.update({
@@ -27,9 +34,9 @@ export async function POST(request) {
                 id: categorie
             },
             data: {
-                title: Data.data.title,
+                id: Data.data.title,
                 content: Data.data.content,
-                image: imgdata.url
+                image: imgdata?.url
             }
         })
         
