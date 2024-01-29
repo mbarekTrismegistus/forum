@@ -213,7 +213,7 @@ nav{
   background-color: var(--base-color)!important;
   border: none!important;
   position: relative;
-  border-radius: 25px!important;
+  border-radius: 15px!important;
   height: 50px;
   border: 2px solid rgb(var(--primary-color))!important;
   color: var(--font-color)!important;
@@ -230,7 +230,7 @@ nav{
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(-45deg, rgb(var(--primary-color)) 0%, rgb(var(--secondary-color)) 100% );
+  background: linear-gradient(-45deg, rgba(var(--primary-color),0.4) 0%, rgba(var(--secondary-color),0.4) 100% );
   transform: translate3d(0px, 10px, 0) scale(0.95);
   filter: blur(20px);
   opacity: 1;
@@ -268,7 +268,7 @@ nav{
   z-index: 1;
 
 }
-/* .card::before{
+.card::before{
   content: "";
   z-index: -1;
   position: absolute;
@@ -279,7 +279,7 @@ nav{
   background: linear-gradient(-45deg, rgba(var(--primary-color), 0.5) 0%, rgba(var(--secondary-color), 0.5) 100% );
   transform: translate3d(0px, 0px, 0) scale(0.85);
   filter: blur(90px);
-} */
+}
 
 .card-img-top{
   color: rgba(255, 255, 255, 0)!important;
