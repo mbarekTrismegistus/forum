@@ -10,7 +10,7 @@ export async function POST(request) {
         
         let Data = await request.json()
         
-        let categorie = Data.data.id.replaceAll(/%20/, " ")
+        let categorie = Data.data.id.replaceAll('%20', " ")
         let base64img = Data.data?.image.substr(Data.data.image.indexOf(',') + 1);
 
         const options = {
