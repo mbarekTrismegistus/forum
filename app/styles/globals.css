@@ -213,7 +213,7 @@ nav{
   background-color: var(--base-color)!important;
   border: none!important;
   position: relative;
-  border-radius: 15px!important;
+  border-radius: 18px!important;
   height: 50px;
   border: 2px solid rgb(var(--primary-color))!important;
   color: var(--font-color)!important;
@@ -255,7 +255,7 @@ nav{
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .laMem{
   overflow-x: hidden;
@@ -538,7 +538,7 @@ nav{
 .adminList img{
   height: 100%;
   width: 65px;
-  object-fit:fill;
+  object-fit: cover;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }
@@ -718,7 +718,7 @@ nav{
   border-radius: 50%;
   width: 75px;
   height: 75px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 
@@ -727,7 +727,7 @@ nav{
   border-radius: 50%;
   width: 75px;
   height: 75px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 

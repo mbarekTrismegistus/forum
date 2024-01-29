@@ -4,7 +4,7 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React from 'react'
-import { ChatLeftTextFill, HeartFill } from 'react-bootstrap-icons'
+import { ChatLeftTextFill,Hearts } from 'react-bootstrap-icons'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { Skeleton } from '@mui/material'
@@ -81,7 +81,7 @@ export default function LatestPosts() {
                     <p className='text-center'>{convertMiliseconds(date.diff(post.dateCreated))}</p>
                     <div className='d-flex mt-3'>
                       <div className='d-flex flex-column align-items-center mx-4'>
-                        <HeartFill size={24}/>
+                        <Hearts size={24}/>
                         {post._count?.likes}                  
                       </div>
                       
