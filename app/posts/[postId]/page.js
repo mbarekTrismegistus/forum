@@ -14,6 +14,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Loading from '@/app/components/loading';
 import Likes from '@/app/components/likes';
+import { HeartFill } from 'react-bootstrap-icons';
 
 export default function SinglePost({ params }) {
 

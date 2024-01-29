@@ -9,6 +9,7 @@ import ChangePass from './changePass'
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import DeleteUser from './deleteUser'
+import Image from 'next/image'
 
 
 
@@ -121,23 +122,21 @@ export default function Settings(props) {
   return (
     <div className='mt-5 pt-4 setting'>
         <div className="container">
-        <div className="row my-4">
+            <div className="row my-4">
             <div className="col-md-4">
                 <h4>Personal Information</h4>
                 <small>Use a permanent address where you can receive mail.</small>
             </div>
             <div className="col-md">
-                <div className="row">
-                    <div className="col-3">
-                    <img
-                        width={150}
-                        height={150}
-                        src={props.user.image}
-                        alt="coucou"
-                        className='img img-fluid'
-                    />
-                    </div>
-                    <div className="col-md-5 d-flex justify-content-center align-items-center">
+                <div className="d-md-flex">
+                        <Image
+                            width={150}
+                            height={150}
+                            src={props.user.image}
+                            alt=""
+                            className='me-4'
+                        />
+                    <div className="d-flex justify-content-center align-items-center">
                         <div>
                             <input type='file' className='form-control' name='image' onChange={handleInfo}/>
                             Change avatar
