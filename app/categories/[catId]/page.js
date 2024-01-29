@@ -34,7 +34,7 @@ export default function SingleCat({params, searchParams}) {
   let paths = pathlist.map((path) => {
     if(path !== ''){
       return (
-        path.replace("%20", " ")
+        path.replaceAll("%20", " ")
       )
     }
   })
@@ -79,7 +79,7 @@ export default function SingleCat({params, searchParams}) {
                         {paths.map((path, i) => {
                           if(path){
                             return (
-                              <Link href={`/${pathlist.slice(1,i+1).toString().replace(",","/")}`}><strong>{path}</strong></Link>
+                              <Link href={`/${pathlist.slice(1,i+1).toString().replaceAll(",","/")}`}><strong>{path}</strong></Link>
                             )
                           }
                         })}

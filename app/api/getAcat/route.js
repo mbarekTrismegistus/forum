@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request) {
     
     let body = await request.json()
-    let id = body.params.replace(/%20/, " ")
+    let id = body.params.replaceAll(/%20/, " ")
 
     let data = await prisma.categorie.findUnique({
         include:{

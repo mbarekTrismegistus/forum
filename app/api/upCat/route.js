@@ -11,7 +11,7 @@ export async function POST(request) {
         let Data = await request.json()
         
         let categorie = Data.data.id.replace(/%20/, " ")
-        let base64img = Data.data.image.substr(Data.data.image.indexOf(',') + 1);
+        let base64img = Data.data?.image.substr(Data.data.image.indexOf(',') + 1);
 
         const options = {
             apiKey: "b89e645579bd4ed0af6eea6394c431cd", 
