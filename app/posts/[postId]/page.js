@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Loading from '@/app/components/loading';
+import Likes from '@/app/components/likes';
 
 export default function SinglePost({ params }) {
 
@@ -33,10 +34,9 @@ export default function SinglePost({ params }) {
           await axios.post("/api/deletePost", {data: id})
         },
         onSuccess: () => {
-            router.push("/posts")
+            router.refresh()
         }
-        
-        
+
       })
 
     function handleUpdate(){
@@ -77,6 +77,21 @@ export default function SinglePost({ params }) {
                                         }
                                     </div>
                                 </div>
+                                {session ? 
+                                        <Likes 
+                                            color={data.likes.length > 0 ? data.likes.filter(e => e.userId === session.id).length > 0 ? "red" : "white" : "white"}
+                                            click={session ? data.likes.length > 0 && data.likes.filter(e => e.userId === session.id).length > 0 ? "rmLike" : "addLike" : "signin"}
+                                            id={data.likes.filter(e => e.userId === session.id)[0]?.id}
+                                            user={session.id}
+                                            postId={data.id}
+                                            post={data.id}
+                                            owner={data.userId}
+                                            item={"post"}
+                                            
+                                        />
+                                        :
+                                        <HeartFill size={28}/>
+                                        }
                                 <div className='singlePostContent mt-4 mx-auto'>
                                     <Markdown remarkPlugins={remarkGfm}>
                                         {data.content}

@@ -22,7 +22,13 @@ export async function POST(request) {
                     dateCommented: "desc"
                 }
             },
-            user: true
+            _count: {
+                select: {
+                    likes: true
+                },
+            },
+            user: true,
+            likes: true
         }
         
     })

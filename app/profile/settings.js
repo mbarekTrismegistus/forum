@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import ChangePass from './changePass'
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import DeleteUser from './deleteUser'
 
 
 
@@ -183,17 +184,7 @@ export default function Settings(props) {
         
         <ChangePass pass={props.user.password} user={props.user.id}/>
      
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4">
-                    <h4>Delete account</h4>
-                    <small>No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.</small>
-                </div>
-                <div className="col-md-8 d-flex justify-content-center align-items-center">
-                    <button className="btn btn-danger">Yes, delete my account</button>    
-                </div>
-            </div>
-        </div>
+       <DeleteUser user={props.user.id}/>
     </div>
 
   )

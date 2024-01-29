@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import { HeartFill } from 'react-bootstrap-icons'
 import { useMutation } from '@tanstack/react-query'
-import { useQuery } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
-import { useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
-
 import axios from 'axios'
 
 
@@ -13,7 +10,6 @@ export default function Likes(props) {
 
     const queryClient = useQueryClient()
 
-    const {data: session, status} = useSession()
     const [color, setColor] = useState(props.color)
 
     const {mutate: sendNotif} = useMutation({

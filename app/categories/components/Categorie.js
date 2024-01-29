@@ -30,7 +30,7 @@ export default function Categorie(props) {
                     </AccordionDetails>
                   </Accordion>
                   <Link href={`/categories/${props.cat.id}`}>
-                      <button className='btn joinBtn my-3 mx-auto d-block'>Visit</button>
+                      <button className='btn joinBtn my-3 mx-auto d-block px-4'>Visit</button>
                   </Link>
                   
                 </div>

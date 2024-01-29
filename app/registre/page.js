@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import Loading from '../components/loading'
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
@@ -50,9 +50,14 @@ export default function Page() {
                 setShowAlert(true)
             }
         },
-        onSuccess: () => {
+        onSuccess: async () => {
             if(!showAlert){
-                router.push("/")
+                await signIn("credentials", {
+                    username: data.id,
+                    password: data.password,
+                    redirect: true,
+                    callbackUrl: "/",
+                })
             }
         }
     })

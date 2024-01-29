@@ -4,6 +4,10 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Categorie from './components/Categorie'
+import { usePathname } from 'next/navigation'
+import { Breadcrumbs } from '@mui/material'
+import Link from 'next/link'
+import Loading from '../components/loading'
 axios.defaults.baseURL = process.env.baseURL;
 
 export default function Page() {
@@ -18,8 +22,9 @@ export default function Page() {
         }
     })
 
+
     if(isLoading){
-        return "loading"
+        return <Loading/>
     }
     if(isError){
         return "error"
@@ -28,7 +33,7 @@ export default function Page() {
   return (
     
     <div className='container mt-5'>
-        <h1 className='mb-5 font5'>Browse Our Categories !</h1>
+        <h1 className='mb-4 font5'>Browse Our Categories !</h1>
         <div className='row g-5'>
             {data.map((cat) => {
                 return (

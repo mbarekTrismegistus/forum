@@ -11,6 +11,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import { usePathname } from 'next/navigation'
 
 
 axios.defaults.baseURL = process.env.baseURL;
@@ -27,6 +29,16 @@ export default function SingleCat({params, searchParams}) {
 
 
   const router = useRouter()
+  const path = usePathname()
+  let pathlist = path.split('/')
+  let paths = pathlist.map((path) => {
+    if(path !== ''){
+      return (
+        path.replace("%20", " ")
+      )
+    }
+  })
+
 
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {
@@ -63,7 +75,16 @@ export default function SingleCat({params, searchParams}) {
                     }
                   </div>
                   <div className='d-flex main flex-column'>
-                    <Posts cat={params.catId} page={searchParams.page} take={5}/>
+                      <Breadcrumbs aria-label="breadcrumb" className='mb-4 breadcrumbs'>
+                        {paths.map((path, i) => {
+                          if(path){
+                            return (
+                              <Link href={`/${pathlist.slice(1,i+1).toString().replace(",","/")}`}><strong>{path}</strong></Link>
+                            )
+                          }
+                        })}
+                      </Breadcrumbs>
+                    <Posts cat={params.catId} userId={session?.id} page={searchParams.page} take={5}/>
                     <Stack spacing={2} className='my-5 align-self-center'>
                       <Pagination size='large' count={data} page={page} onChange={handleChange} variant="outlined" color="secondary" />
                     </Stack>

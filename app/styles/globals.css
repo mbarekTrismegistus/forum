@@ -819,3 +819,13 @@ nav{
   border: none!important;
   color: var(--font-color)!important;
 }
+
+
+.breadcrumbs{
+  box-shadow: none!important;
+  font-size: 16px;
+  z-index: 0!important;
+}
+.MuiBreadcrumbs-separator{
+  color: var(--font-color)!important;
+}
