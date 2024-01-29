@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HeartFill } from 'react-bootstrap-icons'
 import { useMutation } from '@tanstack/react-query'
 import { useQueryClient } from '@tanstack/react-query'
@@ -6,11 +6,16 @@ import { signIn } from 'next-auth/react'
 import axios from 'axios'
 
 
+
 export default function Likes(props) {
 
     const queryClient = useQueryClient()
 
     const [color, setColor] = useState(props.color)
+
+    useEffect(() => {
+      setColor(props.color)
+    },[props.color])
 
     const {mutate: sendNotif} = useMutation({
         
@@ -26,7 +31,7 @@ export default function Likes(props) {
           
       }
       
-  })
+    })
 
     const {mutate: toggleLike, isPending} = useMutation({
         mutationFn: async () => {
@@ -48,8 +53,9 @@ export default function Likes(props) {
           }
         },
         onSuccess: () => {
-          queryClient.invalidateQueries(['posts'])
+          queryClient.invalidateQueries(['posts','post'])
           setColor(color === "red" ? "white" : "red")
+
           
         }
     })

@@ -69,8 +69,8 @@ export default function SinglePost({ params }) {
                                         {status == "authenticated" ? 
                                         session.id == data.userId || session.role === "admin" ?
                                             <div className='d-flex mt-3'>
-                                                <TrashFill className='secondaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}}></TrashFill>
-                                                <PencilSquare className='primaryColor' size={24} onClick={() => {handleUpdate(data.id)}}></PencilSquare>
+                                                <TrashFill className='secondaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}} cursor={"pointer"}></TrashFill>
+                                                <PencilSquare className='primaryColor' size={24} onClick={() => {handleUpdate(data.id)}} cursor={"pointer"}></PencilSquare>
                                             </div>
                                         : ""
                                         : ""
