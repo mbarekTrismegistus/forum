@@ -268,7 +268,7 @@ nav{
   z-index: 1;
 
 }
-.card::before{
+/* .card::before{
   content: "";
   z-index: -1;
   position: absolute;
@@ -279,7 +279,7 @@ nav{
   background: linear-gradient(-45deg, rgba(var(--primary-color), 0.5) 0%, rgba(var(--secondary-color), 0.5) 100% );
   transform: translate3d(0px, 0px, 0) scale(0.85);
   filter: blur(90px);
-}
+} */
 
 .card-img-top{
   color: rgba(255, 255, 255, 0)!important;
