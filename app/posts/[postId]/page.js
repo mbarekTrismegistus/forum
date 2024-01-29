@@ -7,7 +7,7 @@ import { useMutation } from '@tanstack/react-query';
 axios.defaults.baseURL = process.env.baseURL;
 import { useSession } from 'next-auth/react';
 import Comments from './comments/comments';
-import { TrashFill } from 'react-bootstrap-icons';
+import { ChatLeftTextFill, TrashFill } from 'react-bootstrap-icons';
 import { PencilSquare } from 'react-bootstrap-icons';
 import { useRouter } from 'next/navigation';
 import Markdown from "react-markdown";
@@ -77,26 +77,44 @@ export default function SinglePost({ params }) {
                                         : ""
                                         }
                                     </div>
+                                   
                                 </div>
-                                {session ? 
-                                        <Likes 
-                                            color={data.likes.length > 0 ? data.likes.filter(e => e.userId === session.id).length > 0 ? "red" : "white" : "white"}
-                                            click={session ? data.likes.length > 0 && data.likes.filter(e => e.userId === session.id).length > 0 ? "rmLike" : "addLike" : "signin"}
-                                            id={data.likes.filter(e => e.userId === session.id)[0]?.id}
-                                            user={session.id}
-                                            postId={data.id}
-                                            post={data.id}
-                                            owner={data.userId}
-                                            item={"post"}
-                                            
-                                        />
-                                        :
-                                        <HeartFill size={28}/>
-                                        }
-                                <div className='singlePostContent mt-4 mx-auto'>
-                                    <Markdown remarkPlugins={remarkGfm}>
-                                        {data.content}
-                                    </Markdown>
+                                   
+                                <div className='singlePostContent d-flex mt-4'>
+                                    <div className='me-5'>
+                                        <Markdown remarkPlugins={remarkGfm}>
+                                            {data.content}
+                                        </Markdown>
+
+                                    </div>
+                                    <div className='ms-auto'>
+                                        <div className=''>
+                                            {session ? 
+                                                <Likes 
+                                                    color={data.likes.length > 0 ? data.likes.filter(e => e.userId === session.id).length > 0 ? "red" : "white" : "white"}
+                                                    click={session ? data.likes.length > 0 && data.likes.filter(e => e.userId === session.id).length > 0 ? "rmLike" : "addLike" : "signin"}
+                                                    id={data.likes.filter(e => e.userId === session.id)[0]?.id}
+                                                    user={session.id}
+                                                    postId={data.id}
+                                                    post={data.id}
+                                                    owner={data.userId}
+                                                    item={"post"}
+                                                    
+                                                />
+                                                :
+                                                <HeartFill size={28}/>
+                                                }
+                                                <div className='ms-2'>
+                                                    {data._count.likes}
+                                                </div>
+                                        </div>
+                                        <div className='mt-3'>
+                                            <ChatLeftTextFill size={28}/>
+                                            <div className='ms-2'>
+                                                {data._count.comments}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

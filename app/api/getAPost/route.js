@@ -24,7 +24,8 @@ export async function POST(request) {
             },
             _count: {
                 select: {
-                    likes: true
+                    likes: true,
+                    comments: true
                 },
             },
             user: true,

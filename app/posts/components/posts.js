@@ -57,7 +57,7 @@ export default function Posts(props) {
             return (
                 <div className='post my-2 mx-auto' key={post.id} >
                   <div className='post-info d-md-flex align-items-center px-3 py-2'>
-                    <Image src={post.user.image} width={60} height={60} className='me-3 flex-shrink-0'/>
+                    <Image src={post.user.image} width={60} height={60} className='me-3 user flex-shrink-0'/>
                     <div key={post.id} className='postHeader'>
                       <Link href={`/posts/${post.id}`}>
                         <h3>{post.title}</h3>

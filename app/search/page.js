@@ -32,7 +32,7 @@ export default function Page(params) {
     }
 
   return (
-    <div className='main pt-5 m-0'>
+    <div className='main searchResult pt-5 m-0'>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <div className='row gx-0'>
                 <div className='pe-5 col-sm-3'>
@@ -58,7 +58,7 @@ export default function Page(params) {
                                 return(
                                     <div className='post my-2 mx-auto' key={post.id} >
                                         <div className='post-info d-md-flex align-items-center px-3'>
-                                            <Image src={post.user.image} width={60} height={60} className='me-3'/>
+                                            <Image src={post.user.image} width={60} height={60} className='me-3 user'/>
                                             <div key={post.id} className='postHeader'>
                                             <Link href={`/posts/${post.id}`}>
                                                 <h3>{post.title}</h3>
@@ -99,12 +99,15 @@ export default function Page(params) {
                         </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third" className='p-0'>
-                        <div className='p-0'>
-                            <h1 className='font5'>categories</h1>
+                        <div className='p-0 cat'>
+                            <h1 className='font5 mb-4'>categories</h1>
                             {data.categories.length !== 0 ? "" : "no categories found !"}
                             {data.categories.map((result) => {
                                 return(
-                                    <p key={data.categories.id}>{result.id}</p>
+                                    <Link href={`/categories/${result.id}`} className='d-flex align-items-center'>
+                                        <Image src={result.image} width={100} height={100} />
+                                        <h4 key={result.id} className='ms-4'><strong>{result.id}</strong></h4>
+                                    </Link>
 
                                 )
                             })}

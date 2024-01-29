@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Notification from './notification';
 import { usePathname, useRouter } from 'next/navigation';
 import { Skeleton } from '@mui/material';
+import { GiCrown } from "react-icons/gi";
+
 
 
 
@@ -98,8 +100,8 @@ export default function Navbar() {
                       <Notification setNotiNum={setNotiNum}/>
                     </div>
                       {session.role === "admin" ? 
-                        <Link href={`/admin`}>
-                          admin
+                        <Link href={`/admin`} className=' mx-2'>
+                          <GiCrown size={32} className='secondaryColor'/>
                         </Link>
                       :
                       ""

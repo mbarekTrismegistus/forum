@@ -830,3 +830,8 @@ nav{
 .MuiBreadcrumbs-separator{
   color: var(--font-color)!important;
 }
+
+.searchResult .cat img{
+  width: 150px!important;
+  height: auto!important;
+}

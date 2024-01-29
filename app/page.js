@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 
@@ -12,8 +13,12 @@ export default function Home() {
             <span>Welcome To </span><span className='disDev'>Discuss Dev</span>
           </h1>
           <p className='pb-3'>Quos nulla doloribus quaerat. In minima odio quis tempora. Qui dignissimos sit ut sit. Dolore non et numquam nemo eos dolor. Id saepe quia laudantium repellat non rerum quia.</p>
-          <button className='btn joinBtn my-3 px-4 mx-3'>Discover !</button>
-          <button className='btn joinBtn my-3 px-4 mx-3'>See What's new !</button>
+          <Link href={'/categories'}>
+            <button className='btn joinBtn my-3 px-4 mx-3'>Discover !</button>
+          </Link>
+          <Link href={'/whatsnew'}>
+            <button className='btn joinBtn my-3 px-4 mx-3'>See What's new !</button>
+          </Link>
         </div>
         
       </div>
