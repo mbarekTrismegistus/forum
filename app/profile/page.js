@@ -94,7 +94,7 @@ export default function Profile() {
 
                             </div>
                         </div>
-                        <Posts userId={searchParams.get('id')}/>
+                        <Posts user={searchParams.get('id')} userId={searchParams.get('id')}/>
                     
                     </div>
                 </Tab>
