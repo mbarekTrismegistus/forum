@@ -68,7 +68,6 @@ body{
   background-color: var(--base-color) !important;
   color: var(--font-color)!important;
   height: 100%!important;
-  word-break: break-word;
   margin: 0;
   padding: 0;
 }
@@ -222,9 +221,10 @@ nav{
   border: none!important;
   position: relative;
   border-radius: 18px!important;
-  height: 50px;
+  min-height: 50px;
   border: 2px solid rgb(var(--primary-color))!important;
   color: var(--font-color)!important;
+  word-break: normal!important;
   z-index: 1;
   
 }
@@ -273,6 +273,7 @@ nav{
   border: none!important;
   background-color: transparent!important;
   position: relative;
+  word-break: break-word;
   z-index: 1;
 
 }
@@ -322,6 +323,7 @@ nav{
 .notifications{
   position: relative;
   cursor: pointer;
+  
 
   
   
@@ -336,6 +338,7 @@ nav{
   display: none;
   background-color: var(--base-color);
   border: 1px rgb(var(--primary-color)) solid;
+  word-break: break-word;
   border-radius: 20px;
   overflow-y: scroll;
   z-index: 2;
@@ -399,6 +402,7 @@ nav{
   padding: 30px;
   position: relative;
   background-color: var(--base-color);
+  word-break: break-word;
 }
 .comments::before{
   content: "";
@@ -416,38 +420,6 @@ nav{
   width: 30%;
 }
 
-.newComment{
-  position: relative;
-}
-.newComment textarea{
-  width: 100%;
-  background-color: var(--base-color)!important;
-  border: none!important;
-  height: 150px;
-  position: relative;
-  padding: 15px;
-  color: white;
-  border-radius: 30px;
-}
-.newComment textarea:focus{
-  border: none!important;
-  box-shadow: none!important;
-  color: white;
-}
-
-.newComment textarea::placeholder{
-  color: #8b8b8b!important;
-}
-.newComment button{
-  background-color: rgb(var(--primary-color))!important;
-  border-radius: 30px!important;
-
-}
-.field{
-  box-shadow: 0px 0px 30px var(--base-color);
-  border-radius: 30px;
-  padding: 10px;
-}
 
 
 .newPost{
@@ -472,6 +444,7 @@ nav{
   border-top-right-radius: 30px;
   background-color: var(--base-color);
   position: relative;
+  word-break: break-word;
   padding: 40px;
   color: var(--font-color);
   width: 100%!important;
@@ -482,7 +455,7 @@ nav{
   width: 100%!important;
   background-color: var(--base-color);
   padding: 15px;
-
+  word-break: break-word;
   border-radius: 20px;
 
 }
@@ -541,6 +514,7 @@ nav{
   border-radius: 10px;
   border: 1px solid rgb(var(--primary-color));
   filter: brightness(0.8);
+  word-break: break-word;
   
 }
 .adminList img{
@@ -631,8 +605,9 @@ nav{
 }
 .profileHead .info{
   position: relative;
-  top: 70px;
+  top: 50px;
 }
+
 .profileHead ul{
   background-color: rgba(var(--primary-color), 0.15);
   
@@ -713,6 +688,7 @@ nav{
 .postCards .card-body{
   border-radius: 30px!important;
   overflow: hidden;
+  word-break: break-word;
 }
 .postCards h2{
   overflow-y: scroll;
@@ -723,6 +699,7 @@ nav{
   position: relative;
   border: 1px solid rgb(var(--primary-color));
   border-radius: 25px;
+  word-break: break-word;
 }
 .userCards img{
   border-radius: 50%;

@@ -33,7 +33,7 @@ export default function Profile() {
   return (
     <div className='main me-5'>
         <div className='profileHead p-5 pt-3'>
-            <div className='d-flex info'>
+            <div className='d-md-flex info'>
                 {isLoading ? <Skeleton variant='circular' animation="wave" width={150} height={150} sx={{bgcolor: "#281c38"}}/> : <img src={data?.image} width={150} height={150}/>}
                 <div className='ms-3 align-self-center'>
                     <h1><strong className=''>{isLoading ? "..." : data.id}</strong></h1>

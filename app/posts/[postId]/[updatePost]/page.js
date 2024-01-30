@@ -5,7 +5,6 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 axios.defaults.baseURL = process.env.baseURL;
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import MDEditor from '@uiw/react-md-editor';
 import Loading from '@/app/components/loading';

@@ -21,7 +21,7 @@ export default function stats() {
             return data.data.data
         }
     })
-    console.log(period)
+
     function handleChange(e){
 
         if(e.target.value === "day"){

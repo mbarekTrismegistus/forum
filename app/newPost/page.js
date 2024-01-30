@@ -21,7 +21,7 @@ export default function Page(params) {
     let router = useRouter()
 
     let cat = searchParams.get('cat')
-    console.log(cat)
+
 
 
     const {mutate: handleSubmit, isPending} = useMutation({

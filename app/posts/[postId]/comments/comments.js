@@ -18,7 +18,7 @@ export default function Comments(props) {
     queryKey: ["comments"],
     queryFn: async () => {
       const {data} = await axios.post("/api/getAPost", {id: Number(props.id)})
-      console.log(data.data)
+
       return data.data
     }
   })

@@ -2,7 +2,6 @@
 
 import { House } from 'react-bootstrap-icons';
 import { Fire } from 'react-bootstrap-icons';
-import { People } from 'react-bootstrap-icons';
 import { Chat } from 'react-bootstrap-icons';
 import { BoxArrowRight } from 'react-bootstrap-icons';
 import { usePathname } from 'next/navigation'

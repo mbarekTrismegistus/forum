@@ -1,9 +1,8 @@
 "use client"
 
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import ChangePass from './changePass'
 import Alert from '@mui/material/Alert';
@@ -134,7 +133,7 @@ export default function Settings(props) {
                             height={150}
                             src={props.user.image}
                             alt=""
-                            className='me-4'
+                            className='me-4 flex-shrink-0'
                         />
                     <div className="d-flex justify-content-center align-items-center">
                         <div>

@@ -15,6 +15,8 @@ import remarkGfm from "remark-gfm";
 import Loading from '@/app/components/loading';
 import Likes from '@/app/components/likes';
 import { HeartFill } from 'react-bootstrap-icons';
+import { ConfirmDialog } from 'primereact/confirmdialog'; 
+import { confirmDialog } from 'primereact/confirmdialog';
 
 export default function SinglePost({ params }) {
 
@@ -35,10 +37,31 @@ export default function SinglePost({ params }) {
           await axios.post("/api/deletePost", {data: id})
         },
         onSuccess: () => {
-            router.refresh()
+            router.back()
         }
 
       })
+
+
+      const accept = (id) => {
+        deletePost(id)
+      };
+  
+      const reject = () => {
+        return
+      };
+  
+      const confirm = (id, event) => {
+
+        confirmDialog({
+            target: event.currentTarget,
+            message: 'Are you sure you want to proceed?',
+            icon: 'pi pi-exclamation-triangle',
+            defaultFocus: 'accept',
+            accept: () => accept(id),
+            reject
+        });
+    };
 
     function handleUpdate(){
         router.push(`updatePost/${params.postId}`)
@@ -55,6 +78,7 @@ export default function SinglePost({ params }) {
         if(isError) return <div>Error happened</div>
         return (
             <div className='container my-5 col-10'>
+                        <ConfirmDialog className='confirmation'/>
                         <div className='mt-5 pb-5 singlePost d-flex'>
                             <img src={data.user.image} className='user me-3 mt-3'/>
                             <div className='w-100'>
@@ -70,7 +94,7 @@ export default function SinglePost({ params }) {
                                         {status == "authenticated" ? 
                                         session.id == data.userId || session.role === "admin" ?
                                             <div className='d-flex mt-3'>
-                                                <TrashFill className='secondaryColor me-3' size={24} onClick={() => {handleDelete({id: data.id})}} cursor={"pointer"}></TrashFill>
+                                                <TrashFill className='secondaryColor me-3' size={24} onClick={() => {confirm(data.id)}} cursor={"pointer"}></TrashFill>
                                                 <PencilSquare className='primaryColor' size={24} onClick={() => {handleUpdate(data.id)}} cursor={"pointer"}></PencilSquare>
                                             </div>
                                         : ""

@@ -11,7 +11,7 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        console.log(Data)
+
         let hashedpass = await hash(Data.data.password,10)
         await prisma.users.update({
             where: {

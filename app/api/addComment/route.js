@@ -8,8 +8,7 @@ export async function POST(request) {
     if(session){
         
         let Data = await request.json()
-        console.log(Data)
-        
+
         await prisma.comments.create({
             data: Data.data
         })

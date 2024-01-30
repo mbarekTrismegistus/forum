@@ -17,7 +17,6 @@ export default function Page() {
         queryKey: ["cats"],
         queryFn: async () => {
             const {data} = await axios.post("/api/getCats")
-            console.log(data.data)
             return data.data 
         }
     })
@@ -32,7 +31,7 @@ export default function Page() {
 
   return (
     
-    <div className='container mt-5'>
+    <div className='me-5 main mt-5'>
         <h1 className='mb-4 font5'>Browse Our Categories !</h1>
         <div className='row g-5'>
             {data.map((cat) => {

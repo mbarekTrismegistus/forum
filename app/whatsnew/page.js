@@ -1,12 +1,7 @@
 "use client"
 
-import { Card } from '@mui/material'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+
 import React from 'react'
-import { ChatLeftTextFill, HeartFill } from 'react-bootstrap-icons'
-import dayjs from 'dayjs'
-import Link from 'next/link'
 import LatestPosts from './components/latestPosts'
 import LatestUsers from './components/latestUsers'
 

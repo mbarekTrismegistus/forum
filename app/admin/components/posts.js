@@ -45,7 +45,7 @@ export default function Posts(props) {
     };
 
     const confirm = (id, event) => {
-      console.log(id)
+
       confirmDialog({
           target: event.currentTarget,
           message: 'Are you sure you want to proceed?',

@@ -46,7 +46,7 @@ export default function LatestUsers() {
                   <div className='p-2 d-flex align-items-center'>
                     <img width={60} height={60} src={user.image} className='me-3'/>
                     <h2 className='my-3'><strong>{user.id}</strong></h2>
-                    {/* <p className='text-center'>{convertMiliseconds(date.diff(user.dateCreated))}</p> */}
+                    
                   </div>
                   </Link>
                 </div>
