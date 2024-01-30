@@ -12,7 +12,8 @@ export default function Home() {
           <h1 className='pb-3'>
             <span>Welcome To </span><span className='disDev'>Discuss Dev</span>
           </h1>
-          <p className='pb-3'>Welcome to Discuss Dev, where all devs gather in one place to help each others in everything concercing development, have a question in your ? don't be shy ! <strong>POST IT</strong></p>
+          <h5 className=''>Welcome to Discuss Dev, where all devs gather in one place to help each others in everything concercing development, have a question in your mind ? don't be shy !</h5>
+          <p><strong>POST IT</strong></p>
           <Link href={'/categories'}>
             <button className='btn joinBtn my-3 px-4 mx-3'>Discover !</button>
           </Link>

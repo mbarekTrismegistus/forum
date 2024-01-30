@@ -7,7 +7,7 @@ import Notification from './notification';
 import { usePathname, useRouter } from 'next/navigation';
 import { Skeleton } from '@mui/material';
 import { GiCrown } from "react-icons/gi";
-
+import Image from 'next/image';
 
 
 
@@ -82,7 +82,7 @@ export default function Navbar() {
     <nav className='navbar navbar-expand sticky-top navbar-dark py-3 shadow-bottom shadow w-100'>
         
         <div className='collapse navbar-collapse container-fluid'>
-            <a className='navbar-brand'>Discuss Dev</a>
+            <a className='navbar-brand'><Image src={"/logo.png"} width={40} height={40}/></a>
             <div className='search d-flex mx-auto'>
               <input className='form-control searchbar' onChange={(e) => setSearch(e.target.value)}/>
               <button className='btn d-flex align-items-center' onClick={search}>
@@ -107,7 +107,7 @@ export default function Navbar() {
                       ""
                       }
                     <Link href={`/profile?id=${session.id}`}>
-                      <img className='text-white m-0 me-3 user' src={session.image}/>
+                      <img className='text-white flex-shrink-0 m-0 me-3 user' src={session.image}/>
                     </Link>
                    
                 </div>

@@ -6,10 +6,6 @@
   --primary-color: 136, 57, 239;
   --secondary-color: 210, 15, 57;
 }
-@font-face {
-  font-family: font;
-  src: url(/public/Louis\ George\ Cafe.ttf);
-}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -71,9 +67,7 @@ body{
   margin: 0;
   padding: 0;
 }
-body p, h3, h4{
-  font-family: font;
-}
+
 hr{
   width: 75%;
 }

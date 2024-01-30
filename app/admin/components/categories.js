@@ -68,8 +68,8 @@ export default function Page() {
         <div className='mt-4'>
           <div className='d-flex'> 
             <h4 className=''><strong>All Categories</strong></h4>
-            <Link href={`/admin/addCat`}>
-              <button className='btn btn-primary ms-auto'>Add Categorie</button>
+            <Link href={`/admin/addCat`} className='ms-auto'>
+              <button className='btn btn-primary'>Add Categorie</button>
             </Link>
 
           </div>

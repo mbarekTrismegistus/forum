@@ -48,7 +48,7 @@ export default function stats() {
     return (
         <div className='container-fluid Stats my-5 pe-3'>
             
-            <div className='row my-4 text-white'>
+            <div className='row my-4 text-white gy-3'>
                 <div className='col stat mx-2 d-flex'>
                     <div className='icon'>
                         <FilePost size={40} className='me-3 primaryColor' color='#d20f39'/>
