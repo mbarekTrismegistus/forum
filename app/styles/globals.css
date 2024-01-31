@@ -75,6 +75,7 @@ hr{
   width: 100%!important;
   border-radius: 25px;
   position: relative;
+  word-break: break-word;
   z-index: 1;
 
 }
