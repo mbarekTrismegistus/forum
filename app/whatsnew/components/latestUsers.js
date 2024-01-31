@@ -16,7 +16,7 @@ export default function LatestUsers() {
   const {data, isError, isLoading} = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      let {data} = await axios.post("/api/getUsers")
+      let {data} = await axios.post("/api/getUsers", {take: 5})
       return data.data
     }
   })

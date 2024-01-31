@@ -6,9 +6,10 @@ export async function POST(request) {
     let body = await request.json()
 
     let data = await prisma.users.findMany({
+        take: body.take || undefined,
         where: {
             dateJoined: {
-                gte: body.period
+                gte: body?.period
             }
         },
         orderBy: [
