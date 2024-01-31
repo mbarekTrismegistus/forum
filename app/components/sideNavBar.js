@@ -55,7 +55,7 @@ const pathname = usePathname()
                     <div>
                         <hr className='mx-auto'/>
                         <div className=' p-3 py-4' >
-                            <BoxArrowRight className='me-4' size={28} onClick={() => signOut({callbackUrl: "/"})}/>
+                            <BoxArrowRight className='me-4' size={28} onClick={() => signOut({callbackUrl: "/"})} cursor='pointer'/>
                             Logout
                         </div>
                     </div>
