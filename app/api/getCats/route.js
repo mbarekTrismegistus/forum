@@ -8,7 +8,7 @@ export async function POST(request) {
     let data = await prisma.categorie.findMany({
         where: {
             dateCreated: {
-                gte: body.data.period
+                gte: body.data?.period
             }
         }
     })

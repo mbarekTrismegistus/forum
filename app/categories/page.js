@@ -16,7 +16,7 @@ export default function Page() {
     const {data,isError,isLoading} = useQuery({
         queryKey: ["cats"],
         queryFn: async () => {
-            const {data} = await axios.post("/api/getCats")
+            const {data} = await axios.post("/api/getCats", {})
             return data.data 
         }
     })
