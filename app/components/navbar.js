@@ -115,9 +115,9 @@ export default function Navbar() {
                 status === "loading" ? <Skeleton className='m-0 me-3' variant='circular' width={50} height={50} sx={{bgcolor: '#281c38'}}/>
               : 
                 <div>
-                  <button className='btn btn-outline-light me-3' onClick={() => signIn({callbackUrl: "/posts"})}>Login</button>
+                  <button className='btn btn-primary me-3' onClick={() => signIn({callbackUrl: "/"})}>Login</button>
                   <a href='/registre'>
-                    <button className='btn btn-outline-light'>Registre</button>
+                    <button className='btn btn-primary'>Registre</button>
                   </a>
                 </div>
                 
