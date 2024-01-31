@@ -69,7 +69,7 @@ export default function UpdateCat() {
     return (
 
         <div className='main container'>
-          <h1>Add categorie</h1>
+          <h1>Update categorie</h1>
           <label className='form-label'>Categorie title</label>
           <input type='text' className='form-control mx-auto' name='title' onChange={handleChange}/>
           <label className='form-label'>Categorie content</label>

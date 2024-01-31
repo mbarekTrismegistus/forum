@@ -18,9 +18,11 @@ export default function Posts(props) {
     const queryClient = useQueryClient()
 
     const {data, isError, isLoading} = useQuery({
-        queryKey: ["posts"],
+        queryKey: [props.period,"posts"],
         queryFn: async () => {
-            const {data} = await axios.post("/api/getAllPosts", {id: props.id})
+            const {data} = await axios.post("/api/getAllPosts", {data: {
+              id: props.id,
+              period: props.period}})
             return data.data 
         }
     })

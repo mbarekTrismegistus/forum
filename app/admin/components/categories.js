@@ -13,15 +13,17 @@ import { ConfirmDialog } from 'primereact/confirmdialog';
 import { confirmDialog } from 'primereact/confirmdialog';
 axios.defaults.baseURL = process.env.baseURL;
 
-export default function Page() {
+export default function Page(props) {
 
     const queryClient = useQueryClient()
 
 
     const {data,isError,isLoading} = useQuery({
-        queryKey: ["cats"],
+        queryKey: [props.period,"cats"],
         queryFn: async () => {
-            const {data} = await axios.post("/api/getCats")
+            const {data} = await axios.post("/api/getCats" ,{data: {
+              period: props.period
+            }})
             return data.data 
         }
     })

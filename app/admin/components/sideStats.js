@@ -10,40 +10,17 @@ import { FunnelFill } from 'react-bootstrap-icons'
 
 
 
-export default function stats() {
+export default function stats(props) {
 
-    const [period,setPeriod] = useState(undefined)
+
 
     const {data, isLoading, isError, isPending} = useQuery({
-        queryKey: [period,"stats"],
+        queryKey: [props.period,"stats"],
         queryFn: async () => {
-            let data = await axios.post("/api/getStats", {period : period})
+            let data = await axios.post("/api/getStats", {period : props.period})
             return data.data.data
         }
     })
-
-    function handleChange(e){
-
-        if(e.target.value === "day"){
-            let lastDay = Date.now() - (24 * 60 * 60 * 1000)
-            lastDay = new Date(lastDay).toISOString()
-            setPeriod(lastDay)
-        }
-        else if(e.target.value === "week"){
-            let lastWeek = Date.now() - (7 * 24 * 60 * 60 * 1000)
-            lastWeek = new Date(lastWeek).toISOString()
-            setPeriod(lastWeek)
-        }
-        else if(e.target.value === "month"){
-            let lastMonth = Date.now() - (30 * 7 * 24 * 60 * 60 * 1000)
-            lastMonth = new Date(lastMonth).toISOString()
-            setPeriod(lastMonth)
-        }
-        else{
-            setPeriod(undefined)
-        }
-        
-    }
 
     return (
         <div className='container-fluid Stats my-5 pe-3'>
@@ -168,15 +145,7 @@ export default function stats() {
                     
                 </div>
             </div>
-            <div className='d-flex align-items-center'>
-                <FunnelFill size={30} className='ms-auto'/>
-                <select onChange={handleChange} defaultValue="All time" className='form-select w-25 ms-2'>
-                    <option value={"day"}>Last day</option>
-                    <option value={"week"}>Last week</option>
-                    <option value={"month"}>Last month</option>
-                    <option value={undefined}>All time</option>
-                </select>
-            </div>
+            
             
             
             

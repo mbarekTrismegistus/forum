@@ -525,6 +525,10 @@ nav{
   border-radius: 30px!important;
   color: var(--font-color)!important;
 }
+.nav-link:hover{
+  border: 1px solid rgb(var(--primary-color))!important;
+  border-radius: 30px!important;
+}
 .nav-link{
   color: var(--font-color)!important;
 }
@@ -539,10 +543,11 @@ nav{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.Stats select{
+select{
   border-radius: 30px!important;
   background-color: var(--base-color)!important;
-  color: var(--font-color);
+  color: var(--font-color)!important;
+  border: 1px solid rgb(var(--primary-color))!important;
 }
 .stat{
   background-color: rgba(var(--primary-color), 0.25);

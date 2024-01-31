@@ -14,15 +14,15 @@ import { ConfirmDialog } from 'primereact/confirmdialog';
 import { confirmDialog } from 'primereact/confirmdialog';
 axios.defaults.baseURL = process.env.baseURL;
 
-export default function Users() {
+export default function Users(props) {
 
     const queryClient = useQueryClient()
 
 
     const {data,isError,isLoading} = useQuery({
-        queryKey: ["users"],
+        queryKey: [props.period, "users"],
         queryFn: async () => {
-            const {data} = await axios.post("/api/getUsers")
+            const {data} = await axios.post("/api/getUsers", {period: props.period})
             return data.data 
         }
     })
