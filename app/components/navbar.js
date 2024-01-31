@@ -82,7 +82,7 @@ export default function Navbar() {
     <nav className='navbar navbar-expand sticky-top navbar-dark py-3 shadow-bottom shadow w-100'>
         
         <div className='collapse navbar-collapse container-fluid'>
-            <a className='navbar-brand'><Image src={"/logo.png"} width={40} height={40}/></a>
+            <Link href={'/'} className='navbar-brand'><Image src={"/logo.png"} width={40} height={40}/></Link>
             <div className='search d-flex mx-auto'>
               <input className='form-control searchbar' onChange={(e) => setSearch(e.target.value)}/>
               <button className='btn d-flex align-items-center' onClick={search}>
