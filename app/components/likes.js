@@ -63,7 +63,7 @@ export default function Likes(props) {
   return (
     <div className='ms-auto'>
       {isPending ? 
-        <HeartFill size={24} color={props.color === "red" ? "white" : "red"}/>
+        <HeartFill size={14} color={props.color === "red" ? "white" : "red"}/>
       : <HeartFill size={24} color={color} onClick={toggleLike} cursor={"pointer"}/>}
     </div>
   )
