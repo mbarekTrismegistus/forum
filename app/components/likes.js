@@ -36,12 +36,14 @@ export default function Likes(props) {
     const {mutate: toggleLike, isPending} = useMutation({
         mutationFn: async () => {
           if(props.click === "addLike"){
-            await axios.post("/api/addLike", {data: {
-              userId: props.user,
-              postId: props.post,
-              commentId: props.comment
-            }})
-            sendNotif()
+              if(props.user !== props.owner){
+                await axios.post("/api/addLike", {data: {
+                  userId: props.user,
+                  postId: props.post,
+                  commentId: props.comment
+                }})
+                sendNotif()
+              }
           }
           else if(props.click === "rmLike"){
             await axios.post("/api/rmLike", {data: {
@@ -63,7 +65,7 @@ export default function Likes(props) {
   return (
     <div className='ms-auto'>
       {isPending ? 
-        <HeartFill size={14} color={props.color === "red" ? "white" : "red"}/>
+        <HeartFill size={24} color={props.color === "red" ? "white" : "red"}/>
       : <HeartFill size={24} color={color} onClick={toggleLike} cursor={"pointer"}/>}
     </div>
   )
