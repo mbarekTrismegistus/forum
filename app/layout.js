@@ -5,6 +5,7 @@ import "./styles/globals.css"
 import NextAuthProvider from './providers/sessionProvider'
 import SideNavBar from './components/sideNavBar'
 import localFont from 'next/font/local'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const myFont = localFont({
   src: 'Louis George Cafe.ttf',
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
             <Navbar/>
             <SideNavBar/>
             {children}
-
+            <SpeedInsights />
         </TanstackProvider>
       </NextAuthProvider>
       <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ping.js"></script>
